@@ -1,10 +1,10 @@
-<% @listings.each do |t| %>
-    <%= t.stop.city %>
+<% @listings.each do |listing| %>
+    <%= listing.stop.city %>
 <%end%>
 
-<% @listings.each do |t| %>
-    <p data-toggle="modal" data-target="#model-item-id-<%= t.item.id %>"><%= t.item.name %></p>
-    <%= render partial: 'shared/index_modal', locals: { item: t.item } %>
+<% @listings.each do |listing| %>
+    <p data-toggle="modal" data-target="#model-item-id-<%= listing.item.id %>"><%= listing.item.name %></p>
+    <%= render partial: 'shared/index_modal', locals: { item: listing.item } %>
 <%end%>
 
 
