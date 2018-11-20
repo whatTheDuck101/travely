@@ -1,0 +1,25 @@
+<div class="modal fade" id="model-item-id-<%= item.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h3 class="modal-title"><%= item.name.capitalize %>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </h3>
+      </div>
+      <div class="modal-body">
+        <!-- cl_image_tag item.photo -->
+        <h4>Description:</h4>
+        <p class="modal-title"><%= item.description %></p>
+        <br>
+        <h4>Item owner:</h4>
+        <p class="modal-title"><%= item.user.first_name %> <%= item.user.last_name %></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">I want this!</button>
+      </div>
+    </div>
+  </div>
+</div>
