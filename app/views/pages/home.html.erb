@@ -2,12 +2,13 @@
 
 <%= form_tag(listings_path, method: "get") do %>
   <%= label_tag( "Please insert the city:") %>
-  <%= text_field_tag(:city) %>
+  <%= text_field_tag(:city, nil, :placeholder => 'New York, Montreal..', :required => true) %>
   <%= label_tag( "Start date:") %>
-  <%= date_field_tag(:start_date) %>
+  <%= date_field_tag(:start_date, Date.today, :required => true ) %>
   <%= label_tag( "End date:") %>
-  <%= date_field_tag(:end_date) %>
+  <%= date_field_tag(:end_date, Date.today + 7, :required => true) %>
 
   <%= submit_tag("Search", class: "btn btn-danger") %>
 
 <% end %>
+<button id="add-city">add city</button>
