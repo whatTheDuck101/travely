@@ -1,7 +1,7 @@
 <h1 class="align-center">Enter your itinerary</h1>
 <div id="form" class="align-center">
   <%= form_tag(listings_path, method: "get") do %>
-    <%= label_tag( "Please insert the city:") %>
+    <%= label_tag( "Please insert city:") %>
     <%= text_field_tag(:city, nil, :placeholder => 'New York, Montreal..', :required => true) %>
     <%= label_tag( "Start date:") %>
     <%= date_field_tag(:start_date, Date.today, :required => true ) %>
