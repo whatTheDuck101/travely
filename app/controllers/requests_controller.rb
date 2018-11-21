@@ -2,8 +2,9 @@ class RequestsController < ApplicationController
   def create
     @request = Request.new
     @request.listing = @listing
-    @booking.user = current_user
+    @request.user = current_user
     authorize(request)
+    @request.save
   end
 
   def update
