@@ -1,3 +1,3 @@
 import "bootstrap";
-import "home_test";
-console.log("test");
+import "home_itinerary";
+
