@@ -60,8 +60,8 @@ borrower.stops.build(city:"ottawa", start_date:Date.new(2019,02,02), end_date:Da
 puts 'done creating stops'
 
 puts 'creating items'
-owner.items.build(name: 'travel mug', description: 'great travel mug')
-owner.items.build(name: 'hiking boots', description: 'waterproof, size 10')
+owner.items.build(name: 'travel mug', description: 'great travel mug', photo: File.open(Rails.root.join("app", "assets", "images", "travel_mug.jpg")))
+owner.items.build(name: 'hiking boots', description: 'waterproof, size 10', photo: File.open(Rails.root.join("app", "assets", "images", "hiking_boots.jpg")))
 puts 'done creating items'
 
 puts 'creating listing'
@@ -74,6 +74,13 @@ listing_2.stop = owner.stops.second
 listing_2.item = owner.items.second
 listing_2.save
 puts 'done creating listings'
+
+puts 'createing request'
+request_1 = Request.new
+request_1.user = borrower
+request_1.listing = listing_1
+request_1.save
+puts 'done creating request'
 
 
 puts 'done creating seeds'

@@ -1,0 +1,30 @@
+<h1>My Dashboard :) </h1>
+  <div class ="box">
+    <h2>My Itinerary<h2>
+      <% @stops.each do |stop| %>
+      <li><%= stop.city %>  ( <%= stop.start_date %> ~ <%= stop.end_date %> ) </li>
+      <% end %>
+  </div>
+
+  <div class ="box">
+    <h2>Items I share</h2>
+      <% @items.each do |item| %>
+      <li><%= item.name %> </li>
+      <% end %>
+  </div>
+  <div class ="box">
+    <h2>Received request</h2>
+      <% @listings.each do |listing| %>
+
+        <% if listing.requests != nil %>
+          <% @requests = listing.requests %>
+          <% @requests.each do |request| %>
+           <p> got a request from <%= request.user.first_name %> </p>
+          <% end %>
+        <% end %>
+      <%end %>
+
+  </div>
+  <div class ="box">
+    sent request
+  </div>
