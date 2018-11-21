@@ -1,7 +1,21 @@
+<p>You are travelling to: <%= @stop.city %>, from <%= @stop.start_date %> to <%= @stop.end_date %></p>
+
+
+<p>See below all the items available in <%= @stop.city %></p>
+
+
+
+
 <% @listings.each do |listing| %>
-    <%= listing.stop.city %>
+  <% if listing.stop.city == @stop.city%>
+     <%= Listing.intersection_dates(@stop.start_date, @stop.end_date, listing.stop.start_date, listing.stop.end_date) %>
+     <%= listing.item.name %>
+  <%end%>
 <%end%>
 
+
+<br><br><br><br>
+<p>xxxxxxxxxxxxxxxxxxxx</p>
 <% @listings.each do |listing| %>
     <p data-toggle="modal" data-target="#model-item-id-<%= listing.item.id %>"><%= listing.item.name %></p>
     <%= render partial: 'shared/index_modal', locals: { item: listing.item } %>
