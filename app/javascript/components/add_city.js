@@ -4,10 +4,8 @@ function addNewCityField() {
   const addCityButton = document.querySelector('#add-city');
   addCityButton.addEventListener('click', (event) => {
     event.preventDefault();
-    addCityButton.insertAdjacentHTML("beforebegin",
-      `<div id=${newTripId()} class='trip-field'>${tripField.innerHTML}</div>`
-    );
-    newTripId()
+    const tripId = newTripId()
+    addCityButton.insertAdjacentHTML("beforebegin", buildNewCityFields(tripId));
   });
 }
 
@@ -21,6 +19,21 @@ function newTripId() {
   return newTripId
 }
 
-newTripId()
+function buildNewCityFields(newTripId) {
+  const tripNumber = Number(newTripId.split("-")[2])
+  const element = `<div id=${newTripId} class="trip-field">
+    <label for="Please_insert_new_city:">Please insert city:</label>
+      <input type="text" name="city${tripNumber}" id="city${tripNumber}" placeholder="New York, Montreal.." required="required">
+      <label for="Start_date:">Start date:</label>
+      <input type="date" name="start_date${tripNumber}" id="start_date${tripNumber}" value="2018-11-21" required="required">
+      <label for="End_date:">End date:</label>
+      <input type="date" name="end_date${tripNumber}" id="end_date${tripNumber}" value="2018-11-28" required="required">
+      </div>`
+  return element
+}
+
+
 
 export { addNewCityField };
+
+
