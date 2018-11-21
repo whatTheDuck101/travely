@@ -1,9 +1,8 @@
 class ListingsController < ApplicationController
   def index
+    raise
     @listings = policy_scope(Listing)
     create_stop
-
-
   end
 
   def new
