@@ -6,8 +6,10 @@ class ListingsController < ApplicationController
   end
 
   def new
+    raise
     @item = Item.new
     @listing = Listing.new
+    authorize(@listing)
   end
 
   def create
