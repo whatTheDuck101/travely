@@ -18,25 +18,29 @@ User.create(
   first_name: 'Tzvi',
   last_name: 'Hamerman',
   email: 'Tzvi@lewagon.com',
-  password: '123456'
+  password: '123456',
+  photo: File.open(Rails.root.join("app", "assets", "images", "tzvi.png"))
 )
 User.create(
   first_name: 'Vinicius',
   last_name: 'Ishizaki',
   email: 'Vinicius@lewagon.com',
-  password: '123456'
+  password: '123456',
+  photo: File.open(Rails.root.join("app", "assets", "images", "vinicius.jpeg"))
 )
 User.create(
   first_name: 'Elizabeth',
   last_name: 'Creary',
   email: 'Elizabeth@lewagon.com',
-  password: '123456'
+  password: '123456',
+  photo: File.open(Rails.root.join("app", "assets", "images", "elizabeth.jpg"))
 )
 User.create(
   first_name: 'Songyi',
   last_name: 'Han',
   email: 'Songyi@lewagon.com',
-  password: '123456'
+  password: '123456',
+  photo: File.open(Rails.root.join("app", "assets", "images", "songyi.jepg"))
 )
 owner = User.create(
   first_name: 'Owner',
