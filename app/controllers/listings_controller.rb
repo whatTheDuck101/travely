@@ -2,7 +2,8 @@ class ListingsController < ApplicationController
   def index
     raise
     @listings = policy_scope(Listing)
-    create_stop
+    @user_stops = current_user.stops
+    raise
   end
 
   def new

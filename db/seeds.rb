@@ -79,7 +79,7 @@ listing_2.item = owner.items.second
 listing_2.save
 puts 'done creating listings'
 
-puts 'createing request'
+puts 'creating request'
 request_1 = Request.new
 request_1.user = borrower
 request_1.listing = listing_1
