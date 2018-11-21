@@ -40,7 +40,7 @@ User.create(
   last_name: 'Han',
   email: 'Songyi@lewagon.com',
   password: '123456',
-  photo: File.open(Rails.root.join("app", "assets", "images", "songyi.jepg"))
+  photo: File.open(Rails.root.join("app", "assets", "images", "songyi.jpeg"))
 )
 owner = User.create(
   first_name: 'Owner',
