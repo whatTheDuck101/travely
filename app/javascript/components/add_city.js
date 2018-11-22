@@ -39,15 +39,11 @@ function buildNewCityFields(newTripId) {
   newDiv.className = "trip-field";
   newDiv.id = newTripId;
   newDiv.innerHTML = `
-    <label for="Please_insert_new_city:">Please insert city:</label>
-      <input type="text" name="stops[${tripNumber}][city]" id="city${tripNumber}" placeholder="New York, Montreal.." required="required">
-      <label for="Start_date:">Start date:</label>
-      <input type="date" name="stops[${tripNumber}][start_date]" id="start_date${tripNumber}" value="2018-11-21" required="required">
-      <label for="End_date:">End date:</label>
-      <input type="date" name="stops[${tripNumber}][end_date]" id="end_date${tripNumber}" value="2018-11-28" required="required">
-      <button id="delete-city-${tripNumber} class="delete-city">delete city</button>
+      <input type="text" name="stops[${tripNumber}][city]" id="city${tripNumber}" class="nested-input" required="required">
+      <input type="date" name="stops[${tripNumber}][start_date]" id="start_date${tripNumber}" class="nested-input" required="required">
+      <input type="date" name="stops[${tripNumber}][end_date]" id="end_date${tripNumber}" class="nested-input" required="required">
+      <button id="delete-city-${tripNumber} class="delete-city">x</button>
   `;
-
   return newDiv;
 }
 

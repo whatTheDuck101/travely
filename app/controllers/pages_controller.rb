@@ -12,5 +12,6 @@ class PagesController < ApplicationController
     @listings = current_user.listings
     @requests = current_user.requests
 
+
   end
 end

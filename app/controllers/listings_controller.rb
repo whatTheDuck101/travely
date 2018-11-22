@@ -1,17 +1,17 @@
 class ListingsController < ApplicationController
   before_action :create_stop, only: [:index, :new]
   skip_after_action :verify_authorized, only: [:new]
-  
+
   def index
     @items_filtered = []
     @user_stops = current_user.stops
     @user_stops.each do |stop|
       items = policy_scope(Item)
       items = Item.joins(listings: :stop).where(stops: { city: stop.city }).where("start_date < ?", stop.end_date).where("end_date > ?", stop.start_date)
-
       @items_filtered << { items: items, city: stop.city } if items.any?
     end
   end
+
 
 
 
@@ -36,13 +36,11 @@ class ListingsController < ApplicationController
     end
 
     if @listing.save
-      redirect_to dashboard_path 
+      redirect_to dashboard_path
     else
       render :new
     end 
     # @item.user = @listing.stop.user 
-    
-    
   end
 
   private
@@ -56,45 +54,9 @@ class ListingsController < ApplicationController
     @stop.save
   end
 
-  def listing_params 
+  def listing_params
     params.require(:listing).permit(:item_id, :stop_id)
   end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

@@ -43,57 +43,58 @@ User.create(
   photo: File.open(Rails.root.join("app", "assets", "images", "songyi.jpeg"))
 )
 owner = User.create(
-  first_name: 'Owner',
-  last_name: 'Owner',
+  first_name: 'Tom',
+  last_name: 'Johnson',
   email: 'Owner@lewagon.com',
   password: '123456'
 )
 borrower = User.create(
-  first_name: 'Borrower',
-  last_name: 'Borrower',
+  first_name: 'Peter',
+  last_name: 'Parker',
   email: 'borrower@lewagon.com',
   password: '123456'
 )
 puts 'done creating users'
-puts borrower
+
 puts 'creating stops'
-owner.stops.build(city:"montreal", start_date:Date.new(2019,01,01), end_date:Date.new(2019,02,01))
-owner.stops.build(city:"toronto", start_date:Date.new(2019,02,02), end_date:Date.new(2019,03,01))
-borrower.stops.build(city:"montreal", start_date:Date.new(2019,01,01), end_date:Date.new(2019,02,01))
-borrower.stops.build(city:"ottawa", start_date:Date.new(2019,02,02), end_date:Date.new(2019,03,01))
+Stop.create(city:"montreal", start_date:Date.new(2019,01,01), end_date:Date.new(2019,02,01), user:owner)
+Stop.create(city:"toronto", start_date:Date.new(2019,02,01), end_date:Date.new(2019,03,01), user:owner)
+Stop.create(city:"ottowa", start_date:Date.new(2019,03,01), end_date:Date.new(2019,04,01), user:owner)
+Stop.create(city:"Bangkok", start_date:Date.new(2019,04,01), end_date:Date.new(2019,05,01), user:borrower)
 puts 'done creating stops'
 
+
 puts 'creating items'
-owner.items.build(name: 'travel mug', description: 'great travel mug', photo: File.open(Rails.root.join("app", "assets", "images", "travel_mug.jpg")))
-owner.items.build(name: 'hiking boots', description: 'waterproof, size 10', photo: File.open(Rails.root.join("app", "assets", "images", "hiking_boots.jpg")))
+Item.create(user:owner, name: 'Travel Mug', description: 'great travel mug', photo: File.open(Rails.root.join("app", "assets", "images", "travel_mug.jpg")))
+Item.create(user:owner, name: 'Hiking Boots', description: 'waterproof, size 10', photo: File.open(Rails.root.join("app", "assets", "images", "hiking_boots.jpg")))
+Item.create(user:owner, name: "Book: The Hitchhiker's Guide to the Galaxy", description: "Good condition, Softcover", photo: File.open(Rails.root.join("app", "assets", "images", "hitchhikers_guide_book.jpeg")))
+Item.create(user:owner, name: 'Oyster Card', description: 'Oyster card for London tube, can include sim card as well!', photo: File.open(Rails.root.join("app", "assets", "images", "oyster_card.jpg")))
+Item.create(user:owner, name: 'Unisex Rain Jacket', description: 'Color: Blue, waterproof, for adults', photo: File.open(Rails.root.join("app", "assets", "images", "rain_jacket.jpeg")))
+Item.create(user:owner, name: 'Travel Pillow', description: 'See title :)', photo: File.open(Rails.root.join("app", "assets", "images", "travel_pillow.jpeg")))
+Item.create(user:borrower, name: 'Insect Repellent', description: 'Brand is "OFF", barely used, mostly full', photo: File.open(Rails.root.join("app", "assets", "images", "insect_repellent.jpeg")))
 puts 'done creating items'
 
 puts 'creating listing'
-listing_1 = Listing.new
-listing_1.stop = owner.stops.first
-listing_1.item = owner.items.first
-listing_1.save
-listing_2 = Listing.new
-listing_2.stop = owner.stops.second
-listing_2.item = owner.items.second
-listing_2.save
+Listing.create(item: Item.first, stop: Stop.first)
+Listing.create(item: Item.first, stop: Stop.second)
+Listing.create(item: Item.first, stop: Stop.third)
+Listing.create(item: Item.second, stop: Stop.first)
+Listing.create(item: Item.second, stop: Stop.second)
+Listing.create(item: Item.second, stop: Stop.third)
+Listing.create(item: Item.third, stop: Stop.first)
+Listing.create(item: Item.third, stop: Stop.second)
+Listing.create(item: Item.fourth, stop: Stop.first)
+Listing.create(item: Item.fourth, stop: Stop.third)
+Listing.create(item: Item.fifth, stop: Stop.second)
+Listing.create(item: Item.all[5], stop: Stop.third)
+Listing.create(item: Item.all[6], stop: Stop.fourth)
 puts 'done creating listings'
 
 puts 'creating request'
 request_1 = Request.new
 request_1.user = borrower
-request_1.listing = listing_1
+request_1.listing = Listing.first
 request_1.save
 puts 'done creating request'
 
-
-puts 'done creating seeds'
-puts 'good luck! dont break it'
-
-
-
-
-
-
-
-
+puts 'Seeds complete!'
