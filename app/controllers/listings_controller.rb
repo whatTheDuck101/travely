@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
+  skip_after_action :verify_authorized, only: [:new]
   def index
-    raise
     @listings = policy_scope(Listing)
     create_stop
   end
