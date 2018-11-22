@@ -1,6 +1,13 @@
-<h1>Share Your Item</h1>
-
-<%# raise %>
-<%= render 'form_item' %>
-<br>
-<%= link_to 'Back', root_path %>
+<div class="">
+    <div class="new-item">
+        <div class="col-one">
+            <h1>Share Your Item with <strong>Travely</strong></h1>
+        </div>
+        <div class="col-two">
+            <%= render 'form_item' %>
+            <div style="margin-top: 2%;">
+                <%= link_to 'Back', root_path %>
+            </div>
+        </div>
+    </div>
+</div> 
