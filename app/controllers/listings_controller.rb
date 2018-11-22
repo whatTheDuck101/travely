@@ -1,17 +1,36 @@
 class ListingsController < ApplicationController
+  before_action :create_stop, only: [:index, :new]
   skip_after_action :verify_authorized, only: [:new]
+  
   def index
-    @listings = policy_scope(Listing)
-    create_stop
+    @items_filtered = []
+    @user_stops = current_user.stops
+    @user_stops.each do |stop|
+      items = policy_scope(Item)
+      items = Item.joins(listings: :stop).where(stops: { city: stop.city }).where("start_date < ?", stop.end_date).where("end_date > ?", stop.start_date)
+
+      @items_filtered << { items: items, city: stop.city } if items.any?
   end
+
+
 
   def new
     @item = Item.new
     @listing = Listing.new
+    authorize(@listing)
   end
 
   def create
-
+    @item = Item.new(name: params[:listing][:item][:name], description: params[:listing][:item][:description], photo: params[:listing][:item][:photo])
+    @listing = Listing.new(listing_params)
+    @item.user = @listing.stop.user 
+    @listing.item = @item 
+    authorize(@listing)
+    if @listing.save
+      redirect_to dashboard_path 
+    else
+      render :new
+    end 
   end
 
   private
@@ -24,4 +43,46 @@ class ListingsController < ApplicationController
     @stop.user = current_user
     @stop.save
   end
+
+  def listing_params 
+    params.require(:listing).permit(:item_id, :stop_id)
+  end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
