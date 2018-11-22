@@ -1,5 +1,6 @@
 class ListingsController < ApplicationController
   before_action :create_stop, only: [:index, :new]
+  skip_after_action :verify_authorized, only: [:new]
   
   def index
     @items_filtered = []

@@ -15,10 +15,12 @@
 <%end%>
 
 
+
+
 <br><br><br><br>
 <p>xxxxxxxxxxxxxxxxxxxx</p>
 <% @listings.each do |listing| %>
-    <p data-toggle="modal" data-target="#model-item-id-<%= listing.item.id %>"><%= listing.item.name %></p>
+    <p data-toggle="modal" data-target="#modal-item-id-<%= listing.item.id %>"><%= listing.item.name %></p>
     <%= render partial: 'shared/index_modal', locals: { item: listing.item } %>
 <%end%>
 <% end %>
