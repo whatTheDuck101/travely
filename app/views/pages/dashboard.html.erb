@@ -26,5 +26,9 @@
 
   </div>
   <div class ="box">
-    sent request
+    <h2>sent request</h2>
+          <% @requests.each do |request| %>
+           <p><strong> <%= request.listing.item.name %></strong> in <%= request.listing.stop.city %></p>
+           <p> sent a request to <%= request.listing.item.user.first_name %> </p>
+          <% end %>
   </div>

@@ -4,8 +4,11 @@ class RequestsController < ApplicationController
     @request.listing_id = params["listing_id"]
     @request.user = current_user
     authorize(@request)
-    @request.save
-    raise
+    if @request.save
+      redirect_to dashboard_path
+    else
+      render :new
+    end
 
   end
 
