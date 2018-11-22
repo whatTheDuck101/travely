@@ -1,0 +1,28 @@
+// .softcry {
+//   border-radius: 100%;
+// }
+.new-item {
+  margin: 15%;
+  display: grid;
+  grid-template-columns: 40% auto;
+}
+
+.col-one {
+  background: #86e3c8;
+  color: white;
+  text-align: center;
+  padding: 5%;
+  border-radius: 10px 0 0 10px;
+  box-shadow: 0 0 10px rgba(80, 80, 80, 0.1);
+}
+
+.col-two {
+  background: white;
+  padding: 5%;
+  border-radius: 0 10px 10px 0;
+  box-shadow: 0 0 10px rgba(80, 80, 80, 0.1);
+}
+
+.testing {
+  background: red;
+}
