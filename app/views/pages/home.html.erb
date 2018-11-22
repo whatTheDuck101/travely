@@ -22,7 +22,6 @@
                   <div class="focus-label">
                     <%= label_tag( "End date", nil, class: "nested-label") %>
                     <%= date_field_tag('stops[1][end_date]', Date.today + 7, :required => true, class: "nested-input" ) %>
-                    <% end %>
                   </div>
                 </div>
               </div>
@@ -33,5 +32,6 @@
             <%= submit_tag("Search", class: "btn btn-lightgreen") %>
             <%= submit_tag("Share item", class: "btn btn-danger") %>
           </div>
+          <% end %>
      </div>
 </div>
