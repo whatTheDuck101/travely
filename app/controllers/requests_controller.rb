@@ -1,9 +1,15 @@
 class RequestsController < ApplicationController
   def create
     @request = Request.new
-    @request.listing = @listing
-    @booking.user = current_user
-    authorize(request)
+    @request.listing_id = params["listing_id"]
+    @request.user = current_user
+    authorize(@request)
+    if @request.save
+      redirect_to dashboard_path
+    else
+      render :new
+    end
+
   end
 
   def update

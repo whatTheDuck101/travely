@@ -16,7 +16,6 @@
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= cl_image_tag current_user.photo  %>
           <% if current_user.photo.file.nil? %>
             <%= image_tag "userprofile.png", class: "avatar dropdown-toggle", id: "navbar-bunker-menu", "data-toggle" => "dropdown" %>
           <% else %>
@@ -43,6 +42,7 @@
       </div>
     <% else %>
       <!-- Login link (when logged out) -->
+      <div class="g-signin2" data-onsuccess="onSignIn"></div>
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
   </div>

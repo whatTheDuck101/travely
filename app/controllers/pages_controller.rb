@@ -7,11 +7,11 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-
-
     @stops = current_user.stops
     @items = current_user.items
     @listings = current_user.listings
+    @requests = current_user.requests
+
 
   end
 end
