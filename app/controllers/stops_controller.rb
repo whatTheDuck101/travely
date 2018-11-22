@@ -3,6 +3,7 @@ class StopsController < ApplicationController
 
   def create
     generate_user_stops(stops_params)
+
     if params[:commit] == "Search"
       redirect_to listings_path
     else

@@ -8,4 +8,7 @@ class Stop < ApplicationRecord
   validates :end_date, presence: true
 
   # validate real city?
+  def to_label
+    "#{self.city}-#{start_date}-#{end_date}"
+  end 
 end
