@@ -8,7 +8,6 @@ class ListingsController < ApplicationController
     @user_stops.each do |stop|
       items = policy_scope(Item)
       items = Item.joins(listings: :stop).where(stops: { city: stop.city }).where("start_date < ?", stop.end_date).where("end_date > ?", stop.start_date)
-
       @items_filtered << { items: items, city: stop.city } if items.any?
     end
   end
