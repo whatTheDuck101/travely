@@ -55,7 +55,7 @@ borrower = User.create(
   password: '123456'
 )
 puts 'done creating users'
-
+puts borrower
 puts 'creating stops'
 owner.stops.build(city:"montreal", start_date:Date.new(2019,01,01), end_date:Date.new(2019,02,01))
 owner.stops.build(city:"toronto", start_date:Date.new(2019,02,02), end_date:Date.new(2019,03,01))

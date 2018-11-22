@@ -1,9 +1,24 @@
 class ListingsController < ApplicationController
+  # def index
+  #   @listings = policy_scope(Listing)
+  #   @user_stops = current_user.stops
+  #   user_cities = @user_stops.map { |stop| stop.city}
+  #   sql_query = " \
+  #       stops.city ILIKE :query \
+  #       "
+  #   results = Item.joins(:stop).where(sql_query, query: "montreal")
+  #   raise
+  # end
+
   def index
-    raise
-    @listings = policy_scope(Listing)
+    @items_filtered = []
     @user_stops = current_user.stops
-    raise
+    @user_stops.each do |stop|
+      items = policy_scope(Item)
+      items = Item.joins(listings: :stop).where(stops: { city: stop.city }).where("start_date < ?", stop.end_date).where("end_date > ?", stop.start_date)
+
+      @items_filtered << { items: items, city: stop.city } if items.any?
+    end
   end
 
   def new
@@ -28,3 +43,41 @@ class ListingsController < ApplicationController
     @stop.save
   end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
