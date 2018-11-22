@@ -1,3 +1,4 @@
+<% if false %>
 <p>You are travelling to: <%= @stop.city %>, from <%= @stop.start_date %> to <%= @stop.end_date %></p>
 
 
@@ -20,5 +21,58 @@
     <p data-toggle="modal" data-target="#model-item-id-<%= listing.item.id %>"><%= listing.item.name %></p>
     <%= render partial: 'shared/index_modal', locals: { item: listing.item } %>
 <%end%>
+<% end %>
+
+
+
+
+
+
+
+
+
+<% @items_filtered.each do |items_info| %>
+  <h2><%= items_info[:city] %></h2>
+  <% items_info[:items].each do |item| %>
+    <p><%= item.name %></p>
+    <p><%= item.description %></p>
+  <% end %>
+<%end%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
