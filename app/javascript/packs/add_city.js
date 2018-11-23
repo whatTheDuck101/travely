@@ -48,4 +48,5 @@ function buildNewCityFields(newTripId) {
   return newDiv;
 }
 
-export { addNewCityField };
+addNewCityField();
+// export { addNewCityField };
