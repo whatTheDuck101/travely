@@ -17,8 +17,10 @@ class StopsController < ApplicationController
   def generate_user_stops(stops)
     stops.each do |stop_number, stop_details|
       stop_details = stop_details.permit(:city, :start_date, :end_date)
-      trip = current_user.stops.build(stop_details)
-      trip.save!
+      stop = current_user.stops.build(stop_details)
+      # city_photo_url = Unsplash::Photo.search(trip.city, 1, 1)[0].urls.regular
+      stop.remote_photo_url = "https://kitt.lewagon.com/placeholder/cities/#{stop.city}"
+      stop.save!
     end
   end
 

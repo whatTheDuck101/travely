@@ -2,6 +2,9 @@
   <div class ="box">
     <h2>My Itinerary<h2>
       <% @stops.each do |stop| %>
+      <% if !(stop.photo.file.nil?)%>
+      <%= cl_image_tag stop.photo, height: 300, width: 400, crop: :fill %>
+      <% end %>
       <li><%= stop.city %>  ( <%= stop.start_date %> ~ <%= stop.end_date %> ) </li>
       <% end %>
   </div>
