@@ -1,4 +1,5 @@
 class Stop < ApplicationRecord
+  mount_uploader :photo, PhotoUploader
   belongs_to :user
   has_many :listings
   has_many :items, through: :listings # may not be needed
@@ -10,5 +11,5 @@ class Stop < ApplicationRecord
   # validate real city?
   def to_label
     "#{self.city}-#{start_date}-#{end_date}"
-  end 
+  end
 end
