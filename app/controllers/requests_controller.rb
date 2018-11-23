@@ -13,8 +13,18 @@ class RequestsController < ApplicationController
   end
 
   def update
-    request = Request.find(params[:id])
-    authorize(request)
+    @request = Request.find(params["id"])
+    @request.status = params["value"]
+    @request.save!
+    @listing = Listing.find(params[:listing_id])
+
+    if params["value"] == "accepted"
+      @request.listing.is_available = false
+    end
+
+    authorize(@request)
+
+    redirect_to dashboard_path
   end
 
   private

@@ -1,6 +1,7 @@
 <%= render 'map_circle' %>
 
 
+
 <div class="container">
   <div class="row">
 
@@ -15,14 +16,13 @@
       </div>
     </div>
 
-
-
-
     <div class="col-xs-9">
-
       <% @items_filtered.each do |items_info| %>
         <div id="<%= items_info[:city] %>" class="tabcontent">
-            <% items_info[:items].each do |item| %>
+          <% if items_info[:items].length == 0 %>
+           <h3>Sorry, there are no items available on your stop</h3>
+          <% end %>
+           <% items_info[:items].each do |item| %>
             <div class="col-xs-4">
                <a data-toggle="modal" data-target="#modal-item-id-<%= item.id %>">
                 <div class="item-list-card <%= items_info[:city] %>">
@@ -36,18 +36,11 @@
 
         </div>
       <% end %>
-
     </div>
 
   </div>
 </div>
 
-<!-- Tab links -->
-
-
-
-
-<!-- Tab content -->
 
 <script>
  function openCity(evt) {
