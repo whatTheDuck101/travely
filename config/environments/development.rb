@@ -30,12 +30,7 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  Unsplash.configure do |config|
-    config.application_access_key = "d3d77c1e7914d009d06a0863ad0eb49d7fb515dfbbfb5ec1d82c022f961461e5"
-    config.application_secret = "7c0d8abbe59286dff95e10771f79b5dc7117d43ea7697fec2c5ddde86d992a62"
-    config.application_redirect_uri = "urn:ietf:wg:oauth:2.0:oob"
-    config.utm_source = "alices_terrific_client_app"
-  end
+
 
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :local
