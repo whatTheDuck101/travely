@@ -1,10 +1,10 @@
 import "bootstrap";
-import { addNewCityField } from "../components/add_city";
-import { highlightLabel } from "../components/nested_input_home";
+// import { addNewCityField } from "../components/add_city";
+// import { highlightLabel } from "../components/nested_input_home";
 
-addNewCityField();
+// addNewCityField();
 
-import { openCity } from "../components/itinerarytab";
+// import { openCity } from "../components/itinerarytab";
 
-highlightLabel();
+// highlightLabel();
 

@@ -19,4 +19,5 @@ function openCity(evt, cityName) {
     evt.currentTarget.className += " active";
 }
 
-export { openCity };
+openCity(evt, cityName)
+// export { openCity };

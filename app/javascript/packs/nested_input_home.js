@@ -22,5 +22,7 @@ function highlightLabel() {
   }
 
 }
-export { highlightLabel };
+
+highlightLabel()
+// export { highlightLabel };
 
