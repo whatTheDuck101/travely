@@ -4,14 +4,15 @@ const firstTripField = document.querySelector("#trip-field-1");
 function addNewCityField() {
   const addCityButton = document.querySelector("#add-city");
   const formInputs = document.querySelector(".trip-fields");
-
-  addCityButton.addEventListener("click", event => {
-    event.preventDefault();
-    const newTripId = generateNewTripId();
-    const tripField = buildNewCityFields(newTripId);
-    formInputs.append(tripField);
-    bindEventLister(tripField);
-  });
+  if (addCityButton) {
+    addCityButton.addEventListener("click", event => {
+      event.preventDefault();
+      const newTripId = generateNewTripId();
+      const tripField = buildNewCityFields(newTripId);
+      formInputs.append(tripField);
+      bindEventLister(tripField);
+    });
+  }
 }
 
 function bindEventLister(element) {

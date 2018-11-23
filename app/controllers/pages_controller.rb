@@ -11,7 +11,5 @@ class PagesController < ApplicationController
     @items = current_user.items
     @listings = current_user.listings
     @requests = current_user.requests
-
-
   end
 end
