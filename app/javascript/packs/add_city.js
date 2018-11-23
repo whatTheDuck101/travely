@@ -43,7 +43,7 @@ function buildNewCityFields(newTripId) {
       <input type="text" name="stops[${tripNumber}][city]" id="city${tripNumber}" class="nested-input" required="required">
       <input type="date" name="stops[${tripNumber}][start_date]" id="start_date${tripNumber}" class="nested-input" required="required">
       <input type="date" name="stops[${tripNumber}][end_date]" id="end_date${tripNumber}" class="nested-input" required="required">
-      <button id="delete-city-${tripNumber} class="delete-city">x</button>
+      <button id="delete-city-${tripNumber}" class="delete-city">x</button>
   `;
   return newDiv;
 }

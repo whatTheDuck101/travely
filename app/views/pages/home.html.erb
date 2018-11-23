@@ -11,18 +11,22 @@
               <div class="trip-fields">
                 <div id="trip-field-1" class="trip-field">
                   <div class="focus-label">
-                    <%= label_tag( "Please insert city", nil, class: "nested-label") %>
+                    <%#= label_tag( "Please insert city", nil, class: "nested-label") %>
+                    <span class="nested-label">Please insert city</span>
                     <%= text_field_tag('stops[1][city]', nil, :required => true, class: "nested-input") %>
 
                   </div>
                   <div class="focus-label">
-                    <%= label_tag( "Start date", nil, class: "nested-label") %>
+                    <%#= label_tag( "Start date", nil, class: "nested-label") %>
+                    <span class="nested-label">Please insert city</span>
                     <%= date_field_tag('stops[1][start_date]', Date.today, :required => true, class: "nested-input" ) %>
                   </div>
                   <div class="focus-label">
-                    <%= label_tag( "End date", nil, class: "nested-label") %>
+                    <%#= label_tag( "End date", nil, class: "nested-label") %>
+                    <span class="nested-label">Please insert city</span>
                     <%= date_field_tag('stops[1][end_date]', Date.today + 7, :required => true, class: "nested-input" ) %>
                   </div>
+                    <button class="hidden-x" disabled>x</button>
                 </div>
               </div>
 
