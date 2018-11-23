@@ -22,16 +22,25 @@ class ListingsController < ApplicationController
   end
 
   def create
+    
     @item = Item.new(name: params[:listing][:item][:name], description: params[:listing][:item][:description], photo: params[:listing][:item][:photo])
-    @listing = Listing.new(listing_params)
-    @item.user = @listing.stop.user
-    @listing.item = @item
-    authorize(@listing)
+    array_of_stop_ids = params[:listing][:stop_id].reject { |elt| elt == "" }
+    array_of_stop_ids.each do |stop_id|
+      # todo: create a listing for every stop id
+      @listing = Listing.new(listing_params)
+      @listing.stop_id = stop_id
+      @item.user = @listing.stop.user 
+      @listing.item = @item 
+      authorize(@listing)
+      @listing.save
+    end
+
     if @listing.save
       redirect_to dashboard_path
     else
       render :new
-    end
+    end 
+    # @item.user = @listing.stop.user 
   end
 
   private

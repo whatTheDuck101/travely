@@ -1,0 +1,22 @@
+//home screen
+#submit-button {
+  padding-top: 10px;
+  margin: 0 30px 0 30px;
+}
+
+.btn-lightgreen {
+  color: #fff;
+  background-color: $light-green;
+  border-color: $darker-green;
+
+}
+
+.btn-lightgreen:hover {
+  background-color: $darker-green;
+  color: #fff;
+}
+
+.btn {
+  margin: 0 10px 0 10px;
+  width: 130px !important;
+}
