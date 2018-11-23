@@ -27,6 +27,10 @@
     }
   }
 
+  .focus-label {
+    margin: 0;
+  }
+
   .nested-label {
     transition: // not padding
       background 0.2s,
@@ -41,15 +45,23 @@
   }
 }
 
-
-
 .highlight-field {
   color: white;
-  text-transform: uppercase;
+  // text-transform: uppercase;
   font-size: 70%;
 }
 
+.hidden-x {
+  // border-style: solid;
+  // border-color: rgba(10,23,55,0);
+  // color: rgba(10,23,55,0);
+  border-width: 1px;
+  // // padding: 1px 7px 2px;
+  // // height: 45px;
+  visibility: hidden;
+}
+
 .delete-city {
-
-
+  background-color: rgba(10,23,55,0);
+  border-color: rgba(10,23,55,0);
 }
