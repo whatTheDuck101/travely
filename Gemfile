@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.4.4'
 
+gem 'unsplash'
 gem "pundit"
 gem 'cloudinary', '~> 1.9.1'
 gem 'carrierwave', '~> 1.2'

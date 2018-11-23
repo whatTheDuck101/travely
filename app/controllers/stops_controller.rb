@@ -18,6 +18,8 @@ class StopsController < ApplicationController
     stops.each do |stop_number, stop_details|
       stop_details = stop_details.permit(:city, :start_date, :end_date)
       trip = current_user.stops.build(stop_details)
+      city_photo_url = Unsplash::Photo.search(trip.city, 1, 1)[0].urls.regular
+      trip.remote_photo_url = city_photo_url
       trip.save!
     end
   end
