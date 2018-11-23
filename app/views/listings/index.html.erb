@@ -6,7 +6,6 @@
 
 
 
-
 <% @listings.each do |listing| %>
   <% if listing.stop.city == @stop.city%>
      <%= Listing.intersection_dates(@stop.start_date, @stop.end_date, listing.stop.start_date, listing.stop.end_date) %>
@@ -25,6 +24,7 @@
 <%end%>
 <% end %>
 
+<%= render 'map_circle' %>
 
 
 

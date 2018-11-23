@@ -22,6 +22,5 @@ function highlightLabel() {
   }
 
 }
-
 export { highlightLabel };
 
