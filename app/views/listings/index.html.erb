@@ -1,73 +1,72 @@
+<%= render 'map_circle' %>
 
-<% if false %>
 
-<% @items_filtered.each do |items_info| %>
-  <h2><%= items_info[:city] %> (<%= items_info[:start_date].strftime("%b %d, %Y") %>-<%= items_info[:end_date].strftime("%b %d, %Y") %>)</h2>
-  <% items_info[:items].each do |item| %>
-   <a data-toggle="modal" data-target="#modal-item-id-<%= item.id %>">
-    <div class="item-list-card <%= items_info[:city] %>">
-      <p><%= item.name %></p>
-      <%= cl_image_tag item.photo, height: 300, width: 300, crop: :fill %>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-xs-3">
+      <div class="tab">
+        <% @items_filtered.each do |items_info| %>
+
+          <button class="tablinks" name="<%= items_info[:city]%>"onclick="openCity(event)">
+            <p><%= items_info[:city] %></p>
+            <p>(<%= items_info[:start_date].strftime("%b %d, %Y") %>-<%= items_info[:end_date].strftime("%b %d, %Y") %>)</p></button>
+          <% end %>
+      </div>
     </div>
-   </a>
-   <%= render partial: 'shared/index_modal', locals: { item: item } %>
-  <% end %>
-<%end%>
 
-<% end %>
+    <div class="col-xs-9">
+      <% @items_filtered.each do |items_info| %>
+        <div id="<%= items_info[:city] %>" class="tabcontent">
+          <% if items_info[:items].length == 0 %>
+           <h3>Sorry, there are no items available on your stop</h3>
+          <% end %>
+           <% items_info[:items].each do |item| %>
+            <div class="col-xs-4">
+               <a data-toggle="modal" data-target="#modal-item-id-<%= item.id %>">
+                <div class="item-list-card <%= items_info[:city] %>">
+                  <p><%= item.name %></p>
+                  <%= cl_image_tag item.photo, height: 150, width: 200, crop: :fill %>
+                </div>
+               </a>
+               <%= render partial: 'shared/index_modal', locals: { item: item } %>
+            </div>
+          <% end %>
 
-
-<!-- Tab links -->
-<div class="tab">
-  <% @items_filtered.each do |items_info| %>
-
-    <button class="tablinks" name="<%= items_info[:city]%>"onclick="openCity(event)"><%= items_info[:city] %>(<%= items_info[:start_date].strftime("%b %d, %Y") %>-<%= items_info[:end_date].strftime("%b %d, %Y") %>)</button>
-    <% end %>
-</div>
-
-<% @items_filtered.each do |items_info| %>
-<div id="<%= items_info[:city] %>" class="tabcontent">
-    <% items_info[:items].each do |item| %>
-   <a data-toggle="modal" data-target="#modal-item-id-<%= item.id %>">
-    <div class="item-list-card <%= items_info[:city] %>">
-      <p><%= item.name %></p>
-      <%= cl_image_tag item.photo, height: 300, width: 300, crop: :fill %>
+        </div>
+      <% end %>
     </div>
-   </a>
-   <%= render partial: 'shared/index_modal', locals: { item: item } %>
-  <% end %>
+
+  </div>
 </div>
 
-  <% end %>
-</div>
-
-<!-- Tab content -->
 
 <script>
- function openCity(evt) {
-    // Declare all variables
-    var i, tabcontent, tablinks;
-
+ function openCity(event) {
     // Get all elements with class="tabcontent" and hide them
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
+    const tabcontent = document.querySelectorAll(".tabcontent");
+
+    tabcontent.forEach((tab) => {
+      tab.style.display = "none";
+    })
 
     // Get all elements with class="tablinks" and remove the class "active"
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
+    const tablinks = document.querySelectorAll(".tablinks");
+
+    tablinks.forEach((tablink) => {
+      tablink.classList.remove("active");
+    })
+
     // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementById(evt.target.name).style.display = "block";
-    evt.currentTarget.className += " active";
+    document.getElementById(event.currentTarget.name).style.display = "block";
+    event.currentTarget.classList.add("active");
 }
 
 </script>
 
 
-
+<%= javascript_pack_tag 'itinerarytab' %>
 
 
 
