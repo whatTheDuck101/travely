@@ -1,47 +1,50 @@
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-xs-3">
+      <div class="tab">
+        <% @items_filtered.each do |items_info| %>
+
+          <button class="tablinks" name="<%= items_info[:city]%>"onclick="openCity(event)">
+            <p><%= items_info[:city] %></p>
+            <p>(<%= items_info[:start_date].strftime("%b %d, %Y") %>-<%= items_info[:end_date].strftime("%b %d, %Y") %>)</p></button>
+          <% end %>
+      </div>
+    </div>
+
 <%= render 'map_circle' %>
 
 
-<% if false %>
 
-<% @items_filtered.each do |items_info| %>
-  <h2><%= items_info[:city] %> (<%= items_info[:start_date].strftime("%b %d, %Y") %>-<%= items_info[:end_date].strftime("%b %d, %Y") %>)</h2>
-  <% items_info[:items].each do |item| %>
-   <a data-toggle="modal" data-target="#modal-item-id-<%= item.id %>">
-    <div class="item-list-card <%= items_info[:city] %>">
-      <p><%= item.name %></p>
-      <%= cl_image_tag item.photo, height: 300, width: 300, crop: :fill %>
+    <div class="col-xs-9">
+
+      <% @items_filtered.each do |items_info| %>
+        <div id="<%= items_info[:city] %>" class="tabcontent">
+            <% items_info[:items].each do |item| %>
+            <div class="col-xs-4">
+               <a data-toggle="modal" data-target="#modal-item-id-<%= item.id %>">
+                <div class="item-list-card <%= items_info[:city] %>">
+                  <p><%= item.name %></p>
+                  <%= cl_image_tag item.photo, height: 150, width: 200, crop: :fill %>
+                </div>
+               </a>
+               <%= render partial: 'shared/index_modal', locals: { item: item } %>
+            </div>
+          <% end %>
+
+        </div>
+      <% end %>
+
     </div>
-   </a>
-   <%= render partial: 'shared/index_modal', locals: { item: item } %>
-  <% end %>
-<%end%>
 
-<% end %>
-
+  </div>
+</div>
 
 <!-- Tab links -->
-<div class="tab">
-  <% @items_filtered.each do |items_info| %>
 
-    <button class="tablinks" name="<%= items_info[:city]%>"onclick="openCity(event)"><%= items_info[:city] %>(<%= items_info[:start_date].strftime("%b %d, %Y") %>-<%= items_info[:end_date].strftime("%b %d, %Y") %>)</button>
-    <% end %>
-</div>
 
-<% @items_filtered.each do |items_info| %>
-<div id="<%= items_info[:city] %>" class="tabcontent">
-    <% items_info[:items].each do |item| %>
-   <a data-toggle="modal" data-target="#modal-item-id-<%= item.id %>">
-    <div class="item-list-card <%= items_info[:city] %>">
-      <p><%= item.name %></p>
-      <%= cl_image_tag item.photo, height: 300, width: 300, crop: :fill %>
-    </div>
-   </a>
-   <%= render partial: 'shared/index_modal', locals: { item: item } %>
-  <% end %>
-</div>
 
-  <% end %>
-</div>
 
 <!-- Tab content -->
 
