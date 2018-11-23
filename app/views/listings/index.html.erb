@@ -1,7 +1,5 @@
 <%#= render 'map_circle' %>
 
-
-
 <div class="container">
   <div class="row">
 
@@ -22,18 +20,19 @@
           <% if items_info[:items].length == 0 %>
            <h3>Sorry, there are no items available on your stop</h3>
           <% end %>
-           <% items_info[:items].each do |item| %>
-            <div class="col-xs-4">
-               <a data-toggle="modal" data-target="#modal-item-id-<%= item.id %>">
-                <div class="item-list-card <%= items_info[:city] %>">
-                  <p><%= item.name %></p>
-                  <%= cl_image_tag item.photo, height: 150, width: 200, crop: :fill %>
+            <% items_info[:items].each do |item| %>
+              <div class="col-xs-4">
+                <div class="card">
+                  <a data-toggle="modal" data-target="#modal-item-id-<%= item.id %>">
+                    <div class="card-body <%= items_info[:city] %>">
+                      <div class="card-img-top" style="background-image: url('<%= cl_image_path item.photo%>')"></div>
+                      <p class="card-text"><%= item.name %></p>
+                    </div>
+                </a>
+                <%= render partial: 'shared/index_modal', locals: { item: item } %>
                 </div>
-               </a>
-               <%= render partial: 'shared/index_modal', locals: { item: item } %>
-            </div>
+              </div>
           <% end %>
-
         </div>
       <% end %>
     </div>
