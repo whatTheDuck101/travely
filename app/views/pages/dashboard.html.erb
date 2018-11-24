@@ -28,9 +28,19 @@
 
       <!-- Tab content -->
       <div id="items" class="tabcontent">
-            <% @items.each do |item| %>
-            <li><%= item.name %> </li>
-            <% end %>
+        <% @items.each do |item| %>
+          <div class="col-xs-4">
+            <div class="card"  style="height:20em">
+              <div class="card-body"> 
+              <div class="card-img-top" style="background-image: url('<%= cl_image_path item.photo%>')"></div>
+              <p class="card-text name"><%= item.name %></p>
+              <p class="card-text location"><strong>item.stop</strong></p>
+              <p class="card-text description"><%= item.description %></p>
+              <p class="card-text details"><span><i class="fas fa-info-circle"></i></span></p>
+              </div>
+            </div>
+          </div>
+        <% end %>  
       </div>
 
       <div id="receieved" class="tabcontent">
