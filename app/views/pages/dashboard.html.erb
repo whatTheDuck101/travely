@@ -9,7 +9,7 @@
         <h2>My Itinerary</h2>
           <% @stops.each do |stop| %>
           <% if !(stop.photo.file.nil?)%>
-          <%= cl_image_tag stop.photo, height: 200, width: 200, crop: :fill %>
+          <%= cl_image_tag stop.photo, height: 80, width: 200, crop: :fill %>
           <% end %>
           <li><%= stop.city %></li>
           <p>( <%= stop.start_date %> ~ <%= stop.end_date %> )</p>
@@ -34,57 +34,47 @@
       </div>
 
       <div id="receieved" class="tabcontent">
-       <% @listings.each do |listing| %>
+        <% @listings.each do |listing| %>
+          <div class="col-xs-10">
+           <div class="request-card">
+                    <% if listing.requests != nil %>
+                     <% @recieved_requests = listing.requests %>
+                     <% @recieved_requests.each do |request| %>
+                          <div class="request-card-image" style="background-image: url('<%= cl_image_path listing.stop.photo %>')">
+                            <div class="request-card-title">
+                              <%= listing.stop.city %></div>
+                              <div class="request-user-item-image"> <%= cl_image_tag request.user.photo, class: "card-user user-avatar-bordered" %> <%= cl_image_tag request.listing.item.photo, class: "card-user item-avatar-bordered" %></div>
+                            </div>
+                          <div class="request-card-content">
 
-              <% if listing.requests != nil %>
-                <% @recieved_requests = listing.requests %>
-                <% @recieved_requests.each do |request| %>
-                  <% if request.status == "pending"%>
-                      <div class="message">
-                        <div class="message-name">
-                          <p><%= request.listing.item.name %></p>
-                        </div>
-                         <div class="message-body">
-                          <p><em>Please confirm reservation from <%= request.user.first_name %></em> </p>
-
-                         </div>
-
-                         <%= cl_image_tag request.user.photo, class: "card-user avatar-large" %>
-
-                           <div class="message-status">
+                            <div><p> <%= request.user.first_name %> has requested your <%= request.listing.item.name %></p></div>
+                            <div><p> you will both be in <%= listing.stop.city %> between "" ~ ""</p></div>
+                          </div>
+                          <div class="request-card-actions">
+                            <% if request.status == "pending"%>
                               <%= link_to "Accept", listing_request_path(request.listing.id, request.id, { value: "accepted" }), class: 'btn btn-success', method: :patch %>
                               <%= link_to "Decline", listing_request_path(request.listing.id, request.id, { value: "denied" }), class: 'btn btn-danger', method: :patch %>
-                           </div>
-                         </div>
-                    <% elsif request.status == "accepted" %>
-                        <div class="">
-                        <div class="">
-                          <p><%= request.listing.item.name %></p>
-                        </div>
-                         <div class="">
-                          <p><em>You have accepted this request!</em> </p>
-                         </div>
+                            <% elsif request.status == "accepted" %>
+                              <p><em>You have accepted this request!</em> </p>
+                            <% elsif request.status == "denied" %>
+                              <p><em>You have denied this request!</em> </p>
+                            <% end %>
+                          </div>
+                     <% end %>
+                   <% else %>
+                    <%= You havent received any request yet %>
+                   <% end %>
+          </div>
+         </div>
+        <% end %>
 
-                         </div>
-                    <% elsif request.status == "denied" %>
-                        <div class="">
-                        <div class="">
-                          <p><%= request.listing.item.name %></p>
-                        </div>
-                         <div class="">
-                          <p><em>You have denied this request!</em> </p>
-                         </div>
-                  <% end %>
-                <% end %>
-              <% end %>
-            <%end %>
       </div>
 
       <div id="sent" class="tabcontent">
            <% @requests.each do |request| %>
                  <% if request.status == "pending" %>
                       <p><%= request.created_at.strftime("%c") %></p>
-                      <p><em>sent a request to "<%= request.listing.user.first_name %>" </em> </p>
+                      <p><em>sent a request to "<%= request.listing.item.user.first_name %>" </em> </p>
                     <% elsif request.status == "accepted" %>
                      <p> <%= request.listing.item.user.first_name %> has approved your request! </p>
                     <% else %>
