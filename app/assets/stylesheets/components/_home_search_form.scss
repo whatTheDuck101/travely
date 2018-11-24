@@ -1,27 +1,19 @@
 
 .sim-form {
   float: left;
-  // margin: 20px;
   > div {
     position: relative;
     overflow: hidden;
   }
   .nested-input {
-    //margins
     height: 45px;
     width: 100%;
-    border: 2px solid gray;
-    background: none;
-    // position: relative;
-    // top: 0;
-    // left: 0;
+    border-width: 1px;
+    color: #3D4E61;
+    background: white;
     z-index: 1;
     padding: 8px 12px;
     outline: 0;
-    // &:valid {
-    //   // Hides the label
-    //   background: white;
-    // }
     &:focus {
       border-color: #979696;
     }
@@ -29,17 +21,17 @@
 
   .focus-label {
     margin: 0;
+    width: 324.87px;
   }
 
   .nested-label {
     transition: // not padding
-      background 0.2s,
-      color 0.2s,
-      top 0.2s,
-      bottom 0.2s,
-      right 0.2s,
-      left 0.2s;
-    // margin-top: 10px;
+    background 0.2s,
+    color 0.2s,
+    top 0.2s,
+    bottom 0.2s,
+    right 0.2s,
+    left 0.2s;
     padding: 3px 2px;
     font-size: 16px;
   }
@@ -47,17 +39,11 @@
 
 .highlight-field {
   color: white;
-  // text-transform: uppercase;
-  font-size: 70%;
+  text-transform: uppercase;
+  font-size: 65%;
 }
 
 .hidden-x {
-  // border-style: solid;
-  // border-color: rgba(10,23,55,0);
-  // color: rgba(10,23,55,0);
-  border-width: 1px;
-  // // padding: 1px 7px 2px;
-  // // height: 45px;
   visibility: hidden;
 }
 

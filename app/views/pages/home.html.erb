@@ -18,12 +18,12 @@
                   </div>
                   <div class="focus-label">
                     <%#= label_tag( "Start date", nil, class: "nested-label") %>
-                    <span class="nested-label">Please insert city</span>
+                    <span class="nested-label">Start date</span>
                     <%= date_field_tag('stops[1][start_date]', Date.today, :required => true, class: "nested-input" ) %>
                   </div>
                   <div class="focus-label">
                     <%#= label_tag( "End date", nil, class: "nested-label") %>
-                    <span class="nested-label">Please insert city</span>
+                    <span class="nested-label">End date</span>
                     <%= date_field_tag('stops[1][end_date]', Date.today + 7, :required => true, class: "nested-input" ) %>
                   </div>
                     <button class="hidden-x" disabled>x</button>
