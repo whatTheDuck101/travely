@@ -58,7 +58,9 @@
                           <div class="request-card-content">
 
                             <div><p> <%= request.user.first_name %> has requested your <%= request.listing.item.name %></p></div>
-                            <div><p> you will both be in <%= listing.stop.city %> between "" ~ ""</p></div>
+                            <% city = listing.stop.city %>
+                            <% common_dates =  Listing.intersection_dates(listing.stop.start_date, listing.stop.end_date, request.user.stops.find_by(city:city).start_date, request.user.stops.find_by(city:city).end_date)%>
+                            <div><p> you will both be in <%= listing.stop.city %> between "<%= common_dates[0] %>" ~ "<%= common_dates[-1] %>"</p></div>
                           </div>
                           <div class="request-card-actions">
                             <% if request.status == "pending"%>

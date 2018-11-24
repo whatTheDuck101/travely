@@ -19,7 +19,7 @@ class StopsController < ApplicationController
       stop_details = stop_details.permit(:city, :start_date, :end_date)
       stop = current_user.stops.build(stop_details)
       # city_photo_url = Unsplash::Photo.search(trip.city, 1, 1)[0].urls.regular
-      stop.remote_photo_url = "https://kitt.lewagon.com/placeholder/cities/#{stop.city}"
+      stop.remote_photo_url = "https://kitt.lewagon.com/placeholder/cities/#{stop.city.downcase}"
       stop.save!
     end
   end
