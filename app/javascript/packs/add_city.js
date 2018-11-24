@@ -44,7 +44,6 @@ function buildNewCityFields(newTripId) {
   let month = ("0" + (new_end_date.getMonth()+1)).slice(-2)
   let day = (("0" + new_end_date.getDate()).slice(-2))
   new_end_date = year + "-" + month + "-" + day;
-  console.log(new_end_date)
   const newDiv = document.createElement("div");
   newDiv.className = "trip-field";
   newDiv.id = newTripId;
