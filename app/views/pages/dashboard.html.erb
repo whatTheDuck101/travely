@@ -44,40 +44,43 @@
       </div>
 
       <div id="receieved" class="tabcontent">
-        <% @listings.each do |listing| %>
-          <div class="col-xs-10">
-           <div class="request-card">
-                    <% if !listing.requests.empty? %>
-                     <% @recieved_requests = listing.requests %>
-                     <% @recieved_requests.each do |request| %>
-                          <div class="request-card-image" style="background-image: url('<%= cl_image_path listing.stop.photo %>')">
-                            <div class="request-card-title">
-                              <%= listing.stop.city %></div>
-                              <div class="request-user-item-image"> <%= cl_image_tag request.user.photo, class: "card-user user-avatar-bordered" %> <%= cl_image_tag request.listing.item.photo, class: "card-user item-avatar-bordered" %></div>
-                            </div>
-                          <div class="request-card-content">
 
-                            <div><p> <%= request.user.first_name %> has requested your <%= request.listing.item.name %></p></div>
-                            <% city = listing.stop.city %>
-                            <% common_dates =  Listing.intersection_dates(listing.stop.start_date, listing.stop.end_date, request.user.stops.find_by(city:city).start_date, request.user.stops.find_by(city:city).end_date)%>
-                            <div><p> you will both be in <%= listing.stop.city %> between "<%= common_dates[0] %>" ~ "<%= common_dates[-1] %>"</p></div>
-                          </div>
-                          <div class="request-card-actions">
-                            <% if request.status == "pending"%>
-                              <%= link_to "Accept", listing_request_path(request.listing.id, request.id, { value: "accepted" }), class: 'btn btn-success', method: :patch %>
-                              <%= link_to "Decline", listing_request_path(request.listing.id, request.id, { value: "denied" }), class: 'btn btn-danger', method: :patch %>
-                            <% elsif request.status == "accepted" %>
-                              <p><em>You have accepted this request!</em> </p>
-                            <% elsif request.status == "denied" %>
-                              <p><em>You have denied this request!</em> </p>
-                            <% end %>
-                          </div>
-                     <% end %>
-                   <% else %>
-                    <h1>You havent received any request yet</h1>
-                   <% end %>
-          </div>
-         </div>
+        <% users_received_requests = current_user.received_requests %>
+
+        <% if users_received_requests.empty? %>
+          <h3 style="color:red">You havent received any request yet</h3>
+        <% else %>
+
+          <% users_received_requests.each do |request| %>
+
+            <div class="request-card-image" style="background-image: url('<%= cl_image_path request.listing.stop.photo %>')">
+              <div class="request-card-title"><%= request.listing.stop.city %>
+              </div>
+              <div class="request-user-item-image"> <%= cl_image_tag request.user.photo, class: "card-user user-avatar-bordered" %> <%= cl_image_tag request.listing.item.photo, class: "card-user item-avatar-bordered" %>
+              </div>
+            </div>
+
+            <div class="request-card-content">
+              <div><p> <%= request.user.first_name %> has requested your <%= request.listing.item.name %></p>
+              </div>
+               <% city = request.listing.stop.city %><% common_dates =  Listing.intersection_dates(request.listing.stop.start_date, request.listing.stop.end_date, request.user.stops.find_by(city:city).start_date, request.user.stops.find_by(city:city).end_date)%>
+              <div><p> you will both be in <%= request.listing.stop.city %> between "<%= common_dates[0] %>" ~ "<%= common_dates[-1] %>"</p>
+              </div>
+            </div>
+
+            <div class="request-card-actions">
+              <% if request.status == "pending"%>
+                <%= link_to "Accept", listing_request_path(request.listing.id, request.id, { value: "accepted" }), class: 'btn btn-success', method: :patch %>
+                <%= link_to "Decline", listing_request_path(request.listing.id, request.id, { value: "denied" }), class: 'btn btn-danger', method: :patch %>
+              <% elsif request.status == "accepted" %>
+                <p><em>You have accepted this request!</em> </p>
+              <% elsif request.status == "denied" %>
+                <p><em>You have denied this request!</em> </p>
+              <% end %>
+            </div>
+
+          <% end %>
+
         <% end %>
       </div>
 
