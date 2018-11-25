@@ -33,9 +33,9 @@
             <div class="card"  style="height:20em">
               <div class="card-body">
               <div class="card-img-top" style="background-image: url('<%= cl_image_path item.photo%>')"></div>
-              <p class="card-text name"><%= item.name %></p>
-              <% item_cities = item.listings.map {|listing| listing.stop.city} %>
-              <p class="card-text location"><strong><%= item_cities.join("-") %></strong></p>
+              <h4 class="card-text name"><%= item.name %></h4>
+              <% item_cities = item.listings.map {|listing| listing.stop.city.upcase} %>
+              <p class="card-text location"><strong><%= item_cities.join(" - ") %></strong></p>
               <p class="card-text description"><%= item.description %></p>
               <p class="card-text details"><span><i class="fas fa-info-circle"></i></span></p>
               </div>

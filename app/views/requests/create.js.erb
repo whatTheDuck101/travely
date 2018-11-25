@@ -1,0 +1,22 @@
+console.log("hello from requests/create.js")
+
+function confirmRequest() {
+  <% item_id = @request.listing.item.id %>
+  const requestButton = document.querySelector(`a[href='/listings/${<%=item_id%>}/requests']`);
+  confirmationElement = `<div id="request-confirmation">Your request has been successfully sent!</div>`
+  requestButton.insertAdjacentHTML('beforebegin', confirmationElement);
+  requestButton.remove()
+}
+
+
+
+
+
+<% if @request.errors.any? %>
+  console.log("error")
+<% else %>
+  confirmRequest()
+<% end %>
+
+
+

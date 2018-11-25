@@ -27,7 +27,7 @@
       </div>
 
       <div class="modal-footer">
-       <%= link_to 'I want this!', listing_requests_path(item.listings.ids), class: 'btn btn-dander btn-lg', method: :post %>
+       <%= link_to 'I want this!', listing_requests_path(item.listings.ids), class: 'btn btn-dander btn-lg', method: :post, remote: true %>
       </div>
     </div>
   </div>
