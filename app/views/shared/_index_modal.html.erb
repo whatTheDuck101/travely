@@ -2,26 +2,32 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-
-        <h3 class="modal-title"><%= item.name.capitalize %>
+        <h3 class="modal-title">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
         </h3>
       </div>
       <div class="modal-body">
-        <!-- cl_image_tag item.photo -->
-        <h4>Description:</h4>
-        <p class="modal-title"><%= item.description %></p>
-        <br>
-        <h4>Item owner:</h4>
-        <p class="modal-title"><%= cl_image_tag item.user.photo %><%= item.user.first_name %></p>
+        <div class="col-xs-4">
+          <div class="body-left">
+            <h3 class="modal-title"><%= item.name.capitalize %></h3>
+            <%= cl_image_tag item.photo, height: 200, width: 200, crop: :fill %>
+          </div>
+        </div>
+        <div class="col-xs-8">
+          <div class="body-right">
+            <h4>Description:</h4>
+            <p class="modal-title"><%= item.description %></p>
+            <br>
+            <h4>Item owner:</h4>
+            <p class="modal-title"><%= cl_image_tag item.user.photo, class: "avatar-large" %><%= item.user.first_name %></p>
+          </div>
+        </div>
       </div>
+
       <div class="modal-footer">
-
-
-    <%= link_to 'I want this!', listing_requests_path(item.listings.ids), class: 'btn btn-dander btn-lg', method: :post %>
-
+       <%= link_to 'I want this!', listing_requests_path(item.listings.ids), class: 'btn btn-dander btn-lg', method: :post %>
       </div>
     </div>
   </div>
