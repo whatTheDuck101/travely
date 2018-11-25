@@ -35,7 +35,7 @@ class ListingsController < ApplicationController
       @listing.save
     end
 
-    if @listing.save!
+    if @listing.save
       redirect_to dashboard_path
     else
       render :new
