@@ -31,7 +31,7 @@
         <% @items.each do |item| %>
           <div class="col-xs-4">
             <div class="card"  style="height:20em">
-              <div class="card-body"> 
+              <div class="card-body">
               <div class="card-img-top" style="background-image: url('<%= cl_image_path item.photo%>')"></div>
               <p class="card-text name"><%= item.name %></p>
               <p class="card-text location"><strong>item.stop</strong></p>
@@ -40,14 +40,14 @@
               </div>
             </div>
           </div>
-        <% end %>  
+        <% end %>
       </div>
 
       <div id="receieved" class="tabcontent">
         <% @listings.each do |listing| %>
           <div class="col-xs-10">
            <div class="request-card">
-                    <% if listing.requests != nil %>
+                    <% if !listing.requests.empty? %>
                      <% @recieved_requests = listing.requests %>
                      <% @recieved_requests.each do |request| %>
                           <div class="request-card-image" style="background-image: url('<%= cl_image_path listing.stop.photo %>')">
@@ -74,7 +74,7 @@
                           </div>
                      <% end %>
                    <% else %>
-                    <%= You havent received any request yet %>
+                    <h3 style="color:red">You havent received any request yet</h3>
                    <% end %>
           </div>
          </div>
