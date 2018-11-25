@@ -57,10 +57,10 @@ borrower = User.create(
 puts 'done creating users'
 
 puts 'creating stops'
-Stop.create(city:"Zurich", start_date:Date.new(2018,12,01), end_date:Date.new(2018,12,07), user:tzvi)
-Stop.create(city:"Zurich", start_date:Date.new(2018,12,01), end_date:Date.new(2018,12,07), user:owner)
-Stop.create(city:"Paris", start_date:Date.new(2018,12,07), end_date:Date.new(2018,12,14), user:eliz)
-Stop.create(city:"Bordeaux", start_date:Date.new(2018,12,14), end_date:Date.new(2018,12,30), user:vini)
+Stop.create(city:"Zurich", start_date:Date.new(2018,12,01), end_date:Date.new(2018,12,07), user:tzvi, photo: File.open(Rails.root.join("app", "assets", "images", "zurich.jpg")))
+Stop.create(city:"Zurich", start_date:Date.new(2018,12,01), end_date:Date.new(2018,12,07), user:owner, photo: File.open(Rails.root.join("app", "assets", "images", "zurich.jpg")))
+Stop.create(city:"Paris", start_date:Date.new(2018,12,07), end_date:Date.new(2018,12,14), user:eliz, photo: File.open(Rails.root.join("app", "assets", "images", "paris.jpg")))
+Stop.create(city:"Bordeaux", start_date:Date.new(2018,12,14), end_date:Date.new(2018,12,30), user:vini, photo: File.open(Rails.root.join("app", "assets", "images", "bordeaux.jpg")))
 puts 'done creating stops'
 
 

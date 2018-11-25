@@ -4,7 +4,8 @@ class Listing < ApplicationRecord
   has_many :requests
 
   accepts_nested_attributes_for :item
-  def self.intersection_dates(traveller_start_date, traveller_end_date, item_start_date, item_end_date)
-    return (traveller_start_date..traveller_end_date).to_a & (item_start_date..item_end_date).to_a
+  def self.intersection_dates(start_date_1, end_date_1, start_date_2, end_date_2)
+    return (start_date_1..end_date_1).to_a & (start_date_2..end_date_2).to_a
   end
+
 end

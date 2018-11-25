@@ -12,4 +12,17 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
+
+  def received_requests
+    requests = []
+    self.listings.each do |listing|
+      if !listing.requests.empty?
+        listing.requests.each do |request|
+          requests << request
+        end
+      end
+    end
+    return requests
+  end
+
 end

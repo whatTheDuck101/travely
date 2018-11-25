@@ -12,8 +12,9 @@
           <div class="circle-sm"></div>
           <div class="circle-sm"></div>
           <button class="tablinks" name="<%= items_info[:city]%>"onclick="openCity(event)">
-            <p><%= items_info[:city] %></p>
-            <p>(<%= items_info[:start_date].strftime("%b %d, %Y") %>-<%= items_info[:end_date].strftime("%b %d, %Y") %>)</p></button>
+            <div><%= items_info[:city] %>
+            <%= cl_image_tag items_info[:photo], class: "crop-square avatar-large" %></div>
+            <div class="stop-date">(<%= items_info[:start_date].strftime("%b %d, %Y") %>-<%= items_info[:end_date].strftime("%b %d, %Y") %>)</div></button>
           <% end %>
       </div>
     </div>
@@ -26,11 +27,12 @@
           <% end %>
             <% items_info[:items].each do |item| %>
               <div class="col-xs-4">
-                <div class="card">
+                <div class="card" style="height: 18em;">
                   <a data-toggle="modal" data-target="#modal-item-id-<%= item.id %>">
                     <div class="card-body <%= items_info[:city] %>">
                       <div class="card-img-top" style="background-image: url('<%= cl_image_path item.photo%>')"></div>
-                      <p class="card-text"><%= item.name %></p>
+                      <p class="card-text name"><%= item.name %></p> 
+                      <p class="card-text details"><span><i class="fas fa-info-circle"></i></span></p>
                     </div>
                 </a>
                 <%= render partial: 'shared/index_modal', locals: { item: item } %>
