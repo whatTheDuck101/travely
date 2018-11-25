@@ -29,6 +29,8 @@
       <div class="modal-footer">
        <% if current_user == item.user %>
         <h3>You own this item</h3>
+       <% elsif !item.listings.first.is_available %>
+        <h3>Sorry, this is item is currently unavailable</h3>
        <% elsif current_user.requested_already?(item) %>
         <h3>You've already sent a request.</h3>
         <p>We'll notify you with any updates</p>

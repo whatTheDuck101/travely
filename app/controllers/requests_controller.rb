@@ -25,9 +25,12 @@ class RequestsController < ApplicationController
     @listing = Listing.find(params[:listing_id])
 
     if params["value"] == "accepted"
-      @request.listing.is_available = false
+      @listing.item.listings.each do |listing|
+        listing.is_available = false
+        listing.save!
+      end
     end
-
+    raise
     authorize(@request)
 
     redirect_to dashboard_path
