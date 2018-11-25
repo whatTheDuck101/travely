@@ -25,4 +25,13 @@ class User < ApplicationRecord
     return requests
   end
 
+  def requested_already?(item)
+    self.requests.each do |request|
+      if request.listing.item == item
+        return true
+      end
+    end
+    return false
+  end
+
 end

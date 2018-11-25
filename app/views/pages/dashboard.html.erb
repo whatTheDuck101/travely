@@ -71,8 +71,8 @@
 
             <div class="request-card-actions">
               <% if request.status == "pending"%>
-                <%= link_to "Accept", listing_request_path(request.listing.id, request.id, { value: "accepted" }), class: 'btn btn-success', method: :patch %>
-                <%= link_to "Decline", listing_request_path(request.listing.id, request.id, { value: "denied" }), class: 'btn btn-danger', method: :patch %>
+                <%= link_to "Accept", listing_request_path(request.listing.id, request.id, { value: "accepted" }), class: 'btn btn-success', method: :patch, remote: true %>
+                <%= link_to "Decline", listing_request_path(request.listing.id, request.id, { value: "denied" }), class: 'btn btn-danger', method: :patch, remote: true %>
               <% elsif request.status == "accepted" %>
                 <p><em>You have accepted this request!</em> </p>
               <% elsif request.status == "denied" %>
