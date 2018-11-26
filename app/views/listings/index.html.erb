@@ -11,14 +11,14 @@
           <p class="stop-dates">(<%= @items_filtered.first[:start_date].strftime("%b %d, %Y") %>~<%= @items_filtered.first[:end_date].strftime("%b %d, %Y") %>)</p>
           <div class="city-adv", style="background: url(<%= cl_image_tag @items_filtered.first[:photo], height: 70, width: 70, crop: :fill%>)"></div>
         </button>
-
+      
       <div class="stop-card-index">
       <% @items_filtered[1..-1].each do |items_info| %>
-        <div class="cicle-index-follows" id="last-circle"></div>
+        <div class="cicle-index-follows" id="last-circle"></div> 
           <button class="tablinks" name="<%= items_info[:city]%> "onclick="openCity(event)">
             <div class="stop-city"><%= items_info[:city] %>
             <div class="stop-dates">(<%= items_info[:start_date].strftime("%b %d, %Y") %>~<%= items_info[:end_date].strftime("%b %d, %Y") %>)</div>
-            <%= cl_image_tag items_info[:photo], height: 70, width: 70, crop: :fill, radius: 50, class: "city-adv"%>
+            <%= cl_image_tag items_info[:photo], height: 70, width: 70, crop: :fill, radius: 50, class: "city-adv"%> 
 
           </button>
       <% end %>
@@ -38,7 +38,7 @@
                   <a data-toggle="modal" data-target="#modal-item-id-<%= item.id %>">
                     <div class="card-body <%= items_info[:city] %>">
                       <div class="card-img-top" style="background-image: url('<%= cl_image_path item.photo%>')"></div>
-                      <p class="card-text name"><%= item.name %></p>
+                      <p class="card-text name"><%= item.name %></p> 
                       <p class="card-text details"><span><i class="fas fa-info-circle"></i></span></p>
                     </div>
                 </a>
