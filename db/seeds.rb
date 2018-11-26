@@ -77,12 +77,17 @@ puts 'done creating items'
 
 
 puts 'creating listing'
-Listing.create(item: Item.first, stop: Stop.first)
-Listing.create(item: Item.second, stop: Stop.first)
-Listing.create(item: Item.third, stop: Stop.second)
-Listing.create(item: Item.fourth, stop: Stop.second)
-Listing.create(item: Item.fifth, stop: Stop.third)
-Listing.create(item: Item.last, stop: Stop.last)
+stops = Stop.all
+items = Item.all
+Listing.create(item: items[0], stop: stops[0])
+Listing.create(item: items[1], stop: stops[0])
+Listing.create(item: items[2], stop: stops[1])
+Listing.create(item: items[3], stop: stops[1])
+Listing.create(item: items[4], stop: stops[2])
+Listing.create(item: items[5], stop: stops[2])
+Listing.create(item: items[6], stop: stops[3])
+Listing.create(item: items[7], stop: stops[3])
+
 puts 'done creating listings'
 
 
