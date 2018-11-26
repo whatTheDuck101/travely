@@ -8,5 +8,7 @@ Rails.application.routes.draw do
 
   resources :stops, only: [:create]
 
+  delete '/items/:id', to: 'items#destroy', as: "delete_item"
+
   get '/dashboard', to: 'pages#dashboard'
 end

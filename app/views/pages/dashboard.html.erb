@@ -1,6 +1,6 @@
 <div class = "container-not-boostrap" style="height: 128vh; margin: 2% 10% 0 10%;">
  <div class = "row">
-  <h1>My Dashboard :) </h1>
+  <h1 class="dash-title">My Dashboard</h1>
  </div>
 
  <div class="row">
@@ -47,6 +47,9 @@
               <p class="card-text location"><strong><%= item_cities.join(" - ") %></strong></p>
               <p class="card-text description"><%= item.description %></p>
               <p class="card-text details"><span><i class="fas fa-info-circle"></i></span></p>
+              <div id="delete-item">
+                <%= link_to 'Remove', delete_item_path(item.id), class: 'btn btn-dander btn-lg', method: :delete, remote: true %>
+              </div>
               </div>
             </div>
           </div>
