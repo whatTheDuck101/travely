@@ -29,9 +29,9 @@
 
       <!-- Tab links -->
       <div class="tab">
-        <button class="tablinks" onclick="openCity(event, 'items')">Items I shared</button>
-        <button class="tablinks" onclick="openCity(event, 'receieved')">Receieved request</button>
-        <button class="tablinks" onclick="openCity(event, 'sent')">Sent request</button>
+        <button class="tablinks" onclick="openCity(event, 'items')"><%= pluralize( @items.count, 'Item' )%> I shared</button>
+        <button class="tablinks" onclick="openCity(event, 'receieved')">Receieved <%= pluralize( @requests.count, 'Resquest' )%></button>
+        <button class="tablinks" onclick="openCity(event, 'sent')">Sent <%= pluralize( @requests.count, 'Resquest')%></button>
       </div>
 
       <!-- Tab content -->
