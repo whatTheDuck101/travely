@@ -1,5 +1,6 @@
 .card {
-  width: 18em;
+  width: 13em;
+  height: 17.5em;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1), 0px 0px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   background: #ffffff;
@@ -12,7 +13,7 @@
 .card-img-top {
   background-position: center center;
   background-size: cover;
-  height: 15em;
+  height: 10.5em;
   border-radius: 10px 10px 0 0;
 }
 
@@ -27,19 +28,49 @@ a:hover {
 
 .card-text.location {
   margin: 0 5%;
-  font-size: 0.85em;
+  font-size: 0.83em;
   color: #898989;
 }
 .card-text.description {
   margin: 0 5% 2% 5%;
-  font-size: 0.85em;
+  font-size: 0.8em;
   color: #898989;
 }
 
+.card-text.request {
+  font-size: 0.85em;
+  .yours {
+    margin: 0 5% 0% 5%;
+    color: $red;
+    width: 62px;
+    padding: 2% 4%;
+    border: 0.03px solid $red;
+    border-radius: 10px;
+  }
+  .sent {
+    margin: 0 5% 0% 5%;
+    color: $red;
+    width: 125px;
+    padding: 2% 4%;
+    border: 0.03px solid $red;
+    border-radius: 10px;
+  }
+  #send {
+    margin: 2% 5% 2% 5%;
+    border: 0.03px solid $red;
+    border-radius: 10px;
+    color: $red;
+    font-size: 0.9em;
+    font-weight: bold;
+  }
+}
+
 .card-text.details {
-  margin: 0 5%;
   font-size: 0.85em;
   color: $blue;
+  .fas {
+    margin: 1% 5% 2% 5%;
+  }
 }
 
 /* Rectangle 2.1 */

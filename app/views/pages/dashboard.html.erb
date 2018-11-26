@@ -38,14 +38,20 @@
       <div id="items" class="tabcontent">
         <% @items.each do |item| %>
           <div class="col-xs-4">
-            <div class="card"  style="height:24em">
+            <div class="card">
               <div class="card-body">
               <div class="card-img-top" style="background-image: url('<%= cl_image_path item.photo%>')"></div>
-              <h4 class="card-text name"><%= item.name %></h4>
+              <h4 class="card-text name">
+               <% if item.name.length >= 22 %>
+                  <%= item.name.first(22)%>...
+                <% else %> 
+                  <%= item.name %>
+                <%end%>
+              </h4>
               <% item_cities = item.listings.map {|listing| listing.stop.city.upcase} %>
               <p class="card-text location"><strong><%= item_cities.join(" - ") %></strong></p>
-              <p class="card-text description"><%= item.description %></p>
-              <p class="card-text details"><span><i class="fas fa-info-circle"></i></span></p>
+              <p class="card-text description"><%= item.description.first(29)%></p>
+              <p class="card-text details"><span><i class="fas fa-info-circle"> Click for Details</i></span></p>
               <div id="delete-item">
                 <%= link_to 'Remove', delete_item_path(item.id), class: 'btn btn-dander btn-lg', method: :delete, remote: true %>
               </div>
