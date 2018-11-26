@@ -46,7 +46,8 @@ owner = User.create(
   first_name: 'Tom',
   last_name: 'Johnson',
   email: 'Owner@lewagon.com',
-  password: '123456'
+  password: '123456',
+  photo: File.open(Rails.root.join("app", "assets", "images", "owner_profile_pic.jpeg"))
 )
 borrower = User.create(
   first_name: 'Peter',
