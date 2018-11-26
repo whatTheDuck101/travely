@@ -5,7 +5,13 @@ function acceptRequest() {
   const requestButton = document.querySelector(`a[href='/listings/${<%=listing_id%>}/requests/${<%=request_id%>}?value=accepted']`);
   const declineButton = document.querySelector(`a[href='/listings/${<%=listing_id%>}/requests/${<%=request_id%>}?value=denied']`);
   const navBar = document.querySelector('.navbar-wagon');
-  confirmationElement = `<p class="alert alert-info alert-dismissible">You have accepted this request! </p>`
+
+    <% if @request.status === "accepted" %>
+      confirmationElement = `<p class="alert alert-info alert-dismissible">You have accepted this request! </p>`
+    <% else %>
+      confirmationElement = `<p class="alert alert-warning alert-dismissible">You have denied this request! </p>`
+    <% end %>
+
   navBar.insertAdjacentHTML('afterend', confirmationElement);
   document.documentElement.scrollTop = 0;
   declineButton.remove()
