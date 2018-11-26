@@ -6,7 +6,7 @@
  <div class="row">
    <div class="col-xs-4">
       <div class ="col-sx-12">
-        <div class="my-intinary">
+        <div class="my-itinerary">
           <div class="circle"></div>
           <h2>My Itinerary</h2>
         </div>
@@ -30,16 +30,18 @@
 
       <!-- Tab links -->
       <div class="tab">
-        <button class="tablinks" onclick="openCity(event, 'items')"><%= pluralize( @items.count, 'Item' )%> I shared</button>
-        <button class="tablinks" onclick="openCity(event, 'receieved')">Receieved <%= pluralize( @requests.count, 'Resquest' )%></button>
-        <button class="tablinks" onclick="openCity(event, 'sent')">Sent <%= pluralize( @requests.count, 'Resquest')%></button>
-      </div>
 
+        <button class="tablinks" onclick="openCity(event, 'items')"><%= pluralize( "(#{@items.count}) Shared ", 'Item' )%></button>
+        <button class="tablinks" onclick="openCity(event, 'receieved')"><%= pluralize( "(#{@offers.count})", 'Offer' )%></button>
+        <button class="tablinks" onclick="openCity(event, 'sent')"><%= pluralize( "(#{@requests.count})", 'Resquest')%></button>
+
+      </div>
       <!-- Tab content -->
       <div id="items" class="tabcontent">
         <% @items.each do |item| %>
-          <div class="col-xs-4">
-            <div class="card"  style="height:20em">
+          <div class="col-xs-4" id="item-<%= item.id %>">
+            <div class="card"  style="height:24em">
+
               <div class="card-body">
               <div class="card-img-top" style="background-image: url('<%= cl_image_path item.photo%>')"></div>
               <h4 class="card-text name"><%= item.name %></h4>
@@ -48,7 +50,7 @@
               <p class="card-text description"><%= item.description %></p>
               <p class="card-text details"><span><i class="fas fa-info-circle"></i></span></p>
               <div id="delete-item">
-                <%= link_to 'Remove', delete_item_path(item.id), class: 'btn btn-dander btn-lg', method: :delete, remote: true %>
+                <%= link_to 'Remove', delete_item_path(item.id), class: 'btn btn-dander btn-lg', method: :delete, remote: true, data: {confirm: "This will delete all listings for this item. Are you sure you like to delete this item?"} %>
               </div>
               </div>
             </div>

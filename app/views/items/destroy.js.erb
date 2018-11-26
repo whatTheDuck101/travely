@@ -1,0 +1,8 @@
+var navbar = document.querySelector(".navbar-wagon");
+var tab = document.querySelector(".tablinks");
+var itemQty = tab.innerText.split(" ")[1] - 1;
+document.getElementById(`item-${<%=@item_id%>}`).remove();
+tab.innerText = `Shared ${itemQty} Items`
+navbar.insertAdjacentHTML('afterend', '<div class="alert alert-info alert-dismissible">Item was successfully deleted</div>');
+document.body.scrollTop = 0; // For Safari
+document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
