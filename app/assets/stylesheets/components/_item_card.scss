@@ -1,7 +1,7 @@
 .card {
-  width: auto;
+  width: 18em;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1), 0px 0px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 1px;
+  border-radius: 10px;
   background: #ffffff;
 }
 
@@ -12,8 +12,8 @@
 .card-img-top {
   background-position: center center;
   background-size: cover;
-  height: 12em;
-  border-radius: 1px 1px 0 0;
+  height: 15em;
+  border-radius: 10px 10px 0 0;
 }
 
 a:hover {
