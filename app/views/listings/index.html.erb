@@ -4,7 +4,7 @@
   <div class="row">
 
     <div class="col-xs-4">
-      <div class="tab stop-card-index">
+      <div class="stop-card-index">
         <div class="cicle-index" id="last-circle"></div>
         <button class="tablinks" name="<%= @items_filtered.first[:city]%>" onclick="openCity(event)" id="defaultOpen">
           <p class="stop-city"><strong><%= (@items_filtered.first[:city])%></strong></p>
@@ -12,10 +12,10 @@
           <div class="city-adv", style="background: url(<%= cl_image_tag @items_filtered.first[:photo], height: 70, width: 70, crop: :fill%>)"></div>
         </button>
       
-      <div class="stop-card-index">
+      <div class="tab stop-card-index">
       <% @items_filtered[1..-1].each do |items_info| %>
         <div class="cicle-index-follows" id="last-circle"></div> 
-          <button class="tablinks" name="<%= items_info[:city]%> "onclick="openCity(event)">
+          <button class="tablinks" name="<%= items_info[:city] %>"onclick="openCity(event)">
             <div class="stop-city"><%= items_info[:city] %>
             <div class="stop-dates">(<%= items_info[:start_date].strftime("%b %d, %Y") %>~<%= items_info[:end_date].strftime("%b %d, %Y") %>)</div>
             <%= cl_image_tag items_info[:photo], height: 70, width: 70, crop: :fill, radius: 50, class: "city-adv"%> 
