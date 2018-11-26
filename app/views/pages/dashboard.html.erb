@@ -1,23 +1,31 @@
-<div class = "container">
+<div class = "container-not-boostrap" style="height: 128vh; margin: 2% 10% 0 10%;">
  <div class = "row">
   <h1>My Dashboard :) </h1>
  </div>
 
  <div class="row">
-   <div class="col-xs-3">
-      <div class ="box">
-        <h2>My Itinerary</h2>
+   <div class="col-xs-4">
+      <div class ="col-sx-12">
+        <div class="my-intinary">
+          <div class="circle"></div>
+          <h2>My Itinerary</h2>
+        </div>
           <% @stops.each do |stop| %>
-          <% if !(stop.photo.file.nil?)%>
-          <%= cl_image_tag stop.photo, height: 80, width: 200, crop: :fill %>
-          <% end %>
-          <li><%= stop.city %></li>
-          <p>( <%= stop.start_date %> ~ <%= stop.end_date %> )</p>
+          <div class="stop-cards-dash">
+            <div class="circle"></div>
+              <div class="stop-card-dashbord">
+                <% if !(stop.photo.file.nil?)%>
+                <div class="city-adv" style="background: url('<%= cl_image_path stop.photo, height: 60, width: 60, crop: :scale %>')"></div>
+                <% end %>
+                <p class="stop-city"><strong><%= stop.city %></strong></p>
+                <p class="stop-dates">( <%= stop.start_date.strftime("%b %d, %Y") %> ~ <%= stop.end_date.strftime("%b %d, %Y") %> )</p>
+              </div>
+            </div>
           <% end %>
       </div>
     </div>
 
-    <div class="col-xs-9">
+    <div class="col-xs-8">
 
       <!-- Tab links -->
       <div class="tab">
