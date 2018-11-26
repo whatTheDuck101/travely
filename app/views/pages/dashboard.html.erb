@@ -41,8 +41,9 @@
             <div class="card"  style="height:20em">
               <div class="card-body">
               <div class="card-img-top" style="background-image: url('<%= cl_image_path item.photo%>')"></div>
-              <p class="card-text name"><%= item.name %></p>
-              <p class="card-text location"><strong>item.stop</strong></p>
+              <h4 class="card-text name"><%= item.name %></h4>
+              <% item_cities = item.listings.map {|listing| listing.stop.city.upcase} %>
+              <p class="card-text location"><strong><%= item_cities.join(" - ") %></strong></p>
               <p class="card-text description"><%= item.description %></p>
               <p class="card-text details"><span><i class="fas fa-info-circle"></i></span></p>
               </div>
@@ -56,7 +57,7 @@
         <% users_received_requests = current_user.received_requests %>
 
         <% if users_received_requests.empty? %>
-          <h3 style="color:red">You havent received any request yet</h3>
+          <h3 style="color:red">There are no received requests</h3>
         <% else %>
 
           <% users_received_requests.each do |request| %>
@@ -78,8 +79,8 @@
 
             <div class="request-card-actions">
               <% if request.status == "pending"%>
-                <%= link_to "Accept", listing_request_path(request.listing.id, request.id, { value: "accepted" }), class: 'btn btn-success', method: :patch %>
-                <%= link_to "Decline", listing_request_path(request.listing.id, request.id, { value: "denied" }), class: 'btn btn-danger', method: :patch %>
+                <%= link_to "Accept", listing_request_path(request.listing.id, request.id, { value: "accepted" }), class: 'btn btn-success', method: :patch, remote: true %>
+                <%= link_to "Decline", listing_request_path(request.listing.id, request.id, { value: "denied" }), class: 'btn btn-danger', method: :patch, remote: true %>
               <% elsif request.status == "accepted" %>
                 <p><em>You have accepted this request!</em> </p>
               <% elsif request.status == "denied" %>
@@ -93,6 +94,9 @@
       </div>
 
       <div id="sent" class="tabcontent">
+        <% if @requests.empty? %>
+          <h3 style="color:red">There are no sent requests</h3>
+        <% end %>
         <% @requests.each do |request| %>
            <div class="col-xs-10">
             <div class="request-card">

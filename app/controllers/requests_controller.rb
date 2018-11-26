@@ -5,9 +5,15 @@ class RequestsController < ApplicationController
     @request.user = current_user
     authorize(@request)
     if @request.save
-      redirect_to dashboard_path
+      respond_to do |format|
+        format.html { redirect_to dashboard_path }
+        format.js  # <-- will render `app/views/requests/create.js.erb`
+      end
     else
-      render :new
+      respond_to do |format|
+        format.html { render :new }
+        format.js  # <-- idem
+      end
     end
 
   end
@@ -19,9 +25,12 @@ class RequestsController < ApplicationController
     @listing = Listing.find(params[:listing_id])
 
     if params["value"] == "accepted"
-      @request.listing.is_available = false
+      @listing.item.listings.each do |listing|
+        listing.is_available = false
+        listing.save!
+      end
     end
-
+    raise
     authorize(@request)
 
     redirect_to dashboard_path

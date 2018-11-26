@@ -6,7 +6,7 @@
         <%= g.error_notification message: g.object.errors[:base].to_sentence if g.object.errors[:base].present? %>
         <%= g.input :name %>
         <%= g.input :description %>
-        <%= g.input :photo %>
+        <%= g.input :photo, required: :true %>
         <%= g.input :photo_cache, as: :hidden %>
     <% end %>
   <div class="form-inputs">
