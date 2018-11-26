@@ -1,11 +1,22 @@
 function acceptRequest() {
-  <% item_id = @request.listing.item.id %>
-  const requestButton = document.querySelector(`a[href='/listings/${<%=item_id%>}/requests']`);
-  confirmationElement = `<div id="request-confirmation"><strong>Your request has been successfully sent!</strong></adiv>`
-  requestButton.insertAdjacentHTML('beforebegin', confirmationElement);
+  <% listing_id = @request.listing.id %>
+  <% request_id = @request.id %>
+
+  const requestButton = document.querySelector(`a[href='/listings/${<%=listing_id%>}/requests/${<%=request_id%>}?value=accepted']`);
+  const declineButton = document.querySelector(`a[href='/listings/${<%=listing_id%>}/requests/${<%=request_id%>}?value=denied']`);
+  const navBar = document.querySelector('.navbar-wagon');
+
+    <% if @request.status === "accepted" %>
+      confirmationElement = `<p class="alert alert-info alert-dismissible">You have accepted this request! </p>`
+    <% else %>
+      confirmationElement = `<p class="alert alert-warning alert-dismissible">You have denied this request! </p>`
+    <% end %>
+
+  navBar.insertAdjacentHTML('afterend', confirmationElement);
+  document.documentElement.scrollTop = 0;
+  declineButton.remove()
   requestButton.remove()
 }
-
 
 
 <% if @request.errors.any? %>

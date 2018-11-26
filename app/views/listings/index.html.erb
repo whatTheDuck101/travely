@@ -2,8 +2,12 @@
 
 <div class="container-not-boostrap" style="height: 128vh; margin: 2% 5% 0 5%;">
   <div class="row">
-  
+
     <div class="col-xs-4">
+      <div class="tab stop-card-index">
+        <div class="cicle-index" id="last-circle"></div>
+        <button class="tablinks" name="<%= @items_filtered.first[:city]%>"onclick="openCity(event)" id="defaultOpen">
+          <p class="stop-city"><strong><%= (@items_filtered.first[:city])%></strong></p>
         <div class="my-itinerary">
           <div class="circle"></div>
           <h2>My Itinerary</h2>
@@ -14,12 +18,20 @@
           <p class="stop-city"><strong><%= (@items_filtered.first[:city]).capitalize%></strong></p>
           <p class="stop-dates">(<%= @items_filtered.first[:start_date].strftime("%b %d, %Y") %>~<%= @items_filtered.first[:end_date].strftime("%b %d, %Y") %>)</p>
           <div class="city-adv" style="background: url('<%= cl_image_path @items_filtered.first[:photo], height: 60, width: 60, crop: :scale%>')"></div>
-       
+
         </button>
-        
+
+      <div class="stop-card-index">
+      <% @items_filtered[1..-1].each do |items_info| %>
+        <div class="cicle-index-follows" id="last-circle"></div>
+          <button class="tablinks" name="<%= items_info[:city]%>"onclick="openCity(event)">
+            <div class="stop-city"><%= items_info[:city] %>
+      <% end %>
+
+
       <div class="tab stop-card-index">
       <% @items_filtered[1..-1].each do |items_info| %>
-        <div class="circle cicle-index"></div> 
+        <div class="circle cicle-index"></div>
           <button class="tablinks" name="<%= items_info[:city] %>"onclick="openCity(event)">
             <div class="stop-city"><strong><%= (items_info[:city]).capitalize %></strong>
             <div class="stop-dates">(<%= items_info[:start_date].strftime("%b %d, %Y") %>~<%= items_info[:end_date].strftime("%b %d, %Y") %>)</div>
