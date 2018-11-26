@@ -18,16 +18,7 @@
 
       <div class="stop-card-index">
       <% @items_filtered[1..-1].each do |items_info| %>
-        <div class="cicle-index-follows" id="last-circle"></div>
-          <button class="tablinks" name="<%= items_info[:city]%>"onclick="openCity(event)">
-            <div class="stop-city"><%= items_info[:city] %>
-      <% end %>
-
-
-      <div class="tab stop-card-index">
-      <% @items_filtered[1..-1].each do |items_info| %>
-      <div class="col-xs-12">
-        <div class="circle cicle-index"></div>
+         <div class="circle cicle-index"></div> 
           <button class="tablinks" name="<%= items_info[:city] %>"onclick="openCity(event)">
             <div class="stop-city"><strong><%= (items_info[:city]).capitalize %></strong>
             <div class="stop-dates">(<%= items_info[:start_date].strftime("%b %d, %Y") %>~<%= items_info[:end_date].strftime("%b %d, %Y") %>)</div>
@@ -36,6 +27,7 @@
       <% end %>
       </div>
     </div>
+    
     <div id="last-circle"></div>
 
   </div>
