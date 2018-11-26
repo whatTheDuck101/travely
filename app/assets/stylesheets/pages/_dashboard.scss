@@ -15,3 +15,20 @@
 li {
   color: black;
 }
+
+.my-intinary {
+  position: relative;
+  height: 50px;
+  margin: 0 0 50px 0;
+  .circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  h2 {
+    position: absolute;
+    top: 0;
+    left: 60px;
+    margin: 2% 0 0 0;
+  }
+}

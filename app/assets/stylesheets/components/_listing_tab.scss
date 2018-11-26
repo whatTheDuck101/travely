@@ -1,66 +1,53 @@
 /* Style the tab */
 .tab {
-
-    overflow: hidden;
-    border: none;
-    color: black;
+  overflow: hidden;
+  border: none;
+  color: black;
 }
 
 /* Style the buttons that are used to open the tab content */
 .tab button {
-    background-color: white;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    margin-bottom: 10px;
-    transition: 0.3s;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+  background-color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  transition: 0.3s;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
+    0 3px 1px -2px rgba(0, 0, 0, 0.2);
 }
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-    background-color: #ddd;
-    border-bottom: 6px solid blue;
+  background-color: white;
+  border-bottom: 6px solid $light-green;
 }
 
 /* Create an active/current tablink class */
 .tab button.active {
-    background-color: #ccc;
-}
-
-.stop-city {
-
-}
-
-.stop-photo {
-
-}
-
-.stop-date {
-  color: $gray;
-  font-size: 10px;
+  background-color: white;
 }
 
 /* Style the tab content */
 .tabcontent {
-    display: none;
-    padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-top: none;
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid white;
+  border-top: none;
 }
 
 .tabcontent {
-    animation: fadeEffect 1s; /* Fading effect takes 1 second */
+  animation: fadeEffect 1s; /* Fading effect takes 1 second */
 }
 
 /* Go from zero to full opacity */
 @keyframes fadeEffect {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-
-.items {
-
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
