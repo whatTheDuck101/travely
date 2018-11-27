@@ -1,7 +1,11 @@
-<div class="home-title"><%= image_tag "Final-logo.png", style: 'height:100px' %> <h1> Travel light and easy with</h1> travely </div>
+<div class="home-title"><%= image_tag "Final-logo.png", style: 'height:100px' %>
+  <h1> Travel light and easy with</h1>
+  travely
+</div>
 <div class="container">
     <div id="form">
-      <div class="home-form-title">Enter your itinerary</div>
+      <!-- <div class="home-form-title">Enter your itinerary</div> -->
+      <div class="home-form-title"></div>
         <div class="sim-form" >
             <%= form_tag(stops_path, class: "go-right") do %>
             <div class="trip-fields">
@@ -20,7 +24,7 @@
               </div>
 
               <div id="trip-field-1" class="trip-field">
-                  <%= text_field_tag('stops[1][city]', nil, :required => true, class: "nested-input" ) %>
+                  <%= text_field_tag('stops[1][city]', nil, :required => true, class: "nested-input", placeholder: "Enter Destination" ) %>
                   <%= date_field_tag('stops[1][start_date]', Date.today, :required => true, class: "nested-input" ) %>
                   <%= date_field_tag('stops[1][end_date]', Date.today + 7, :required => true, class: "nested-input" ) %>
                   <button class="hidden-x" disabled><i class="fas fa-times-circle"></i></button>
@@ -28,9 +32,9 @@
             </div>
           </div>
         <p id="add-city">+add city</p>
-        <div class = "home-button ",id="submit-button">
-          <%= submit_tag("Search", class: "btn btn-lightgreen") %>
-          <%= submit_tag("Share item", class: "btn btn-pink") %>
+        <div class="home-button" id="submit-button">
+          <%= submit_tag("Search", class: "button button-purple") %>
+          <%= submit_tag("Share item", class: "button button-blue") %>
         </div>
         <% end %>
 
