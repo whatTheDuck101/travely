@@ -1,10 +1,12 @@
-<div class="background-style">
+<div class="container">
     <div class="new-item">
         <div class="col-one">
-            <h1>Share Your Item with <strong>Travely</strong></h1>
+            Share Your Item with <div class="new-item-title">Travely</div>
         </div>
         <div class="col-two">
+          <div class ="form-item">
             <%= render 'form_item' %>
+          </div>
             <div>
                 <%= link_to root_path, method: :get do %>
                     <span><i class="fas fa-arrow-left"> Back</i></span>
