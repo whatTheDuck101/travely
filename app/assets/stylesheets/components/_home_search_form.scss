@@ -8,9 +8,12 @@
   .nested-input {
     height: 45px;
     width: 31%;
-    border-color: #6a68d9;
-    border-width: 1px;
-    border-radius: 4px;
+    border-top-color: $purple;
+    border-bottom-color: $purple;
+    border-left-color: $purple;
+    border-right-color: $purple;
+    border-width: 2px;
+    border-radius: 5px;
     color: #3D4E61;
     background: white;
     z-index: 1;
@@ -19,7 +22,7 @@
     outline: 0;
     &:focus {
       border-color: #6a68d9;
-      border-width: 2px;
+      border-width: 3px;
 
     }
   }
