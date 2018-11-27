@@ -9,7 +9,7 @@
   <% @stops.each do |stop| %>
     <%= check_box_tag "city[#{stop.id}", 1 %>
     <%= label_tag stop.city %>
-    <%= cl_image_tag stop.photo, class: "avatar-large" %>
+    <%= cl_image_tag stop.photo, class: "avatar-large"%>
     <br>
   <% end %>
 
