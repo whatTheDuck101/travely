@@ -5,27 +5,22 @@
   border-radius: 10px;
   background: #ffffff;
 }
-
 .card:hover {
   background: rgb(226, 226, 226);
 }
-
 .card-img-top {
   background-position: center center;
   background-size: cover;
   height: 10.5em;
   border-radius: 10px 10px 0 0;
 }
-
 a:hover {
   text-decoration: none;
 }
-
 .card-text.name {
   margin: 2% 5% 2% 5%;
   color: $blue;
 }
-
 .card-text.location {
   margin: 0 5%;
   font-size: 0.83em;
@@ -36,41 +31,37 @@ a:hover {
   font-size: 0.8em;
   color: #898989;
 }
-
-.card-text.request {
+.card-text.details {
   font-size: 0.85em;
+  color: $blue;
+  margin: 0 5% 1% 5%;
+}
+.card-text.request {
   .yours {
     margin: 0 5% 0% 5%;
-    color: $red;
     width: 62px;
     padding: 2% 4%;
     border: 0.03px solid $red;
     border-radius: 10px;
+    color: $red;
+    font-size: 0.75em;
   }
   .sent {
     margin: 0 5% 0% 5%;
-    color: $red;
-    width: 125px;
+    width: 109px;
     padding: 2% 4%;
     border: 0.03px solid $red;
     border-radius: 10px;
+    color: $red;
+    font-size: 0.75em;
   }
   #send {
-    margin: 2% 5% 2% 5%;
+    margin: 0% 5% 0% 5%;
     border: 0.03px solid $red;
     border-radius: 10px;
-    color: $red;
-    font-size: 0.9em;
+    background: $red;
+    color: white;
+    font-size: 0.85em;
     font-weight: bold;
   }
 }
-
-.card-text.details {
-  font-size: 0.85em;
-  color: $blue;
-  .fas {
-    margin: 1% 5% 2% 5%;
-  }
-}
-
-/* Rectangle 2.1 */
