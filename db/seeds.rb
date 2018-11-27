@@ -46,7 +46,8 @@ owner = User.create(
   first_name: 'Tom',
   last_name: 'Johnson',
   email: 'Owner@lewagon.com',
-  password: '123456'
+  password: '123456',
+  photo: File.open(Rails.root.join("app", "assets", "images", "owner_profile_pic.jpeg"))
 )
 borrower = User.create(
   first_name: 'Peter',
@@ -65,7 +66,7 @@ puts 'done creating stops'
 
 
 puts 'creating items'
-Item.create(user:tzvi, name: 'Travel Mug', description: 'great travel mug', photo: File.open(Rails.root.join("app", "assets", "images", "travel_mug.jpg")))
+Item.create(user:tzvi, name: 'Travel Mug', description: 'great travel mug', photo: File.open(Rails.root.join("app", "assets", "images", "travel_mug.jpeg")))
 Item.create(user:tzvi, name: 'Hiking Boots', description: 'waterproof, size 10', photo: File.open(Rails.root.join("app", "assets", "images", "hiking_boots.jpg")))
 Item.create(user:owner, name: 'Insect Repellent', description: 'Brand is "OFF", barely used, mostly full', photo: File.open(Rails.root.join("app", "assets", "images", "insect_repellent.jpeg")))
 Item.create(user:owner, name: "Book: The Hitchhiker's Guide to the Galaxy", description: "Good condition, Softcover", photo: File.open(Rails.root.join("app", "assets", "images", "hitchhikers_guide_book.jpeg")))

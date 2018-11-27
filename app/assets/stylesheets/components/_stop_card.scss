@@ -1,30 +1,39 @@
 .tab {
-  position: relative;
-}
-.cicle-index {
-  position: absolute;
-  top: 12%;
-  left: 0;
-}
-
-.cicle-index-follows {
-  position: absolute;
-  top: 10%;
+  height: 100%;
+  width: 100%;
+  margin: 0;
 }
 
 .stop-card-index button {
   position: relative;
-  top: 0;
-  left: 60px;
-  margin: 0;
+  top: -55px;
+  left: 65px;
   padding: 0 0 0 3%;
-  width: 80%;
+  margin-bottom: -23px;
+  background: white;
+  height: 72px;
+  width: 290px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1), 0px 0px 8px rgba(0, 0, 0, 0.1);
   text-align: left;
+
+  .cicle-index {
+    position: relative;
+    top: 12%;
+    left: 0;
+  }
+  .city-adv {
+    height: 57px;
+    width: 57px;
+    border-radius: 50%;
+    position: absolute;
+    top: 14%;
+    left: 76%;
+  }
 }
 
 .stop-cards-dash {
   height: 60px;
+  width: 420px;
   margin: 0 0 25px 0;
   padding: 0;
 }
@@ -36,18 +45,18 @@
   right: 50px;
   margin: 0;
   padding: 0 0 0 3%;
-  width: 80%;
+  width: 290px;
   height: 70px;
   background: white;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1), 0px 0px 8px rgba(0, 0, 0, 0.1);
   text-align: left;
   .city-adv {
-    height: 60px;
-    width: 60px;
+    height: 57px;
+    width: 57px;
     border-radius: 50%;
     position: absolute;
-    top: 6%;
-    left: 76%;
+    top: 9%;
+    left: 78%;
   }
 }
 .stop-city {

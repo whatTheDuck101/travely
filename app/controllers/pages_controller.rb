@@ -10,6 +10,7 @@ class PagesController < ApplicationController
     @stops = current_user.stops
     @items = current_user.items
     @listings = current_user.listings
-    @requests = current_user.requests
+    @requests = current_user.requests # user's requests
+    @offers = current_user.received_requests #offers
   end
 end

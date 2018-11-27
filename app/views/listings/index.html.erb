@@ -4,48 +4,72 @@
   <div class="row">
 
     <div class="col-xs-4">
+        <div class="my-itinerary">
+          <div class="circle"></div>
+          <h2>My Itinerary</h2>
+        </div>
       <div class="tab stop-card-index">
-        <div class="cicle-index" id="last-circle"></div>
+        <div class="circle cicle-index"></div>
         <button class="tablinks" name="<%= @items_filtered.first[:city]%>" onclick="openCity(event)" id="defaultOpen">
-          <p class="stop-city"><strong><%= (@items_filtered.first[:city])%></strong></p>
+          <p class="stop-city"><strong><%= (@items_filtered.first[:city]).capitalize%></strong></p>
           <p class="stop-dates">(<%= @items_filtered.first[:start_date].strftime("%b %d, %Y") %>~<%= @items_filtered.first[:end_date].strftime("%b %d, %Y") %>)</p>
-          <div class="city-adv", style="background: url(<%= cl_image_tag @items_filtered.first[:photo], height: 70, width: 70, crop: :fill%>)"></div>
+          <div class="city-adv" style="background: url('<%= cl_image_path @items_filtered.first[:photo], height: 60, width: 60, crop: :scale%>')"></div>
         </button>
-      
-      <div class="stop-card-index">
-      <% @items_filtered[1..-1].each do |items_info| %>
-        <div class="cicle-index-follows" id="last-circle"></div> 
-          <button class="tablinks" name="<%= items_info[:city]%> "onclick="openCity(event)">
-            <div class="stop-city"><%= items_info[:city] %>
-            <div class="stop-dates">(<%= items_info[:start_date].strftime("%b %d, %Y") %>~<%= items_info[:end_date].strftime("%b %d, %Y") %>)</div>
-            <%= cl_image_tag items_info[:photo], height: 70, width: 70, crop: :fill, radius: 50, class: "city-adv"%> 
 
+      <div class="tab stop-card-index">
+      <% @items_filtered[1..-1].each do |items_info| %>
+         <div class="circle cicle-index"></div>
+          <button class="tablinks" name="<%= items_info[:city] %>"onclick="openCity(event)">
+            <div class="stop-city"><strong><%= (items_info[:city]).capitalize %></strong>
+            <div class="stop-dates">(<%= items_info[:start_date].strftime("%b %d, %Y") %>~<%= items_info[:end_date].strftime("%b %d, %Y") %>)</div>
+            <%= cl_image_tag items_info[:photo],height: 60, width: 60, crop: :scale, class: "city-adv"%>
           </button>
       <% end %>
       </div>
     </div>
+
+    <div id="last-circle"></div>
+
   </div>
 
     <div class="col-xs-8">
       <% @items_filtered.each do |items_info| %>
         <div id="<%= items_info[:city] %>" class="tabcontent">
           <% if items_info[:items].length == 0 %>
-           <h3>Sorry, there are no items available on your stop</h3>
+           <h3>Sorry, there are no items available on this stop</h3>
           <% end %>
             <% items_info[:items].each do |item| %>
-              <div class="col-xs-4">
-                <div class="card" style="height: 18em;">
+              <div class="col-xs-4" style="margin-bottom: 30px;">
+                <div class="card">
                   <a data-toggle="modal" data-target="#modal-item-id-<%= item.id %>">
                     <div class="card-body <%= items_info[:city] %>">
                       <div class="card-img-top" style="background-image: url('<%= cl_image_path item.photo%>')"></div>
-                      <p class="card-text name"><%= item.name %></p> 
-                      <p class="card-text details"><span><i class="fas fa-info-circle"></i></span></p>
+                      <p class="card-text name">
+                        <% if item.name.length >= 22 %>
+                          <%= item.name.first(22)%>...
+                        <% else %>
+                          <%= item.name %>
+                        <%end%>
+                      </p>
+                      <div class="card-text description"><%=item.description.first(29)%>...</div>
+                      <p class="card-text details"><span><i class="fas fa-info-circle"> Click for Details</i></span></p>
+                      <span><div class="card-text request">
+                       <% if current_user == item.user %>
+                        <p class="yours"><strong>Yours</strong></p>
+                      <% elsif !item.listings.first.is_available %>
+                        <p class="taken" >Already taken</p>
+                      <% elsif current_user.requested_already?(item) %>
+                        <p class="sent"><strong>Request sent</strong></p>
+                      <% else %>
+                        <%= link_to 'I want this!', listing_requests_path(item.listings.ids), class: 'btn', id: 'send', method: :post, remote: true %>
+                      <% end %>
+                      </div> </span>
                     </div>
                 </a>
                 <%= render partial: 'shared/index_modal', locals: { item: item } %>
                 </div>
               </div>
-          <% end %>
+            <% end %>
         </div>
       <% end %>
     </div>

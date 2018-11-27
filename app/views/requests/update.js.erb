@@ -1,0 +1,32 @@
+function acceptRequest() {
+  <% listing_id = @request.listing.id %>
+  <% request_id = @request.id %>
+
+  const requestButton = document.querySelector(`a[href='/listings/${<%=listing_id%>}/requests/${<%=request_id%>}?value=accepted']`);
+  const declineButton = document.querySelector(`a[href='/listings/${<%=listing_id%>}/requests/${<%=request_id%>}?value=denied']`);
+  const navBar = document.querySelector('.navbar-wagon');
+
+    <% if @request.status === "accepted" %>
+      confirmationElement = `<p class="alert alert-info alert-dismissible">You have accepted this request! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></p>`
+    <% else %>
+      confirmationElement = `<p class="alert alert-warning alert-dismissible">You have denied this request! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></p>`
+    <% end %>
+  var alert = document.querySelector(".alert")
+  if (alert) {
+    alert.remove()
+  }
+  navBar.insertAdjacentHTML('afterend', confirmationElement);
+  document.documentElement.scrollTop = 0;
+  declineButton.remove()
+  requestButton.remove()
+}
+
+
+<% if @request.errors.any? %>
+  console.log("error")
+<% else %>
+  acceptRequest()
+<% end %>
+
+
+

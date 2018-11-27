@@ -4,9 +4,9 @@
     <%= f.fields_for @listing.build_item do |g|%>
         <%= g.error_notification %>
         <%= g.error_notification message: g.object.errors[:base].to_sentence if g.object.errors[:base].present? %>
-        <%= g.input :name %>
-        <%= g.input :description %>
-        <%= g.input :photo, required: :true %>
+        <%= g.input :name, required: true  %>
+        <%= g.input :description, required: true  %>
+        <%= g.input :photo, required: true %>
         <%= g.input :photo_cache, as: :hidden %>
     <% end %>
   <div class="form-inputs">

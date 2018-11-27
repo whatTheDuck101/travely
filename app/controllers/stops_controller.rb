@@ -7,7 +7,7 @@ class StopsController < ApplicationController
     if params[:commit] == "Search"
       redirect_to listings_path
     else
-      redirect_to new_listing_path
+      redirect_to new_item_path
     end
   end
 
