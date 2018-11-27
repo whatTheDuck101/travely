@@ -12,7 +12,7 @@
   <div class="form-inputs">
     <%= f.association :stop, collection: Stop.where(user: current_user), value_method: :id, as: :check_boxes %>
   </div>
-  <div class="form-actions ">
+  <div class="form-actions">
     <%= f.button :submit, 'Share Item', class: "button button-blue", id: "submit-item" %>
   </div>
 <% end %>

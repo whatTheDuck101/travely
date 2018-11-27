@@ -10,11 +10,19 @@
 .col-one {
   background: $blue;
   color: white;
-  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   padding: 40px;
   border-radius: 10px 0 0 10px;
   box-shadow: 0 0 10px rgba(80, 80, 80, 0.1);
+}
+
+.col-one h1 {
+  margin: 0;
+  font-size: 40px;
+  font-weight: 400;
 }
 
 .new-item-title {
@@ -28,7 +36,7 @@
 .col-two {
   background: white;
   color: black;
-  padding: 5%;
+  padding: 40px;
   border-radius: 0 10px 10px 0;
   box-shadow: 0 0 10px rgba(80, 80, 80, 0.1);
 }
@@ -59,5 +67,15 @@
   border-bottom-color: $blue;
   border-left-color: $blue;
   border-right-color: $blue;
+}
 
+.new_item label {
+  color: $dark-gray;
+  font-weight: 300;
+}
+
+
+#item_photo {
+  font-size: 16px;
+  color: $light-gray;
 }
