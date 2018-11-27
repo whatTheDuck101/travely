@@ -39,7 +39,7 @@
       <!-- Tab content -->
       <div id="items" class="tabcontent">
         <% @items.each do |item| %>
-          <div class="col-xs-4" style="padding-left: 0">
+          <div class="col-xs-4" style="padding-left: 0" id="item-<%= item.id %>">
             <div class="card">
               <div class="card-body">
               <div class="card-img-top" style="background-image: url('<%= cl_image_path item.photo%>')"></div>
