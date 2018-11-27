@@ -2,7 +2,7 @@
 //   border-radius: 100%;
 // }
 .new-item {
-  margin: 15%;
+  margin: 10% 15%;
   display: grid;
   grid-template-columns: 40% auto;
 }
@@ -10,11 +10,20 @@
 .col-one {
   background: #86e3c8;
   color: white;
+  font-size: 30px;
   text-align: center;
-  padding: 5%;
+  padding: 40px;
   border-radius: 10px 0 0 10px;
   box-shadow: 0 0 10px rgba(80, 80, 80, 0.1);
 }
+
+.new-item-title {
+  display: inline;
+  color: $blue;
+  font-size: 50px;
+  font-weight: bold;
+ }
+
 
 .col-two {
   background: white;
@@ -26,4 +35,25 @@
 
 #submit-item {
   margin: 0 0 4% 0;
+}
+
+
+.form-item {
+ padding: 40px 60px;
+}
+
+.form-actions {
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.form-control-label {
+  color: $dark-gray;
+}
+
+.form-control {
+  border-width: 1px;
+  border-radius: 4px;
+
 }

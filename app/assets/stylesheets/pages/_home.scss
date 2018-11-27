@@ -8,11 +8,11 @@
   position: relative;
 
   #form {
-    position: absolute;
-    left: 13%;
+    // position:absolute;
     top: 20%;
     width: 1000px;
   }
+
   h1 {
     position: absolute;
     left: 10%;
@@ -29,6 +29,11 @@
   // height: 70vh;
 }
 
+.trip-fields {
+  max-width: 1400px;
+  min-width: 400px;
+}
+
 .container {
   #add-city {
     cursor: pointer;
@@ -42,3 +47,38 @@
 .container {
   height: calc(100vh - 70px);
 }
+
+.padding-top{
+  padding-top: 100px;
+}
+
+.home-title {
+  margin-top: 50px;
+  margin-left: 80px;
+  color: $blue;
+  font-size: 50px;
+  font-weight: bold;
+h1 {
+  display: inline;
+  color: $dark-gray;
+  font-size: 35px;
+ }
+}
+
+.home-form-title {
+  padding-top: 30px;
+  padding-bottom: 20px;
+  color: $gray;
+  font-size: 23px;
+}
+
+.home-button {
+  padding-top:30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position:relative;
+
+}
+
+

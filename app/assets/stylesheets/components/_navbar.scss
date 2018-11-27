@@ -4,12 +4,12 @@
   // background: $blue;
   // background: linear-gradient(124.22deg, #6A68D9 0%, #4D79FF 97.43%);
   // background: linear-gradient(124.22deg, #6a68d9 0%, #5176f6 97.43%);
-  background-color: transparent;
-  background: transparent;
+  background-color: $blue;
+  background: $blue;
   border-color: transparent;
   // background: $light-green;
   transition: all 0.3s ease;
-  height: 70px;
+  height: 60px;
   padding: 0px 30px;
   display: flex;
   align-items: center;
@@ -18,7 +18,7 @@
 
 /* Logo */
 .navbar-wagon-brand img {
-  height: 50px;
+  height: 30px;
 }
 
 /* User Avatar */

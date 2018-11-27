@@ -33,7 +33,7 @@
 
         <button class="tablinks" onclick="openCity(event, 'items')"><%= pluralize( "(#{@items.count}) Shared ", 'Item' )%></button>
         <button class="tablinks" onclick="openCity(event, 'receieved')"><%= pluralize( "(#{@offers.count})", 'Offer' )%></button>
-        <button class="tablinks" onclick="openCity(event, 'sent')"><%= pluralize( "(#{@requests.count})", 'Resquest')%></button>
+        <button class="tablinks" onclick="openCity(event, 'sent')"><%= pluralize( "(#{@requests.count})", 'Requests')%></button>
 
       </div>
       <!-- Tab content -->
@@ -41,23 +41,26 @@
         <% @items.each do |item| %>
           <div class="col-xs-4" style="padding-left: 0" id="item-<%= item.id %>">
             <div class="card">
-              <div class="card-body">
-              <div class="card-img-top" style="background-image: url('<%= cl_image_path item.photo%>')"></div>
-              <h4 class="card-text name">
-               <% if item.name.length >= 22 %>
-                  <%= item.name.first(22)%>...
-                <% else %>
-                  <%= item.name %>
-                <%end%>
-              </h4>
-              <% item_cities = item.listings.map {|listing| listing.stop.city.upcase} %>
-              <p class="card-text location"><strong><%= item_cities.join(" - ") %></strong></p>
-              <p class="card-text description"><%= item.description.first(29)%></p>
-              <p class="card-text details"><span><i class="fas fa-info-circle"> Click for Details</i></span></p>
-              <div id="delete-item">
-                <%= link_to 'Remove', delete_item_path(item.id), class: 'btn btn-dander btn-lg', method: :delete, remote: true, data: {confirm: "This will delete all listings for this item. Are you sure you like to delete this item?"} %>
-              </div>
-              </div>
+              <a data-toggle="modal" data-target="#modal-item-id-<%= item.id %>">
+                <div class="card-body">
+                  <div class="card-img-top" style="background-image: url('<%= cl_image_path item.photo%>')"></div>
+                  <p class="card-text name">
+                  <% if item.name.length >= 22 %>
+                      <%= item.name.first(22)%>...
+                    <% else %>
+                      <%= item.name %>
+                    <%end%>
+                  </p>
+                  <% item_cities = item.listings.map {|listing| listing.stop.city.upcase} %>
+                  <p class="card-text location"><strong><%= item_cities.join(" - ") %></strong></p>
+                  <p class="card-text description"><%= item.description.first(29)%></p>
+                  <p class="card-text details"><span><i class="fas fa-info-circle"> Click for Details</i></span></p>
+                  <div id="delete-item">
+                    <%= link_to 'X', delete_item_path(item.id), class: 'delete', method: :delete, remote: true, data: { confirm: "This will delete all listings for this item. Are you sure you like to delete this item?" } %>
+                  </div>
+                </div>
+              </a>
+              <%= render partial: 'shared/index_modal', locals: { item: item } %>
             </div>
           </div>
         <% end %>

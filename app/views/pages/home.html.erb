@@ -1,43 +1,41 @@
-<div class="home-background" style="background-image: url(<%= image_path 'background-travely.jpg'%>);">
-    <div class="container">
-      <h1>Travel light and easy with Travely </h1>
+<div class="home-title"><%= image_tag "Final-logo.png", style: 'height:100px' %> <h1> Travel light and easy with</h1> travely </div>
+<div class="container">
+    <div id="form">
+      <div class="home-form-title">Enter your itinerary</div>
+        <div class="sim-form" >
+            <%= form_tag(stops_path, class: "go-right") do %>
+            <div class="trip-fields">
 
-      <div id="form" class="text-center">
-        <h4 class="text-left">Enter your itinerary</h4>
-          <div class="sim-form" >
-
-              <%= form_tag(stops_path, class: "go-right") do %>
-              <div class="trip-fields">
-                <div id="trip-field-1" class="trip-field">
-                  <div class="focus-label">
-                    <%#= label_tag( "Please insert city", nil, class: "nested-label") %>
-                    <span class="nested-label">Please insert city</span>
-                    <%= text_field_tag('stops[1][city]', nil, :required => true, class: "nested-input") %>
-
-                  </div>
-                  <div class="focus-label">
-                    <%#= label_tag( "Start date", nil, class: "nested-label") %>
-                    <span class="nested-label">Start date</span>
-                    <%= date_field_tag('stops[1][start_date]', Date.today, :required => true, class: "nested-input" ) %>
-                  </div>
-                  <div class="focus-label">
-                    <%#= label_tag( "End date", nil, class: "nested-label") %>
-                    <span class="nested-label">End date</span>
-                    <%= date_field_tag('stops[1][end_date]', Date.today + 7, :required => true, class: "nested-input" ) %>
-                  </div>
-                    <button class="hidden-x" disabled>x</button>
+              <div class="trip-field">
+                <div class="focus-label">
+                  <div class="nested-label">City</div>
                 </div>
+                <div class="focus-label">
+                  <div class="nested-label">Start date</div>
+                </div>
+                <div class="focus-label">
+                  <div class="nested-label">End date</div>
+                </div>
+                <button class="hidden-x" disabled><i class="fas fa-times-circle"></i></button>
               </div>
 
+              <div id="trip-field-1" class="trip-field">
+                  <%= text_field_tag('stops[1][city]', nil, :required => true, class: "nested-input" ) %>
+                  <%= date_field_tag('stops[1][start_date]', Date.today, :required => true, class: "nested-input" ) %>
+                  <%= date_field_tag('stops[1][end_date]', Date.today + 7, :required => true, class: "nested-input" ) %>
+                  <button class="hidden-x" disabled><i class="fas fa-times-circle"></i></button>
+              </div>
             </div>
-          <p id="add-city">+add city</p>
-          <div id="submit-button">
-            <%= submit_tag("Search", class: "btn btn-lightgreen") %>
-            <%= submit_tag("Share item", class: "btn btn-danger") %>
           </div>
-          <% end %>
-     </div>
+        <p id="add-city">+add city</p>
+        <div class = "home-button ",id="submit-button">
+          <%= submit_tag("Search", class: "btn btn-lightgreen") %>
+          <%= submit_tag("Share item", class: "btn btn-pink") %>
+        </div>
+        <% end %>
+
 </div>
+
 
 <%= javascript_pack_tag 'add_city' %>
 <%= javascript_pack_tag 'nested_input_home' %>
