@@ -16,6 +16,7 @@
 }
 a:hover {
   text-decoration: none;
+  color: rgba(226, 226, 226, 2);
 }
 .card-text.name {
   margin: 2% 5% 2% 5%;
@@ -23,7 +24,7 @@ a:hover {
 }
 .card-text.location {
   margin: 0 5%;
-  font-size: 0.83em;
+  font-size: 0.7em;
   color: #898989;
 }
 .card-text.description {
@@ -41,17 +42,21 @@ a:hover {
     margin: 0 5% 0% 5%;
     width: 62px;
     padding: 2% 4%;
-    border: 0.03px solid $red;
-    border-radius: 10px;
     color: $red;
     font-size: 0.75em;
   }
   .sent {
     margin: 0 5% 0% 5%;
-    width: 109px;
     padding: 2% 4%;
-    border: 0.03px solid $red;
+    width: 109px;
     border-radius: 10px;
+    color: $red;
+    font-size: 0.75em;
+  }
+  .taken {
+    margin: 0 5% 0% 5%;
+    padding: 2% 4%;
+    width: 109px;
     color: $red;
     font-size: 0.75em;
   }
@@ -61,7 +66,19 @@ a:hover {
     border-radius: 10px;
     background: $red;
     color: white;
-    font-size: 0.85em;
+    font-size: 0.75em;
     font-weight: bold;
   }
+}
+
+.delete {
+  position: absolute;
+  margin: -22em 0px 0 15em;
+  padding: 0.5em 1em;
+  border: 0.03px solid #ee5f5b;
+  border-radius: 10px;
+  background: #ee5f5b;
+  color: white;
+  font-size: 0.75em;
+  font-weight: bold;
 }
