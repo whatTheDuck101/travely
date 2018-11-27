@@ -48,9 +48,9 @@ function buildNewCityFields(newTripId) {
   newDiv.className = "trip-field";
   newDiv.id = newTripId;
   newDiv.innerHTML = `
-      <input type="text" name="stops[${tripNumber}][city]" id="stops_${tripNumber}_city" class="nested-input" required="required">
-      <input type="date" name="stops[${tripNumber}][start_date]" id="stops_${tripNumber}_start_date" class="nested-input" required="required" value=${new_start_date}>
-      <input type="date" name="stops[${tripNumber}][end_date]" id="stops_${tripNumber}_end_date" class="nested-input" required="required" value=${new_end_date}>
+      <input type="text" name="stops[${tripNumber}][city]" id="stops_${tripNumber}_city" class="nested-input city-size" required="required" placeholder="Enter Destination">
+      <input type="date" name="stops[${tripNumber}][start_date]" id="stops_${tripNumber}_start_date" class="nested-input date-size" required="required" value=${new_start_date}>
+      <input type="date" name="stops[${tripNumber}][end_date]" id="stops_${tripNumber}_end_date" class="nested-input date-size" required="required" value=${new_end_date}>
       <button id="delete-city-${tripNumber}" class="delete-city"><i class="fas fa-times-circle"></i></button>
   `;
   return newDiv;

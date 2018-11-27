@@ -4,9 +4,13 @@
   <%= f.input :description, required: false  %>
   <%= f.input :photo, required: false %>
   <%= f.input :photo_cache, as: :hidden %>
+  <%= f.label :Cities, required: true %>
+  <br>
   <% @stops.each do |stop| %>
-    <%= label_tag stop.city %>
     <%= check_box_tag "city[#{stop.id}", 1 %>
+    <%= label_tag stop.city %>
+    <%= cl_image_tag stop.photo, class: "avatar-large"%>
+    <br>
   <% end %>
 
   <div class="form-actions ">
