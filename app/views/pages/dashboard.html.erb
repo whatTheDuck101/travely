@@ -75,8 +75,8 @@
         <% else %>
 
           <% users_received_requests.each do |request| %>
-            <div class="request-card">
-              <div class="request-card banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%,
+            <div class="offers-card">
+              <div class="offers-card banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%,
                 rgba(0,36,61,0.6) 50%), url('<%= cl_image_path request.listing.stop.photo %>')">
                 <div class="banner-content">
                   <h1><%= request.listing.stop.city %></h1>
@@ -84,13 +84,13 @@
                     <%= cl_image_tag request.listing.item.photo, class: "image-match-avt item-photo-match" %>
                 </div>
               </div>
-              <div class="request-card-content">
-                <div class="request-card-content description">
+              <div class="offers-card-content">
+                <div class="offers-card-content description">
                   <span class="text-var"><%= request.user.first_name %></span> 
                   <span class="text">has requested your</span>
                   <span class="text-var"><u><%= request.listing.item.name %></u></span>
                 </div>
-                <div class="request-card-content dates">
+                <div class="offers-card-content dates">
                   <% city = request.listing.stop.city %><% common_dates =  Listing.intersection_dates(request.listing.stop.start_date, request.listing.stop.end_date, request.user.stops.find_by(city:city).start_date, request.user.stops.find_by(city:city).end_date)%>
                   <span class="text">you will both be in </span>
                   <span class="text-var"><%= request.listing.stop.city %></span> 
@@ -99,7 +99,7 @@
                   <%= common_dates[-1].strftime("%b %d, %Y") %></p>
                 </div>
                 <div class="line"></div>
-                <div class="request-card-actions request-card-content">
+                <div class="request-card-actions offers-card-content">
                 <% if request.status == "pending"%>
                   <%= link_to "Accept", listing_request_path(request.listing.id, request.id, { value: "accepted" }), class: 'btn btn-success', method: :patch, remote: true %>
                   <%= link_to "Decline", listing_request_path(request.listing.id, request.id, { value: "denied" }), class: 'btn btn-danger', method: :patch, remote: true %>
@@ -115,36 +115,49 @@
 
         <% end %>
       </div>
-
+<!--rough figma outline -->
       <div id="sent" class="tabcontent">
-        <% if @requests.empty? %>
-          <h3 style="color:red">There are no sent requests</h3>
-        <% end %>
-        <% @requests.each do |request| %>
-              <%= cl_image_tag request.listing.item.user.photo, class: "image-match-avt user-photo-match"%>
-
-              <div class="request-card-content">
-              <div class="request-card-content description">
-                <span class="text">You have requested</span>
-                <span class="text-var"><u><%= request.listing.item.name %></u></span>
-                <span class="text"> from</span>
-                <span class="text-var"><%= request.listing.item.user.first_name %></span>
-                <span class="text">.</span>
+        <div class="">
+          <div class="row">
+            <% if @requests.empty? %>
+            <h3 style="color:red">There are no sent requests</h3>
+            <% end %>
+          
+            <% @requests.each do |request| %>
+              <div class="col-xs-4">
+                <div class="card-request">
+                  <div class="card-request-content header">
+                    <p class="title">
+                      <%if request.listing.item.name.length >= 20 %>
+                        <%= request.listing.item.name.first(20)%>...
+                      <% else %> 
+                        <%= request.listing.item.name %>
+                      <%end%>
+                    </p>
+                    <%= cl_image_tag request.listing.item.user.photo, class: "user"%>
+                    <span class="user-name"> FROM <strong><%= request.listing.item.user.first_name %> <%= request.listing.item.user.last_name %></strong></span>
+                  </div>
+              
+                  <div class="request-card-content-img" style="background-image: url('<%= cl_image_path request.listing.item.photo %>')"></div>
+        
+                  <div class="request-card-content status">
+                    <p class="text">REQUEST STATUS:</p>
+                    <span class="request-card-actions">
+                      <% if request.status == "pending" %>
+                        <p><%= request.created_at.strftime("%c") %></p>
+                        <p><em>sent a request to "<%= request.listing.item.user.first_name %>" </em> </p>
+                      <% elsif request.status == "accepted" %>
+                        <p> <%= request.listing.item.user.first_name %> has approved your request! </p>
+                      <% else %>
+                        <p> Sorry, your request was denied from "<%= request.listing.item.user.first_name %>". </p>
+                      <% end %>
+                    </span>
+                  </div>
+                </div>
               </div>
-              </div>
-               <div class="request-card-actions">
-                 <% if request.status == "pending" %>
-                      <p><%= request.created_at.strftime("%c") %></p>
-                      <p><em>sent a request to "<%= request.listing.item.user.first_name %>" </em> </p>
-                 <% elsif request.status == "accepted" %>
-                     <p> <%= request.listing.item.user.first_name %> has approved your request! </p>
-                 <% else %>
-                     <p> Sorry, your request was denied from "<%= request.listing.item.user.first_name %>". </p>
-                 <% end %>
-               </div>
-            </div>
-           </div>
-        <% end %>
+            <% end %>
+          </div>
+        </div>
       </div>
 
     </div>
