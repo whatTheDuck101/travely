@@ -12,8 +12,10 @@
           <div class="row">
             <div class="col-xs-4">
               <div class="body-left">
-                <h3 class="modal-title"><%= item.name.capitalize %></h3>
-                <%= cl_image_tag item.photo, height: 200, width: 200, crop: :fill %>
+                <div class="modal-title"><%= item.name.capitalize %></div>
+                <div class="modal-image">
+                <%= cl_image_tag item.photo, width: 200, crop: :scale %></div>
+
               </div>
             </div>
             <div class="col-xs-8">

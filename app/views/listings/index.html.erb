@@ -1,79 +1,74 @@
 <%#= render 'map_circle' %>
 
-<div class="container-not-boostrap" style="height: 128vh; margin: 2% 5% 0 5%;">
+<br>
+<br>
+<br>
+
+<div class="container">
   <div class="row">
 
     <div class="col-xs-4">
-        <div class="my-itinerary">
-          <div class="circle"></div>
-          <h2>My Itinerary</h2>
-        </div>
+      <div class="my-itinerary">
+        <!-- <div class="circle"></div> -->
+        <h2>My Itinerary</h2>
+      </div>
       <div class="tab stop-card-index">
-        <div class="circle cicle-index" data-target="<%= @items_filtered.first[:id] %>"></div>
-        <button class="tablinks" name="<%= @items_filtered.first[:city]%>" onclick="openCity(event)" id="defaultOpen" data-target="<%= @items_filtered.first[:id] %>">
-          <p class="stop-city"><strong><%= (@items_filtered.first[:city]).capitalize%></strong></p>
-          <p class="stop-dates">(<%= @items_filtered.first[:start_date].strftime("%b %d, %Y") %>~<%= @items_filtered.first[:end_date].strftime("%b %d, %Y") %>)</p>
-          <div class="city-adv" style="background: url('<%= cl_image_path @items_filtered.first[:photo], height: 60, width: 60, crop: :scale%>')"></div>
-        </button>
+        <div class="circle-city-container">
+          <div class="circle cicle-index" data-target="<%= @items_filtered.first[:id] %>"></div>
+          <div class="tablinks city-card" name="<%= @items_filtered.first[:city]%>" onclick="openCity(event)" id="defaultOpen" data-target="<%= @items_filtered.first[:id] %>">
+           <div>
+            <div class="stop-city"><strong><%= (@items_filtered.first[:city]).capitalize%></strong></div>
+            <div class="stop-dates">(<%= @items_filtered.first[:start_date].strftime("%b %d, %Y") %>~<%= @items_filtered.first[:end_date].strftime("%b %d, %Y") %>)</div>
+           </div>
+            <%= cl_image_tag @items_filtered.first[:photo],height: 60, width: 60, crop: :scale, class: "city-adv"%>
+          </div>
+        </div>
+      </div>
+
+      <br><br>
 
       <div class="tab stop-card-index">
       <% @items_filtered[1..-1].each do |items_info| %>
-         <div class="circle cicle-index" data-target="<%= items_info[:id] %>"></div>
-          <button class="tablinks" data-target="<%= items_info[:id] %>" name="<%= items_info[:city] %>"onclick="openCity(event)">
-            <div class="stop-city"><strong><%= (items_info[:city]).capitalize %></strong>
-            <div class="stop-dates">(<%= items_info[:start_date].strftime("%b %d, %Y") %>~<%= items_info[:end_date].strftime("%b %d, %Y") %>)</div>
+        <div class="circle-city-container">
+          <div class="circle cicle-index" data-target="<%= items_info[:id] %>"></div>
+          <div class="tablinks city-card" data-target="<%= items_info[:id] %>" name="<%= items_info[:city] %>"onclick="openCity(event)">
+            <div>
+              <div class="stop-city"><strong><%= (items_info[:city]).capitalize %></strong></div>
+              <div class="stop-dates">(<%= items_info[:start_date].strftime("%b %d, %Y") %>~<%= items_info[:end_date].
+              strftime("%b %d, %Y") %>)</div>
+            </div>
             <%= cl_image_tag items_info[:photo],height: 60, width: 60, crop: :scale, class: "city-adv"%>
-          </button>
-      <% end %>
+          </div>
+        </div>
+        <br><br>
+        <% end %>
       </div>
     </div>
 
-    <div id="last-circle"></div>
+  <div class="col-xs-8">
+    <% @items_filtered.each do |items_info| %>
+      <div id="<%= items_info[:city]%>" class="tabcontent" data-target="<%= items_info[:id]%>">
+        <% if items_info[:items].length == 0 %>
+          <h3>Sorry, there are no items available on this stop</h3>
+        <% end %>
+          <% items_info[:items].each do |item| %>
+            <div class="col-xs-4" style="margin-bottom: 30px;">
+              <div class="card <%= items_info[:city] %>">
 
-  </div>
-
-    <div class="col-xs-8">
-      <% @items_filtered.each do |items_info| %>
-        <div id="<%= items_info[:city] %>" class="tabcontent">
-          <% if items_info[:items].length == 0 %>
-           <h3>Sorry, there are no items available on this stop</h3>
-          <% end %>
-            <% items_info[:items].each do |item| %>
-              <div class="col-xs-4" style="margin-bottom: 30px;">
-                <div class="card">
-                  <a data-toggle="modal" data-target="#modal-item-id-<%= item.id %>">
-                    <div class="card-body <%= items_info[:city] %>">
-                      <div class="card-img-top" style="background-image: url('<%= cl_image_path item.photo%>')"></div>
-                      <p class="card-text name">
-                        <% if item.name.length >= 22 %>
-                          <%= item.name.first(22)%>...
-                        <% else %>
-                          <%= item.name %>
-                        <%end%>
-                      </p>
-                      <div class="card-text description"><%=item.description.first(29)%>...</div>
-                      <p class="card-text details"><span><i class="fas fa-info-circle"> Click for Details</i></span></p>
-                      <span><div class="card-text request">
-                       <% if current_user == item.user %>
-                        <p class="yours"><strong>Yours</strong></p>
-                      <% elsif !item.listings.first.is_available %>
-                        <p class="taken" >Already taken</p>
-                      <% elsif current_user.requested_already?(item) %>
-                        <p class="sent"><strong>Request sent</strong></p>
-                      <% else %>
-                        <%= link_to 'I want this!', listing_requests_path(item.listings.ids), class: 'btn', id: 'send', method: :post, remote: true %>
-                      <% end %>
-                      </div> </span>
-                    </div>
+                <a data-toggle="modal" data-target="#modal-item-id-<%= item.id %>">
+                  <div class="card-img-top" style="background-image: linear-gradient(rgba(50, 50, 50, 0.1), rgba(50, 50, 50, 0.4)), url('<%= cl_image_path item.photo%>')">
+                    <p class="card-text name"><%= item.name %></p>
+                  </div>
                 </a>
-                <%= render partial: 'shared/index_modal', locals: { item: item } %>
-                </div>
-              </div>
-            <% end %>
-        </div>
-      <% end %>
-    </div>
 
+                <%= render partial: 'shared/index_modal', locals: { item: item } %>
+              </div>
+
+            </div>
+          <% end %>
+      </div>
+
+    <% end %>
   </div>
 </div>
 
@@ -81,30 +76,38 @@
  function openCity(event) {
     // Get all elements with class="tabcontent" and hide them
     const selectedId = event.currentTarget.dataset.target;
-    // console.log(event.currentTarget.dataset.target);
-    const selectedCircle = document.querySelector(`div[data-target="${selectedId}"]`);
+
+    const selectedCircle = document.querySelector(`div.circle[data-target="${selectedId}"]`);
+    const selectedTab = document.querySelector(`div.tabcontent[data-target="${selectedId}"]`);
+
 
     const tabcontent = document.querySelectorAll(".tabcontent");
+    const tablinks = document.querySelectorAll(".tablinks");
+    const circles = document.querySelectorAll('.circle');
+
+
 
     tabcontent.forEach((tab) => {
       tab.style.display = "none";
     })
 
     // Get all elements with class="tablinks" and remove the class "active"
-    const tablinks = document.querySelectorAll(".tablinks");
-    const circles = document.querySelectorAll('.circle');
+
 
     tablinks.forEach((tablink) => {
       tablink.classList.remove("active");
-    })
+    });
+
     circles.forEach(el => {
       el.classList.remove("selected-circle");
     })
 
+    console.log(event.currentTarget);
     // Show the current tab, and add an "active" class to the button that opened the tab
-    document.getElementById(event.currentTarget.name).style.display = "block";
+    // document.getElementById(event.currentTarget).style.display = "block";
     event.currentTarget.classList.add("active");
     selectedCircle.classList.add("selected-circle");
+    selectedTab.style.display = "block";
 }
 
   document.getElementById("defaultOpen").click();
