@@ -57,7 +57,7 @@
                        <% if current_user == item.user %>
                         <p class="yours"><strong>Yours</strong></p>
                       <% elsif !item.listings.first.is_available %>
-                        <p>Currently Unavailable</p>
+                        <p class="taken" >Already taken</p>
                       <% elsif current_user.requested_already?(item) %>
                         <p class="sent"><strong>Request sent</strong></p>
                       <% else %>
