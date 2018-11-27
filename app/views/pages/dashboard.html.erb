@@ -18,7 +18,7 @@
                 <div class="city-adv" style="background: url('<%= cl_image_path stop.photo, height: 60, width: 60, crop: :scale %>')"></div>
                 <% end %>
                 <p class="stop-city"><strong><%= stop.city %></strong></p>
-                <p class="stop-dates">( <%= stop.start_date.strftime("%b %d, %Y") %> ~ <%= stop.end_date.strftime("%b %d, %Y") %> )</p>
+                <p class="stop-dates"><%= stop.start_date.strftime("%b %e, %y") %> - <%= stop.end_date.strftime("%b %e, %y") %> </p>
               </div>
             </div>
           <% end %>

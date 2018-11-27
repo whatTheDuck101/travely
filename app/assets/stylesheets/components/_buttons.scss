@@ -31,3 +31,52 @@
   margin: 0 18px 0 18px;
   width: 130px !important;
 }
+
+
+// New buttons
+.button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 500;
+  box-shadow: 0 0 20px rgba(100, 100, 100, 0.1);
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.button-purple {
+  color: white;
+  background: $purple;
+  border: 2px solid transparent;
+}
+
+.button-blue {
+  color: $blue;
+  background-color: white;
+  border: 2px solid $blue;
+}
+
+
+
+// .btn-purple {
+//   color: #fff;
+//   background-color: $purple;
+//   border-color: $purple;
+
+// }
+
+// .btn-purple:hover {
+//   background-color: $darker-green;
+//   color: #fff;
+// }
+
+// .btn-blue {
+//   color: #fff;
+//   background-color: $blue;
+//   border-color: $blue;
+// }
+
+// .btn-blue:hover {
+//   background-color: $darker-pink;
+//   color: #fff;
+// }
