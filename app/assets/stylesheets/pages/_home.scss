@@ -76,4 +76,15 @@ h1 {
   align-items: center;
 }
 
+.ap-nostyle-input-icon, .ap-nostyle-icon-clear, .ap-nostyle-icon-pin {
+  visibility: hidden;
+}
+
+
+.algolia-places-nostyle {
+  width: 100%;
+  // display:block;
+// visibility: hidden;
+
+}
 
