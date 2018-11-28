@@ -2,31 +2,22 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-
-
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-          <div class="row">
-            <div class="col-xs-4">
-              <div class="body-left">
-                <div class="modal-title"><%= item.name.capitalize %></div>
-                <div class="modal-image">
-                <%= cl_image_tag item.photo, width: 200, crop: :scale %></div>
+        <div class="body-left">
+          <div class="modal-image">
+          <%= cl_image_tag item.photo, width: 200, crop: :scale %></div>
+        </div>
+        <div class="body-right">
+          <div class="modal-title"><%= item.name.capitalize %></div>
 
-              </div>
-            </div>
-            <div class="col-xs-8">
-              <div class="body-right">
-                <h4>Detail:</h4>
-                <p class="modal-title"><%= item.description %></p>
-                <br>
-                <h4>Item owner:</h4>
-                <p class="modal-title"><%= cl_image_tag item.user.photo, class: "avatar-large" %><%= item.user.first_name %></p>
-              </div>
-            </div>
+          <h4>Detail:</h4>
+          <p><%= item.description %></p>
+          <h4>Item owner:</h4>
+          <p><%= cl_image_tag item.user.photo, class: "avatar-large" %><%= item.user.first_name %></p>
         </div>
       </div>
 
@@ -36,10 +27,14 @@
        <% elsif !item.listings.first.is_available %>
         <h3>Sorry, this is item is already taken</h3>
        <% elsif current_user.requested_already?(item) %>
-        <h3>Request Sent.</h3>
+        <h3> <%= image_tag "Final-logo.png", style: 'height:30px' %> Request Sent.</h3>
         <p>We'll notify you with updates</p>
        <% else %>
+<<<<<<< HEAD
+        <%= link_to 'I want this!', listing_requests_path(item.listings.ids), class: "button button-purple", method: :post, remote: true %>
+=======
         <%= link_to 'I want this!', listing_requests_path(Listing.find_by(item: item)), id:item.id, class: 'btn btn-dander btn-lg', method: :post, remote: true %>
+>>>>>>> 23c2e430352fd0a86c07fa610b40c035ab6cd45d
        <% end %>
       </div>
     </div>
