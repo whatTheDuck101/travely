@@ -1,24 +1,15 @@
 <%#= render 'map_circle' %>
-
-<br>
-<br>
-<br>
-
-<div class="container">
+<div class="container-index">
   <div class="row">
-
     <div class="col-xs-4">
-      <div class="my-itinerary">
-        <!-- <div class="circle"></div> -->
-        <h2>My Itinerary</h2>
-      </div>
+      <div class = "itinerary">My Itinerary</div>
       <div class="tab stop-card-index">
         <div class="circle-city-container">
           <div class="circle cicle-index" data-target="<%= @items_filtered.first[:id] %>"></div>
           <div class="tablinks city-card" name="<%= @items_filtered.first[:city]%>" onclick="openCity(event)" id="defaultOpen" data-target="<%= @items_filtered.first[:id] %>">
            <div>
             <div class="stop-city"><strong><%= (@items_filtered.first[:city]).capitalize%></strong></div>
-            <div class="stop-dates">(<%= @items_filtered.first[:start_date].strftime("%b %d, %Y") %>~<%= @items_filtered.first[:end_date].strftime("%b %d, %Y") %>)</div>
+            <div class="stop-dates"><%= @items_filtered.first[:start_date].strftime("%b %d, %y") %> - <%= @items_filtered.first[:end_date].strftime("%b %d, %y") %></div>
            </div>
             <%= cl_image_tag @items_filtered.first[:photo],height: 60, width: 60, crop: :scale, class: "city-adv"%>
           </div>
@@ -34,8 +25,8 @@
           <div class="tablinks city-card" data-target="<%= items_info[:id] %>" name="<%= items_info[:city] %>"onclick="openCity(event)">
             <div>
               <div class="stop-city"><strong><%= (items_info[:city]).capitalize %></strong></div>
-              <div class="stop-dates">(<%= items_info[:start_date].strftime("%b %d, %Y") %>~<%= items_info[:end_date].
-              strftime("%b %d, %Y") %>)</div>
+              <div class="stop-dates"><%= items_info[:start_date].strftime("%b %d, %y") %> - <%= items_info[:end_date].
+              strftime("%b %d, %y") %></div>
             </div>
             <%= cl_image_tag items_info[:photo],height: 60, width: 60, crop: :scale, class: "city-adv"%>
           </div>
@@ -46,10 +37,11 @@
     </div>
 
   <div class="col-xs-8">
+    <div class="item-list">
     <% @items_filtered.each do |items_info| %>
       <div id="<%= items_info[:city]%>" class="tabcontent" data-target="<%= items_info[:id]%>">
         <% if items_info[:items].length == 0 %>
-          <h3>Sorry, there are no items available on this stop</h3>
+          <h3>There are no items in <em><%= items_info[:city].capitalize %></em> during your trip</h3>
         <% end %>
           <% items_info[:items].each do |item| %>
             <div class="col-xs-4" style="margin-bottom: 30px;">
@@ -69,6 +61,7 @@
       </div>
 
     <% end %>
+  </div>
   </div>
 </div>
 

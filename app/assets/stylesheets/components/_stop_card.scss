@@ -6,7 +6,7 @@
 
 .circle-city-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
@@ -39,15 +39,24 @@
 
 .city-card {
   background: white;
-  width: 80%;
+  width: 57%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 0 20px rgba(100, 100, 100, 0.1);
   border-radius: 3px;
   padding: 5px 15px;
-  margin-right: 5px;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: all 100ms ease;
 }
+
+.city-card:hover {
+  text-decoration: none;
+  transform: translateY(-4px);
+}
+
+
 
 .city-adv {
   height: 50px;
@@ -90,4 +99,5 @@
 .stop-dates {
   color: #898989;
   font-size: 0.8em;
+  font-weight: 500;
 }

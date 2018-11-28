@@ -1,5 +1,4 @@
 
-
  .modal-content {
  color: black;
  padding: 20px;
@@ -13,26 +12,62 @@
   .modal-title {
     color: #6a68d9;
     font-size: 25px;
-    font-weight: bold;
+    font-weight: 500;
     padding-bottom: 10px
 
  }
 
-
  .modal-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
  }
 
  .modal-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ }
 
+  .modal-footer h3 {
+  color: $blue;
+  font-size: 25px;
+  font-weight: 500;
+ }
+
+   .modal-footer p {
+  color: $gray;
+  font-size: 20px;
+  font-weight: 200;
  }
 
 .body-left {
   padding: 10px;
 }
-.body-right {
-  padding: 50px;
 
+.body-left h4 {
+  color: $gray;
+  font-size: 20px;
+  font-weight: 200;
+}
+
+.body-left p {
+  color: $dark-gray;
+  font-size: 20px;
+  font-weight: 200;
+}
+
+.body-right {
+  padding: 20px;
+
+}
+
+.body-right h4 {
+  color: $gray;
+  font-size: 15px;
+  font-weight: 400;
 }
 
 
