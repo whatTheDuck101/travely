@@ -49,18 +49,18 @@
 .circle:first-child {
   margin-top: 0;
 }
-.circle:before {
-  position: absolute;
-  border: 2px solid $yellow;
-  background: $yellow;
-  width: 0;
-  height: 150px;
-  content: "";
-  left: 50%;
-  z-index: 1;
-  bottom: -50px;
-  margin-left: -1px;
-}
+// .circle:before {
+//   position: absolute;
+//   border: 2px solid $yellow;
+//   background: $yellow;
+//   width: 0;
+//   height: 150px;
+//   content: "";
+//   left: 50%;
+//   z-index: 1;
+//   bottom: -50px;
+//   margin-left: -1px;
+// }
 
 .selected-circle {
   background-color: $purple;
