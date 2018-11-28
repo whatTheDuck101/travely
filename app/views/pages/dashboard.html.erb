@@ -53,10 +53,9 @@
                   </p>
                   <% item_cities = item.listings.map {|listing| listing.stop.city.upcase} %>
                   <p class="card-text location"><strong><%= item_cities.join(" - ") %></strong></p>
-                  <p class="card-text description"><%= item.description.first(29)%></p>
-                  <p class="card-text details"><span><i class="fas fa-info-circle"> Click for Details</i></span></p>
+
                   <div id="delete-item">
-                    <%= link_to 'X', delete_item_path(item.id), class: 'delete', method: :delete, remote: true, data: { confirm: "This will delete all listings for this item. Are you sure you like to delete this item?" } %>
+                    <%= link_to 'Delete', delete_item_path(item.id), class: 'button button-blue delete', method: :delete, remote: true, data: { confirm: "This will delete all listings for this item. Are you sure you like to delete this item?" } %>
                   </div>
                 </div>
               </a>
@@ -73,46 +72,46 @@
         <% if users_received_requests.empty? %>
           <h3 style="color:red">There are no received requests</h3>
         <% else %>
-
-          <% users_received_requests.each do |request| %>
-
-            <div class="offers-card">
-              <div class="offers-card banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%,
-                rgba(0,36,61,0.6) 50%), url('<%= cl_image_path request.listing.stop.photo %>')">
-                <div class="banner-content">
-                  <h1><%= request.listing.stop.city %></h1>
-                    <%= cl_image_tag request.user.photo, class: "image-match-avt user-photo-match"%>
-                    <%= cl_image_tag request.listing.item.photo, class: "image-match-avt item-photo-match" %>
+        <div class="offer-card">
+            <% users_received_requests.each do |request| %>
+              <div class="offers-card">
+                <div class="offers-card banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%,
+                  rgba(0,36,61,0.6) 50%), url('<%= cl_image_path request.listing.stop.photo %>')">
+                  <div class="banner-content">
+                    <h1><%= request.listing.stop.city %></h1>
+                      <%= cl_image_tag request.user.photo, class: "image-match-avt user-photo-match"%>
+                      <%= cl_image_tag request.listing.item.photo, class: "image-match-avt item-photo-match" %>
+                  </div>
+                </div>
+                <div class="offers-card-content">
+                  <div class="offers-card-content description">
+                    <span class="text-var"><%= request.user.first_name %></span> 
+                    <span class="text">has requested your</span>
+                    <span class="text-var"><u><%= request.listing.item.name %></u></span>
+                  </div>
+                  <div class="offers-card-content dates">
+                    <% city = request.listing.stop.city %><% common_dates =  Listing.intersection_dates(request.listing.stop.start_date, request.listing.stop.end_date, request.user.stops.find_by(city:city).start_date, request.user.stops.find_by(city:city).end_date)%>
+                    <span class="text">you will both be in </span>
+                    <span class="text-var"><%= request.listing.stop.city %></span> 
+                    <span class="text">between<span>
+                    <p class="text-var"><strong><%= common_dates[0].strftime("%b %d, %Y") %> ----------------------------- 
+                    <%= common_dates[-1].strftime("%b %d, %Y") %></strong></p>
+                  </div>
+                  <div class="line"></div>
+                  <div class="request-card-actions offers-card-content">
+                    <% if request.status == "pending"%>
+                      <%= link_to "Accept", listing_request_path(request.listing.id, request.id, { value: "accepted" }), class: 'btn btn-success', method: :patch, remote: true %>
+                      <%= link_to "Decline", listing_request_path(request.listing.id, request.id, { value: "denied" }), class: 'btn btn-danger', method: :patch, remote: true %>
+                    <% elsif request.status == "accepted" %>
+                      <p class="status"><em>You have accepted this request!</em> </p>
+                    <% elsif request.status == "denied" %>
+                      <p class="status"><em>You have denied this request!</em> </p>
+                    <% end %>
+                  </div>
                 </div>
               </div>
-              <div class="offers-card-content">
-                <div class="offers-card-content description">
-                  <span class="text-var"><%= request.user.first_name %></span> 
-                  <span class="text">has requested your</span>
-                  <span class="text-var"><u><%= request.listing.item.name %></u></span>
-                </div>
-                <div class="offers-card-content dates">
-                  <% city = request.listing.stop.city %><% common_dates =  Listing.intersection_dates(request.listing.stop.start_date, request.listing.stop.end_date, request.user.stops.find_by(city:city).start_date, request.user.stops.find_by(city:city).end_date)%>
-                  <span class="text">you will both be in </span>
-                  <span class="text-var"><%= request.listing.stop.city %></span> 
-                  <span class="text">between<span>
-                  <p class="text-var"><%= common_dates[0].strftime("%b %d, %Y") %> ----------------------------- 
-                  <%= common_dates[-1].strftime("%b %d, %Y") %></p>
-                </div>
-                <div class="line"></div>
-                <div class="request-card-actions offers-card-content">
-                  <% if request.status == "pending"%>
-                    <%= link_to "Accept", listing_request_path(request.listing.id, request.id, { value: "accepted" }), class: 'btn btn-success', method: :patch, remote: true %>
-                    <%= link_to "Decline", listing_request_path(request.listing.id, request.id, { value: "denied" }), class: 'btn btn-danger', method: :patch, remote: true %>
-                  <% elsif request.status == "accepted" %>
-                    <p class="status"><em>You have accepted this request!</em> </p>
-                  <% elsif request.status == "denied" %>
-                    <p class="status"><em>You have denied this request!</em> </p>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
         <% end %>
       </div>
 

@@ -1,3 +1,7 @@
+.offer-card {
+  margin-left: 15%;
+}
+
 .offers-card {
   width: 710px;
   height: 509px;
@@ -56,16 +60,16 @@
     color: $gray;
   }
   .text-var {
-    color: black;
+    color: $blue;
   }
 }
 .line {
-  border: 1.5px solid grey;
+  border: 1.5px solid lightgray;
   margin-bottom: 30px;
 }
 .request-card-actions.offers-card-content {
   text-align: center;
   .status {
-    color: black;
+    color: $purple;
   }
 }
