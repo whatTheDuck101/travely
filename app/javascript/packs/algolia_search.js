@@ -5,7 +5,7 @@ var places = require('places.js');
     appId: process.env.ALGOLIA_ID,
     apiKey: process.env.ALGOLIA_API_KEY,
     container: document.querySelector('#city-input'),
-    style: false
+
   }).configure({
     type: 'city',
     aroundLatLngViaIP: false,

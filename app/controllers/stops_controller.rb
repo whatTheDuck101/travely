@@ -20,7 +20,8 @@ class StopsController < ApplicationController
       stop = current_user.stops.build(stop_details)
       # city_photo_url = Unsplash::Photo.search(trip.city, 1, 1)[0].urls.regular
       stop.remote_photo_url = "https://kitt.lewagon.com/placeholder/cities/#{stop.city.downcase}"
-      stop.city = stop.city.downcase
+      only_city_name = stop.city.split(",")[0]
+      stop.city = only_city_name.downcase
       stop.save!
     end
   end

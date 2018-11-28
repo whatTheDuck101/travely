@@ -24,7 +24,7 @@
               </div>
 
               <div id="trip-field-1" class="trip-field">
-                  <%= text_field_tag('stops[1][city]', nil, :required => true, class: "nested-input city-size", id: "city-input", placeholder: "Enter Destination" ) %>
+                  <%= text_field_tag('stops[1][city]', nil, :required => true, class: "nested-input city-size algolia-input", id: "city-input", placeholder: "Enter Destination" ) %>
                   <%= date_field_tag('stops[1][start_date]', Date.today, :required => true, class: "nested-input date-size" ) %>
                   <%= date_field_tag('stops[1][end_date]', Date.today + 7, :required => true, class: "nested-input date-size" ) %>
                   <button class="hidden-x" disabled><i class="fas fa-times-circle"></i></button>

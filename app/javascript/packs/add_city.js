@@ -14,7 +14,7 @@ function addNewCityField() {
       const tripField = buildNewCityFields(newTripId);
       formInputs.append(tripField);
       bindEventLister(tripField);
-      assignAutocompleteToLastCityInput(newTripId.slice(-1));
+      assignAutocompleteToLastCityInput(newTripId.split("-")[2]);
     });
   }
 }
@@ -31,8 +31,7 @@ function assignAutocompleteToLastCityInput(tripId) {
   var placesAutocomplete = places({
     appId: process.env.ALGOLIA_ID,
     apiKey: process.env.ALGOLIA_API_KEY,
-    container: document.querySelector(`#stops_${tripId}_city`),
-    style: false
+    container: document.querySelector(`#stops_${tripId}_city`)
   }).configure({
     type: 'city',
     aroundLatLngViaIP: false,
@@ -64,7 +63,7 @@ function buildNewCityFields(newTripId) {
   newDiv.className = "trip-field";
   newDiv.id = newTripId;
   newDiv.innerHTML = `
-      <input type="text" name="stops[${tripNumber}][city]" id="stops_${tripNumber}_city" class="nested-input city-size city-input" required="required" placeholder="Enter Destination">
+      <input type="text" name="stops[${tripNumber}][city]" id="stops_${tripNumber}_city" class="nested-input city-size algolia-input" required="required" placeholder="Enter Destination">
       <input type="date" name="stops[${tripNumber}][start_date]" id="stops_${tripNumber}_start_date" class="nested-input date-size" required="required" value=${new_start_date}>
       <input type="date" name="stops[${tripNumber}][end_date]" id="stops_${tripNumber}_end_date" class="nested-input date-size" required="required" value=${new_end_date}>
       <button id="delete-city-${tripNumber}" class="delete-city"><i class="fas fa-times-circle"></i></button>
