@@ -1,11 +1,11 @@
-var submitButton = document.getElementById('submit-item')
+const form = document.querySelector("#form");
 
 function showLoader() {
   var donut = document.querySelector(".donut");
   setTimeout(function(){ donut.style.display = "block" }, 220)
 }
 
-//submitButton.addEventListener("click", showLoader);
+form.addEventListener("submit", showLoader);
 
 
 
