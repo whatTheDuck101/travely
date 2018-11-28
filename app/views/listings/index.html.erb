@@ -2,6 +2,7 @@
 <div class="container-index">
   <div class="row">
     <div class="col-xs-4">
+      <div class="itinerary-bar"></div>
       <div class = "itinerary">My Itinerary</div>
       <div class="tab stop-card-index">
         <div class="circle-city-container">
@@ -16,8 +17,6 @@
         </div>
       </div>
 
-      <br><br>
-
       <div class="tab stop-card-index">
       <% @items_filtered[1..-1].each do |items_info| %>
         <div class="circle-city-container">
@@ -31,7 +30,6 @@
             <%= cl_image_tag items_info[:photo],height: 60, width: 60, crop: :scale, class: "city-adv"%>
           </div>
         </div>
-        <br><br>
         <% end %>
       </div>
     </div>
