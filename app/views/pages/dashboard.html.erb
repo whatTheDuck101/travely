@@ -1,42 +1,42 @@
-<div class = "container-not-boostrap">
+<div class = "container-index">
  <div class = "row">
-  <h1 class="dash-title">My Dashboard</h1>
+  <h1 class="dash-title"><%= image_tag "Final-logo.png", style: 'height:80px' %> My Dashboard</h1>
  </div>
 
  <div class="row">
    <div class="col-xs-4">
-      <div class ="col-sx-12">
-        <div class="my-itinerary">
-          <div class="circle"></div>
-          <h2>My Itinerary</h2>
-        </div>
-          <% @stops.each do |stop| %>
-          <div class="stop-cards-dash">
-            <div class="circle"></div>
-              <div class="stop-card-dashbord">
-                <% if !(stop.photo.file.nil?)%>
-                <div class="city-adv" style="background: url('<%= cl_image_path stop.photo, height: 60, width: 60, crop: :scale %>')"></div>
-                <% end %>
-                <p class="stop-city"><strong><%= stop.city.capitalize %></strong></p>
-                <p class="stop-dates">( <%= stop.start_date.strftime("%b %d, %Y") %> ~ <%= stop.end_date.strftime("%b %d, %Y") %> )</p>
-              </div>
-            </div>
-          <% end %>
-          <div id="last-circle"></div>
+      <div class="my-itinerary">
+        <h4>My Itinerary</h4>
       </div>
+        <% @stops.each do |stop| %>
+        <div class="circle-city-container">
+          <div class="circle"></div>
+            <div class="city-card">
+              <div>
+              <div class="stop-city"><strong><%= stop.city.capitalize %></strong></div>
+              <div class="stop-dates"><%= stop.start_date.strftime("%b %d, %y") %> - <%= stop.end_date.strftime("%b %d, %y") %></div>
+            </div>
+              <% if !(stop.photo.file.nil?)%>
+              <%= cl_image_tag stop.photo,height: 60, width: 60, crop: :scale, class: "city-adv" %>
+              <% end %>
+            </div>
+         </div>
+        <% end %>
     </div>
 
     <div class="col-xs-8">
+      <div class="tab-wrapper">
 
       <!-- Tab links -->
-      <div class="tab">
-
-        <button class="tablinks" onclick="openCity(event, 'items')"><%= pluralize( "(#{@items.count}) Shared ", 'Item' )%></button>
-        <button class="tablinks" onclick="openCity(event, 'receieved')"><%= pluralize( "(#{@offers.count})", 'Offer' )%></button>
-        <button class="tablinks" onclick="openCity(event, 'sent')"><%= pluralize( "(#{@requests.count})", 'Requests')%></button>
+      <div class="tab dashboard-tabs">
+        <button class="tablinks dashboard-tab" onclick="openCity(event, 'items')"><%= pluralize( "(#{@items.count}) Shared ", 'Item' )%></button>
+        <button class="tablinks dashboard-tab" onclick="openCity(event, 'receieved')"><%= pluralize( "(#{@offers.count})", 'Offer' )%></button>
+        <button class="tablinks dashboard-tab" onclick="openCity(event, 'sent')"><%= pluralize( "(#{@requests.count})", 'Requests')%></button>
 
       </div>
+    </div>
       <!-- Tab content -->
+      <div class="tabcontents">
       <div id="items" class="tabcontent">
         <% @items.each do |item| %>
           <div class="col-xs-4" style="padding-left: 0" id="item-<%= item.id %>">
@@ -135,6 +135,7 @@
            </div>
         <% end %>
       </div>
+    </div>
   </div>
  </div>
 </div>
@@ -163,6 +164,3 @@ function openCity(evt, tabName) {
 }
 
 </script>
-
-<%= link_to "Share Item", new_item_path %>
-<%= link_to "All Items", listings_path %>
