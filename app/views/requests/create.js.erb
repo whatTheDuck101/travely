@@ -1,8 +1,8 @@
 function confirmRequest() {
   var requestButton = document.getElementById(`<%= @request.listing.item.id %>`);
-  var confirmationElement = `<div id="request-confirmation"><p style="color:#6a68d9"><strong>Request Sent!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"></button></p></div>`;
-
-  requestButton.insertAdjacentHTML('beforebegin', confirmationElement);
+  var confirmation = `<h3> <%= image_tag "Final-logo.png", style: 'height:30px' %> Request Sent.</h3>
+        <p>We'll notify you with updates</p>`
+  requestButton.insertAdjacentHTML('beforebegin', confirmation);
   requestButton.remove()
 }
 
