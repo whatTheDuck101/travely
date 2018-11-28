@@ -6,7 +6,7 @@
   background: #ffffff;
   margin-bottom: 20px;
 }
- .card-request-content.header {
+.card-request-content.header {
   position: relative;
   height: 3em;
   .title {
@@ -38,20 +38,24 @@
   background-size: cover;
   background-position: center;
 }
- .request-card-content.status {
+.request-card-content.status {
   margin: 0 5%;
   padding: 0;
   text-align: center;
   .text {
     color: gray;
-    font-size: 1em;
-    margin: 0;
+    font-size: 0.7em;
+    margin: 10px 0 4px 0;
+  }
+  .date-create {
+    color: gray;
+    font-size: 0.7em;
+    margin: 4px 0;
   }
   .request-card-actions {
-    color: gray;
-    font-size: 12px;
-    margain: 0;
+    color: $blue;
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
   }
 }
-
-
