@@ -7,15 +7,15 @@ function acceptRequest() {
   const navBar = document.querySelector('.navbar-wagon');
 
     <% if @request.status === "accepted" %>
-      confirmationElement = `<p class="alert alert-info alert-dismissible">You have accepted this request! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></p>`
+      confirmationElement = `<p><em>You have accepted this request!</em> </p>`
     <% else %>
-      confirmationElement = `<p class="alert alert-warning alert-dismissible">You have denied this request! <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></p>`
+      confirmationElement = `<p><em>You have denied this request!</em> </p>`
     <% end %>
   var alert = document.querySelector(".alert")
   if (alert) {
     alert.remove()
   }
-  navBar.insertAdjacentHTML('afterend', confirmationElement);
+  requestButton.insertAdjacentHTML('beforebegin', confirmationElement);
   document.documentElement.scrollTop = 0;
   declineButton.remove()
   requestButton.remove()
