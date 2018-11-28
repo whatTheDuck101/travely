@@ -1,42 +1,42 @@
-<div class = "container-not-boostrap">
+<div class = "container-index">
  <div class = "row">
-  <h1 class="dash-title">My Dashboard</h1>
+  <h1 class="dash-title"><%= image_tag "Final-logo.png", style: 'height:80px' %> My Dashboard</h1>
  </div>
 
  <div class="row">
    <div class="col-xs-4">
-      <div class ="col-sx-12">
-        <div class="my-itinerary">
-          <div class="circle"></div>
-          <h2>My Itinerary</h2>
-        </div>
-          <% @stops.each do |stop| %>
-          <div class="stop-cards-dash">
-            <div class="circle"></div>
-              <div class="stop-card-dashbord">
-                <% if !(stop.photo.file.nil?)%>
-                <div class="city-adv" style="background: url('<%= cl_image_path stop.photo, height: 60, width: 60, crop: :scale %>')"></div>
-                <% end %>
-                <p class="stop-city"><strong><%= stop.city.capitalize %></strong></p>
-                <p class="stop-dates">( <%= stop.start_date.strftime("%b %d, %Y") %> ~ <%= stop.end_date.strftime("%b %d, %Y") %> )</p>
-              </div>
-            </div>
-          <% end %>
-          <div id="last-circle"></div>
+      <div class="my-itinerary">
+        <h4>My Itinerary</h4>
       </div>
+        <% @stops.each do |stop| %>
+        <div class="circle-city-container">
+          <div class="circle"></div>
+            <div class="city-card">
+              <div>
+              <div class="stop-city"><strong><%= stop.city.capitalize %></strong></div>
+              <div class="stop-dates"><%= stop.start_date.strftime("%b %d, %y") %> - <%= stop.end_date.strftime("%b %d, %y") %></div>
+            </div>
+              <% if !(stop.photo.file.nil?)%>
+              <%= cl_image_tag stop.photo,height: 60, width: 60, crop: :scale, class: "city-adv" %>
+              <% end %>
+            </div>
+         </div>
+        <% end %>
     </div>
 
     <div class="col-xs-8">
+      <div class="tab-wrapper">
 
       <!-- Tab links -->
-      <div class="tab">
-
-        <button class="tablinks" onclick="openCity(event, 'items')"><%= pluralize( "(#{@items.count}) Shared ", 'Item' )%></button>
-        <button class="tablinks" onclick="openCity(event, 'receieved')"><%= pluralize( "(#{@offers.count})", 'Offer' )%></button>
-        <button class="tablinks" onclick="openCity(event, 'sent')"><%= pluralize( "(#{@requests.count})", 'Requests')%></button>
+      <div class="tab dashboard-tabs">
+        <button class="tablinks dashboard-tab" onclick="openCity(event, 'items')"><%= pluralize( "(#{@items.count}) Shared ", 'Item' )%></button>
+        <button class="tablinks dashboard-tab" onclick="openCity(event, 'receieved')"><%= pluralize( "(#{@offers.count})", 'Offer' )%></button>
+        <button class="tablinks dashboard-tab" onclick="openCity(event, 'sent')"><%= pluralize( "(#{@requests.count})", 'Requests')%></button>
 
       </div>
+    </div>
       <!-- Tab content -->
+      <div class="tabcontents">
       <div id="items" class="tabcontent">
         <% @items.each do |item| %>
           <div class="col-xs-4" style="padding-left: 0" id="item-<%= item.id %>">
@@ -53,14 +53,13 @@
                   </p>
                   <% item_cities = item.listings.map {|listing| listing.stop.city.upcase} %>
                   <p class="card-text location"><strong><%= item_cities.join(" - ") %></strong></p>
-                  <p class="card-text description"><%= item.description.first(29)%></p>
-                  <p class="card-text details"><span><i class="fas fa-info-circle"> Click for Details</i></span></p>
+
                   <div id="delete-item">
-                    <%= link_to 'X', delete_item_path(item.id), class: 'delete', method: :delete, remote: true, data: { confirm: "This will delete all listings for this item. Are you sure you like to delete this item?" } %>
+                    <%= link_to 'Delete', delete_item_path(item.id), class: 'button button-blue delete', method: :delete, remote: true, data: { confirm: "This will delete all listings for this item. Are you sure you like to delete this item?" } %>
                   </div>
                 </div>
               </a>
-              <%= render partial: 'shared/index_modal', locals: { item: item } %>
+
             </div>
           </div>
         <% end %>
@@ -73,68 +72,90 @@
         <% if users_received_requests.empty? %>
           <h3 style="color:red">There are no received requests</h3>
         <% else %>
-
-          <% users_received_requests.each do |request| %>
-
-            <div class="request-card-image" style="background-image: url('<%= cl_image_path request.listing.stop.photo %>')">
-              <div class="request-card-title"><%= request.listing.stop.city.capitalize %>
+        <div class="offer-card">
+            <% users_received_requests.each do |request| %>
+              <div class="offers-card">
+                <div class="offers-card banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%,
+                  rgba(0,36,61,0.6) 50%), url('<%= cl_image_path request.listing.stop.photo %>')">
+                  <div class="banner-content">
+                    <h1><%= request.listing.stop.city %></h1>
+                      <%= cl_image_tag request.user.photo, class: "image-match-avt user-photo-match"%>
+                      <%= cl_image_tag request.listing.item.photo, class: "image-match-avt item-photo-match" %>
+                  </div>
+                </div>
+                <div class="offers-card-content">
+                  <div class="offers-card-content description">
+                    <span class="text-var"><%= request.user.first_name %></span> 
+                    <span class="text">has requested your</span>
+                    <span class="text-var"><u><%= request.listing.item.name %></u></span>
+                  </div>
+                  <div class="offers-card-content dates">
+                    <% city = request.listing.stop.city %><% common_dates =  Listing.intersection_dates(request.listing.stop.start_date, request.listing.stop.end_date, request.user.stops.find_by(city:city).start_date, request.user.stops.find_by(city:city).end_date)%>
+                    <span class="text">you will both be in </span>
+                    <span class="text-var"><%= request.listing.stop.city %></span> 
+                    <span class="text">between<span>
+                    <p class="text-var"><strong><%= common_dates[0].strftime("%b %d, %Y") %> ----------------------------- 
+                    <%= common_dates[-1].strftime("%b %d, %Y") %></strong></p>
+                  </div>
+                  <div class="line"></div>
+                  <div class="request-card-actions offers-card-content">
+                    <% if request.status == "pending"%>
+                      <%= link_to "Accept", listing_request_path(request.listing.id, request.id, { value: "accepted" }), class: 'btn btn-success', method: :patch, remote: true %>
+                      <%= link_to "Decline", listing_request_path(request.listing.id, request.id, { value: "denied" }), class: 'btn btn-danger', method: :patch, remote: true %>
+                    <% elsif request.status == "accepted" %>
+                      <p class="status"><em>You have accepted this request!</em> </p>
+                    <% elsif request.status == "denied" %>
+                      <p class="status"><em>You have denied this request!</em> </p>
+                    <% end %>
+                  </div>
+                </div>
               </div>
-              <div class="request-user-item-image"> <%= cl_image_tag request.user.photo, class: "card-user user-avatar-bordered" %> <%= cl_image_tag request.listing.item.photo, class: "card-user item-avatar-bordered" %>
-              </div>
-            </div>
-
-            <div class="request-card-content">
-              <div><p> <%= request.user.first_name %> has requested your <%= request.listing.item.name %></p>
-              </div>
-               <% city = request.listing.stop.city %><% common_dates =  Listing.intersection_dates(request.listing.stop.start_date, request.listing.stop.end_date, request.user.stops.find_by(city:city).start_date, request.user.stops.find_by(city:city).end_date)%>
-              <div><p> you will both be in <%= request.listing.stop.city.capitalize %> between "<%= common_dates[0] %>" ~ "<%= common_dates[-1] %>"</p>
-              </div>
-            </div>
-
-            <div class="request-card-actions">
-              <% if request.status == "pending"%>
-                <%= link_to "Accept", listing_request_path(request.listing.id, request.id, { value: "accepted" }), class: 'btn btn-success', method: :patch, remote: true %>
-                <%= link_to "Decline", listing_request_path(request.listing.id, request.id, { value: "denied" }), class: 'btn btn-danger', method: :patch, remote: true %>
-              <% elsif request.status == "accepted" %>
-                <p><em>You have accepted this request!</em> </p>
-              <% elsif request.status == "denied" %>
-                <p><em>You have denied this request!</em> </p>
-              <% end %>
-            </div>
-
-          <% end %>
-
+            <% end %>
+          </div>
         <% end %>
       </div>
 
       <div id="sent" class="tabcontent">
-        <% if @requests.empty? %>
-          <h3 style="color:red">There are no sent requests</h3>
-        <% end %>
-        <% @requests.each do |request| %>
-           <div class="col-xs-10">
-            <div class="request-card">
-              <div class="request-card-image" style="background-image: url('<%= cl_image_path request.listing.stop.photo %>')">
-              <div class="request-card-title">
-                <%= request.listing.stop.city.capitalize %></div>
-                <div class="request-user-item-image">  <%= cl_image_tag request.listing.item.photo, class: "card-user item-avatar-bordered" %><%= cl_image_tag request.listing.item.user.photo, class: "card-user user-avatar-bordered" %></div>
-              </div>
-              <div class="request-card-content">
-                <div><p>You have requested <%= request.listing.item.name %> from <%= request.listing.item.user.first_name %> </p></div>
-              </div>
-               <div class="request-card-actions">
-                 <% if request.status == "pending" %>
-                      <p><em>Sent a request to "<%= request.listing.item.user.first_name %>" on <%= request.created_at.strftime("%m/%d/%Y") %></em> </p>
-                 <% elsif request.status == "accepted" %>
-                     <p><em> <%= request.listing.item.user.first_name %> has approved your request! </em></p>
-                 <% else %>
-                     <p><em>Sorry, your request was denied from "<%= request.listing.item.user.first_name %>". </em></p>
+        <div class="">
+          <div class="row">
+            <% if @requests.empty? %>
+            <h3 style="color:red">There are no sent requests</h3>
+            <% end %>
+
+            <% @requests.each do |request| %>
+              <div class="col-xs-4">
+                <div class="card-request">
+                  <div class="card-request-content header">
+                    <p class="title">
+                      <%if request.listing.item.name.length >= 20 %>
+                        <%= request.listing.item.name.first(20)%>...
+                      <% else %>
+                        <%= request.listing.item.name %>
+                      <%end%>
+                    </p>
+                    <%= cl_image_tag request.listing.item.user.photo, class: "user"%>
+                    <span class="user-name"> OWNER <strong><%= request.listing.item.user.first_name %> <%= request.listing.item.user.last_name %></strong></span>
+                  </div>
+
+                  <div class="request-card-content-img" style="background-image: url('<%= cl_image_path request.listing.item.photo %>')"></div>
+
+                  <div class="request-card-content status">
+                    <p class="text">REQUEST STATUS:</p>
+                    <span class="request-card-actions">
+                      <% if request.status == "pending" %>
+                       <span><strong>Pending</strong></span>
+                        <p class="date-create"><%= request.created_at.strftime("%c") %></p>
+                      <% elsif request.status == "accepted" %>
+                        <span>Accepted!</span
+                      <% else %>
+                        <span>Sorry, denied.</span>
                  <% end %>
                </div>
             </div>
            </div>
         <% end %>
       </div>
+    </div>
   </div>
  </div>
 </div>
@@ -163,6 +184,3 @@ function openCity(evt, tabName) {
 }
 
 </script>
-
-<%= link_to "Share Item", new_item_path %>
-<%= link_to "All Items", listings_path %>

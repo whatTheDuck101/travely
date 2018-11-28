@@ -66,14 +66,14 @@ puts 'done creating stops'
 
 
 puts 'creating items'
-Item.create(user:tzvi, name: 'Travel Mug', description: 'great travel mug', photo: File.open(Rails.root.join("app", "assets", "images", "travel_mug.jpeg")))
-Item.create(user:tzvi, name: 'Hiking Boots', description: 'waterproof, size 10', photo: File.open(Rails.root.join("app", "assets", "images", "hiking_boots.jpg")))
+Item.create(user:tzvi, name: 'Travel Mug', description: ' stainless steel travel mug', photo: File.open(Rails.root.join("app", "assets", "images", "travel_mug.jpeg")))
+Item.create(user:tzvi, name: 'Hiking Boots', description: 'waterproof, size 10, for men', photo: File.open(Rails.root.join("app", "assets", "images", "hiking_boots.jpg")))
 Item.create(user:owner, name: 'Insect Repellent', description: 'Brand is "OFF", barely used, mostly full', photo: File.open(Rails.root.join("app", "assets", "images", "insect_repellent.jpeg")))
 Item.create(user:owner, name: "Book: The Hitchhiker's Guide to the Galaxy", description: "Good condition, Softcover", photo: File.open(Rails.root.join("app", "assets", "images", "hitchhikers_guide_book.jpeg")))
 Item.create(user:eliz, name: 'Oyster Card', description: 'Oyster card for London tube, can include sim card as well!', photo: File.open(Rails.root.join("app", "assets", "images", "oyster_card.jpg")))
 Item.create(user:eliz, name: 'Unisex Rain Jacket', description: 'Color: Blue, waterproof, for adults', photo: File.open(Rails.root.join("app", "assets", "images", "rain_jacket.jpeg")))
-Item.create(user:vini, name: 'Travel Pillow', description: 'See title :)', photo: File.open(Rails.root.join("app", "assets", "images", "travel_pillow.jpeg")))
-Item.create(user:vini, name: 'Surfing board', description: 'almost new ! ', photo: File.open(Rails.root.join("app", "assets", "images", "board.jpg")))
+Item.create(user:vini, name: 'Travel Pillow', description: 'Very comfy Travel Pillow for adult or child', photo: File.open(Rails.root.join("app", "assets", "images", "travel_pillow.jpeg")))
+Item.create(user:vini, name: 'Surfing board', description: 'almost new!, Aloha brand ', photo: File.open(Rails.root.join("app", "assets", "images", "board.jpg")))
 puts 'done creating items'
 
 
