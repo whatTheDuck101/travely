@@ -5,7 +5,7 @@ function showLoader() {
   setTimeout(function(){ donut.style.display = "block" }, 220)
 }
 
-submitButton.addEventListener("click", showLoader);
+//submitButton.addEventListener("click", showLoader);
 
 
 
