@@ -8,10 +8,11 @@
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
+    <%= favicon_link_tag("Final-logo.png") %>
   </head>
   <body>
     <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %> 
+    <%= render 'shared/flashes' %>
     <%= yield %>
 
     <%= javascript_include_tag "application" %>

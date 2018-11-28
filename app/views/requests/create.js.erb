@@ -1,14 +1,9 @@
 function confirmRequest() {
-  <% item_id = @request.listing.item.id %>
-  var requestButtons = document.querySelectorAll(`a[href='/listings/${<%=item_id%>}/requests']`);
-  var confirmationElement = `<div id="request-confirmation"><p style="color:#6a68d9"><strong>Successfully sent!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"></button></p></div>`
+  var requestButton = document.getElementById(`<%= @request.listing.item.id %>`);
+  var confirmationElement = `<div id="request-confirmation"><p style="color:#6a68d9"><strong>Successfully sent!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"></button></p></div>`;
 
-  requestButtons.forEach(function(button) {
-
-
-    button .insertAdjacentHTML('beforebegin', confirmationElement);
-    button.remove()
-  })
+  requestButton.insertAdjacentHTML('beforebegin', confirmationElement);
+  requestButton.remove()
 }
 
 
