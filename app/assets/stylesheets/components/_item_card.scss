@@ -31,7 +31,7 @@ a:hover {
   background-size: cover;
   height: 250px;
   border-radius: 3px 3px 0 0;
-  padding: 15px;
+  // padding: 15px;
   display: flex;
   align-items: flex-end;
 }
@@ -40,21 +40,22 @@ a:hover {
 //   color: rgba(226, 226, 226, 2);
 // }
 
-
 .card-text.name {
-  color: white;
+  color: $blue;
   font-size: 18px;
   text-decoration: none;
   margin: 0;
   font-weight: 500;
+  padding-top: 10px;
+  padding-left: 5%;
 }
-
-
-
 
 .card-text.location {
   font-size: 0.7em;
   color: #898989;
+  // padding-left: 5%;
+  padding-bottom: 15px;
+  padding-left: 5%;
 }
 .card-text.description {
   font-size: 0.8em;
@@ -93,11 +94,5 @@ a:hover {
 
 .delete {
   position: absolute;
-  margin: -22em 0px 0 15em;
-  border: 0.03px solid #ee5f5b;
-  border-radius: 10px;
-  background: #ee5f5b;
-  color: white;
-  font-size: 0.75em;
-  font-weight: bold;
+  margin: -70px 0 0 217px;
 }
