@@ -86,7 +86,7 @@
             <div class="request-card-content">
               <div><p> <%= request.user.first_name %> has requested your <%= request.listing.item.name %></p>
               </div>
-               <% city = request.listing.stop.city.capitalize %><% common_dates =  Listing.intersection_dates(request.listing.stop.start_date, request.listing.stop.end_date, request.user.stops.find_by(city:city).start_date, request.user.stops.find_by(city:city).end_date)%>
+               <% city = request.listing.stop.city %><% common_dates =  Listing.intersection_dates(request.listing.stop.start_date, request.listing.stop.end_date, request.user.stops.find_by(city:city).start_date, request.user.stops.find_by(city:city).end_date)%>
               <div><p> you will both be in <%= request.listing.stop.city.capitalize %> between "<%= common_dates[0] %>" ~ "<%= common_dates[-1] %>"</p>
               </div>
             </div>
