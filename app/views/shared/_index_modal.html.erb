@@ -30,9 +30,7 @@
         <h3> <%= image_tag "Final-logo.png", style: 'height:30px' %> Request Sent.</h3>
         <p>We'll notify you with updates</p>
        <% else %>
-
         <%= link_to 'I want this!', listing_requests_path(Listing.find_by(item: item)), id:item.id, class: "button button-purple", method: :post, remote: true %>
-
        <% end %>
       </div>
     </div>
