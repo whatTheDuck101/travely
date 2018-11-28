@@ -1,3 +1,6 @@
+<% current_listing = Listing.find_by(item: item) %>
+<% common_dates =  Listing.intersection_dates(current_listing.stop.start_date, current_listing.stop.end_date, user_start_date, user_end_date)%>
+
 <div class="modal fade" id="modal-item-id-<%= item.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -14,13 +17,16 @@
         <div class="body-right">
           <div class="modal-title"><%= item.name.capitalize %></div>
 
-          <h4>Detail:</h4>
+          <h4>Details:</h4>
           <p><%= item.description %></p>
-          <h4>Item owner:</h4>
+          <% if current_user != item.user %>
+            <h4>Dates available for you:</h4>
+            <p><%= common_dates[0] %> ~  <%=  common_dates[-1] %></p>
+          <% end %>
+          <h4>Owner:</h4>
           <p><%= cl_image_tag item.user.photo, class: "avatar-large" %><%= item.user.first_name %></p>
         </div>
       </div>
-
       <div class="modal-footer">
        <% if current_user == item.user %>
         <h3>You own this item</h3>
@@ -30,7 +36,7 @@
         <h3> <%= image_tag "Final-logo.png", style: 'height:30px' %> Request Sent.</h3>
         <p>We'll notify you with updates</p>
        <% else %>
-        <%= link_to 'I want this!', listing_requests_path(Listing.find_by(item: item)), id:item.id, class: "button button-purple", method: :post, remote: true %>
+        <%= link_to 'I want this!', listing_requests_path(current_listing), id:item.id, class: "button button-purple", method: :post, remote: true %>
        <% end %>
       </div>
     </div>

@@ -53,7 +53,7 @@
                   </div>
                 </a>
 
-                <%= render partial: 'shared/index_modal', locals: { item: item } %>
+                <%= render partial: 'shared/index_modal', locals: { item: item, user_start_date: items_info[:start_date], user_end_date: items_info[:end_date] } %>
               </div>
 
             </div>
