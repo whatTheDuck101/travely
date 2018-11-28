@@ -5,6 +5,7 @@
 
  <div class="row">
    <div class="col-xs-4">
+    <div class="itinerary-bar-dash"></div>
       <div class="my-itinerary">
         <h4>My Itinerary</h4>
       </div>
@@ -85,16 +86,16 @@
                 </div>
                 <div class="offers-card-content">
                   <div class="offers-card-content description">
-                    <span class="text-var"><%= request.user.first_name %></span> 
+                    <span class="text-var"><%= request.user.first_name %></span>
                     <span class="text">has requested your</span>
                     <span class="text-var"><u><%= request.listing.item.name %></u></span>
                   </div>
                   <div class="offers-card-content dates">
                     <% city = request.listing.stop.city %><% common_dates =  Listing.intersection_dates(request.listing.stop.start_date, request.listing.stop.end_date, request.user.stops.find_by(city:city).start_date, request.user.stops.find_by(city:city).end_date)%>
-                    <span class="text">you will both be in </span>
-                    <span class="text-var"><%= request.listing.stop.city %></span> 
+                    <span class="text">You will both be in </span>
+                    <span class="text-var"><%= request.listing.stop.city %></span>
                     <span class="text">between<span>
-                    <p class="text-var"><strong><%= common_dates[0].strftime("%b %d, %Y") %> ----------------------------- 
+                    <p class="text-var"><i class="far fa-calendar-alt"></i> <strong><%= common_dates[0].strftime("%b %d, %Y") %> <i class="fas fa-ellipsis-h"></i><i class="fas fa-ellipsis-h"></i><i class="fas fa-ellipsis-h"></i><i class="fas fa-ellipsis-h"></i>
                     <%= common_dates[-1].strftime("%b %d, %Y") %></strong></p>
                   </div>
                   <div class="line"></div>
@@ -103,9 +104,9 @@
                       <%= link_to "Accept", listing_request_path(request.listing.id, request.id, { value: "accepted" }), class: 'btn btn-success', method: :patch, remote: true %>
                       <%= link_to "Decline", listing_request_path(request.listing.id, request.id, { value: "denied" }), class: 'btn btn-danger', method: :patch, remote: true %>
                     <% elsif request.status == "accepted" %>
-                      <p class="status"><em>You have accepted this request!</em> </p>
+                      <p class="status"><i class="fas fa-quote-left"></i>  You have accepted this request!  <i class="fas fa-quote-right"></i></p>
                     <% elsif request.status == "denied" %>
-                      <p class="status"><em>You have denied this request!</em> </p>
+                      <p class="status">You have denied this request!</p>
                     <% end %>
                   </div>
                 </div>

@@ -41,6 +41,24 @@
   // z-index: 2;
 }
 
+.itinerary-bar {
+  width: 5px;
+  position: absolute;
+  top: 111px;
+  bottom: 55px;
+  left: 22%;
+  background: $yellow;
+}
+
+.itinerary-bar-dash {
+  width: 5px;
+  position: absolute;
+  top: 140px;
+  bottom: 55px;
+  left: 22%;
+  background: $yellow;
+}
+
 // .circle-lg {
 //   width: 70px;
 //   height: 70px;
@@ -63,7 +81,15 @@
 // }
 
 .selected-circle {
-  background-color: $purple;
+  position: relative;
+  // border: 2px solid #999;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  // line-height: 50px;
+  text-align: center;
+  margin-top: 50px;
+  background-color: $blue;
   z-index: 1;
 }
 // .circle:first-child:before {display: none;}
