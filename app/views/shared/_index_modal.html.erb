@@ -39,7 +39,7 @@
         <h3>Request Sent.</h3>
         <p>We'll notify you with updates</p>
        <% else %>
-        <%= link_to 'I want this!', listing_requests_path(item.listings.ids), class: 'btn btn-dander btn-lg', method: :post, remote: true %>
+        <%= link_to 'I want this!', listing_requests_path(Listing.find_by(item: item)), id:item.id, class: 'btn btn-dander btn-lg', method: :post, remote: true %>
        <% end %>
       </div>
     </div>
