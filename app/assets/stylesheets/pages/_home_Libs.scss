@@ -1,0 +1,109 @@
+.banner {
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+.banner-content-home {
+  position: absolute;
+  top: 60px;
+  left: 120px;
+  h1,
+  h2,
+  h3 {
+    padding-bottom: 20px;
+    color: white;
+    text-align: left;
+  }
+}
+
+#logo-home {
+  height: 200px;
+  width: 170px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: absolute;
+  bottom: 5vh;
+  right: 5vh;
+}
+
+// form
+.trip-field {
+  margin: 0;
+  display: flex;
+}
+
+.trip-fields {
+  max-width: 1400px;
+  min-width: 400px;
+}
+
+.container {
+  padding-bottom: 8vh;
+  #add-city {
+    cursor: pointer;
+    text-align: left;
+    &:hover {
+      color: #a6a7a8;
+    }
+  }
+}
+
+.home-form-title {
+  padding-top: 30px;
+  padding-bottom: 20px;
+  color: $gray;
+  font-size: 23px;
+}
+
+.home-button {
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ap-nostyle-input-icon,
+.ap-nostyle-icon-pin {
+  visibility: hidden;
+}
+
+.algolia-places {
+  width: 31% !important;
+}
+
+.algolia-input {
+  width: 98.5% !important;
+}
+
+// remember to make anoteher css confi file with font sizes
+h1 {
+  padding: 0px;
+  margin: 0;
+  font-size: 64px;
+}
+
+h2 {
+  padding: 0px;
+  margin: 0;
+  font-size: 52;
+}
+
+h3 {
+  padding: 0px;
+  margin: 0;
+  font-size: 40;
+}
+
+h4 {
+  padding: 0;
+  margin: 0;
+  font-size: 32;
+}
+
+h5 {
+  padding: 0;
+  margin: 0;
+  font-size: 24;
+}
