@@ -1,0 +1,18 @@
+.home-information {
+  display: grid;
+  grid-template-columns: 300px 1fr 1fr;
+  grid-template-rows: auto;
+}
+
+.step {
+  text-align: center;
+}
+
+.text {
+  h3 {
+    padding-bottom: 30px;
+  }
+  a {
+    color: $second;
+  }
+}
