@@ -1,5 +1,4 @@
-var places = require('places.js');
-
+var places = require("places.js");
 
 // selects first trip field inputs (city, start_date, end_date)
 const firstTripField = document.querySelector("#trip-field-1");
@@ -33,10 +32,10 @@ function assignAutocompleteToLastCityInput(tripId) {
     apiKey: process.env.ALGOLIA_API_KEY,
     container: document.querySelector(`#stops_${tripId}_city`)
   }).configure({
-    type: 'city',
-    aroundLatLngViaIP: false,
+    type: "city",
+    aroundLatLngViaIP: false
   });
-};
+}
 
 //retrieves the last trip id and generates a new one by incrementing the id
 function generateNewTripId() {
@@ -52,12 +51,14 @@ function generateNewTripId() {
 function buildNewCityFields(newTripId) {
   const tripNumber = Number(newTripId.split("-")[2]);
   const today = new Date();
-  const new_start_date = document.getElementById(`stops_${tripNumber-1}_end_date`).value || (today.getFullYear() + "-" + today.getMonth() + "-"  + today.getDate())
+  const new_start_date =
+    document.getElementById(`stops_${tripNumber - 1}_end_date`).value ||
+    today.getFullYear() + "-" + today.getMonth() + "-" + today.getDate();
   let new_end_date = new Date(new_start_date);
   new_end_date.setDate(new_end_date.getDate() + 8);
-  let year = new_end_date.getFullYear()
-  let month = ("0" + (new_end_date.getMonth()+1)).slice(-2)
-  let day = (("0" + new_end_date.getDate()).slice(-2))
+  let year = new_end_date.getFullYear();
+  let month = ("0" + (new_end_date.getMonth() + 1)).slice(-2);
+  let day = ("0" + new_end_date.getDate()).slice(-2);
   new_end_date = year + "-" + month + "-" + day;
   const newDiv = document.createElement("div");
   newDiv.className = "trip-field";
