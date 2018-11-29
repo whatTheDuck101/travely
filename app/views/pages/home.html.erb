@@ -1,5 +1,5 @@
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.9), rgba(0,36,61,0.6) 50%), url('<%= image_path 'banner.jpg'%>');">
-  <div id="logo-home" style="background-image: url('<%= image_path 'feather.png' %>');"></div>
+  <div id="logo-home" style="background-image: url('<%= image_path 'luggage.png' %>');"></div>
   <div class="banner-content-home">
     <h1>Travely</h1>
     <h2>Light & Easy Travel</h2>
@@ -41,15 +41,11 @@
             </div>
           </div>
         <p id="add-city">+add city</p>
-        <div class="home-button" id="submit-button">
-          <%= submit_tag("Search", class: "button button-purple submit-button") %>
-          <%= submit_tag("Share item", class: "button button-blue submit-button") %>
-          <div class="donut"></div>
-        </div>
-
         <% end %>
-
 </div>
+
+<div class="line-home"></div>  
+<%= render  "information" %>
 
 
 
@@ -57,3 +53,9 @@
 <%= javascript_pack_tag 'add_city' %>
 <%= javascript_pack_tag 'nested_input_home' %>
 <%= javascript_pack_tag 'algolia_search' %>
+
+  <!-- <div class="home-button" id="submit-button">
+          <%= submit_tag("Search", class: "button button-purple submit-button") %>
+          <%= submit_tag("Share item", class: "button button-blue submit-button") %>
+          <div class="donut"></div>
+        </div>

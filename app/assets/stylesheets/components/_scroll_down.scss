@@ -27,11 +27,11 @@ section {
 }
 #section03 a span {
   position: absolute;
-  top: 0;
-  left: 50%;
-  width: 46px;
-  height: 46px;
-  margin-left: -23px;
+  top: -17px;
+  left: 52%;
+  width: 67px;
+  height: 67px;
+  margin-left: -36px;
   border: 1px solid #fff;
   border-radius: 100%;
   box-sizing: border-box;
@@ -41,8 +41,8 @@ section {
   top: 50%;
   left: 50%;
   content: "";
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   margin: -12px 0 0 -8px;
   border-left: 1px solid #fff;
   border-bottom: 1px solid #fff;
@@ -53,11 +53,11 @@ section {
 #section03 a span::before {
   position: absolute;
   top: 0;
-  left: 0;
+  left: -3;
   z-index: -1;
   content: "";
-  width: 44px;
-  height: 44px;
+  width: 67px;
+  height: 67px;
   box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.1);
   border-radius: 100%;
   opacity: 0;

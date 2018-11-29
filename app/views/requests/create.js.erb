@@ -1,6 +1,6 @@
 function confirmRequest() {
   var requestButton = document.getElementById(`<%= @request.listing.item.id %>`);
-  var confirmation = `<h3> <%= image_tag "Final-logo.png", style: 'height:30px' %> Request Sent.</h3>
+  var confirmation = `<h3> <%= image_tag "luggage", style: 'height:30px' %> Request Sent.</h3>
         <p>We'll notify you with updates</p>`
   requestButton.insertAdjacentHTML('beforebegin', confirmation);
   requestButton.remove()
