@@ -12,7 +12,7 @@ section {
   display: inline-block;
   -webkit-transform: translate(0, -50%);
   transform: translate(0, -50%);
-  color: #fff;
+  color: $white;
   font: normal 400 20px/1 "Josefin Sans", sans-serif;
   letter-spacing: 0.1em;
   text-decoration: none;
@@ -27,25 +27,25 @@ section {
 }
 #section03 a span {
   position: absolute;
-  top: -17px;
-  left: 52%;
-  width: 67px;
-  height: 67px;
-  margin-left: -36px;
+  top: 34%;
+  left: 8%;
+  width: 164px;
+  height: 164px;
+  margin-left: -56px;
   border: 1px solid #fff;
   border-radius: 100%;
   box-sizing: border-box;
 }
 #section03 a span::after {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 34%;
+  left: 37%;
   content: "";
-  width: 20px;
-  height: 20px;
+  width: 60px;
+  height: 60px;
   margin: -12px 0 0 -8px;
-  border-left: 1px solid #fff;
-  border-bottom: 1px solid #fff;
+  border-left: 1px solid $white;
+  border-bottom: 1px solid $white;
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
   box-sizing: border-box;
@@ -56,8 +56,8 @@ section {
   left: -3;
   z-index: -1;
   content: "";
-  width: 67px;
-  height: 67px;
+  width: 164px;
+  height: 164px;
   box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.1);
   border-radius: 100%;
   opacity: 0;
