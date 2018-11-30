@@ -5,10 +5,8 @@
     </div>
     <div class="col-two">
         <%= render 'form_item' %>
-        <div>
-            <% link_to root_path, method: :get do %>
-                <span><i class="fas fa-arrow-left"> Back</i></span>
-            <% end %>
-        </div>
-    </div>
+        <% link_to root_path, method: :get do %>
+            <i class="fas fa-arrow-left"> Back</i>
+        <% end %>
+    </div>  
 </div>
