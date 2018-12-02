@@ -1,8 +1,9 @@
 .dashboard-tabs {
-  background: $purple;
+  background: $second;
   width: 100%;
   display: flex;
   border-radius: 3px;
+  color: $whiter;
 }
 
 .dashboard-tab {
@@ -13,7 +14,7 @@
 
 .dashboard-tab {
   background-color: transparent;
-  color: white;
+  color: $whiter;
   // float: left;
   // border: none;
   // outline: none;
@@ -28,14 +29,14 @@
 
 /* Change background color of buttons on hover */
 .dashboard-tab:hover {
-  background: white !important;
-  color: $purple !important;
+  background: $whiter !important;
+  color: $second !important;
 }
 
 /* Create an active/current tablink class */
 .dashboard-tab.active {
-  background: white !important;
-  color: $purple !important;
+  background: $whiter !important;
+  color: $second !important;
 }
 
 .tabcontents {

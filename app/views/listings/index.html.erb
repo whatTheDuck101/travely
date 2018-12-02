@@ -1,9 +1,10 @@
-<%#= render 'map_circle' %>
 <div class="container-index">
   <div class="row">
     <div class="col-xs-4">
+      <div class="my-itinerary">
+          <h2>My Itinerary</h2>
+      </div>
       <div class="itinerary-bar"></div>
-      <div class = "itinerary">My Itinerary</div>
       <div class="tab stop-card-index">
         <div class="circle-city-container">
           <div class="circle cicle-index" data-target="<%= @items_filtered.first[:id] %>"></div>

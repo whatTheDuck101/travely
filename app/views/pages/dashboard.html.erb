@@ -1,28 +1,24 @@
 <div class = "container-index">
- <div class = "row">
-  <h1 class="dash-title"><%= image_tag "luggage.png", style: 'height:80px' %> My Dashboard</h1>
- </div>
-
  <div class="row">
-   <div class="col-xs-4">
+  <div class="col-xs-4">
+    <div class="my-itinerary">
+        <h2>My Itinerary</h2>
+    </div>
     <div class="itinerary-bar-dash"></div>
-      <div class="my-itinerary">
-        <h4>My Itinerary</h4>
-      </div>
-        <% @stops.each do |stop| %>
-        <div class="circle-city-container">
-          <div class="circle"></div>
-            <div class="city-card">
-              <div>
-              <div class="stop-city"><strong><%= stop.city.capitalize %></strong></div>
-              <div class="stop-dates"><%= stop.start_date.strftime("%b %d, %y") %> - <%= stop.end_date.strftime("%b %d, %y") %></div>
-            </div>
-              <% if !(stop.photo.file.nil?)%>
-                <%= cl_image_tag stop.photo,height: 60, width: 60, crop: :scale, class: "city-adv" %>
-              <% end %>
-            </div>
-         </div>
-        <% end %>
+      <% @stops.each do |stop| %>
+      <div class="circle-city-container">
+        <div class="circle"></div>
+          <div class="city-card">
+            <div>
+            <div class="stop-city"><strong><%= stop.city.capitalize %></strong></div>
+            <div class="stop-dates"><%= stop.start_date.strftime("%b %d, %y") %> - <%= stop.end_date.strftime("%b %d, %y") %></div>
+          </div>
+            <% if !(stop.photo.file.nil?)%>
+              <%= cl_image_tag stop.photo,height: 60, width: 60, crop: :scale, class: "city-adv" %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     </div>
 
     <div class="col-xs-8">
@@ -71,7 +67,7 @@
         <% users_received_requests = current_user.received_requests %>
 
         <% if users_received_requests.empty? %>
-          <h3 style="color:red">There are no received requests</h3>
+          <h3 class="none">No offers recieved</h3>
         <% else %>
         <div class="offer-card">
             <% users_received_requests.each do |request| %>
@@ -120,7 +116,7 @@
         <div class="">
           <div class="row">
             <% if @requests.empty? %>
-            <h3 style="color:red">There are no sent requests</h3>
+            <h3 class="none">No items requested</h3>
             <% end %>
 
             <% @requests.each do |request| %>
@@ -158,7 +154,6 @@
       </div>
     </div>
   </div>
- </div>
 </div>
 
 
@@ -185,3 +180,5 @@ function openCity(evt, tabName) {
 }
 
 </script>
+
+<%= javascript_pack_tag 'dashboard_select_tab' %>

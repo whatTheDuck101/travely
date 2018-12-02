@@ -1,53 +1,24 @@
 .map-container {
   width: 200px;
 }
-
-#last-circle {
-  // position: relative;
-  // border: 2px solid #999;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  // line-height: 50px;
-  text-align: center;
-  // margin-top: 50px;
-  background-color: $yellow;
-  z-index: 2;
-}
-
 .circle {
   position: relative;
-  // border: 2px solid #999;
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  // line-height: 50px;
+  width: 40px;
+  height: 40px;
   text-align: center;
   margin-top: 50px;
-  background-color: $yellow;
+  border: 2px solid $second;
+  background-color: $whiter;
   z-index: 1;
 }
-
-.circle-sm {
-  position: relative;
-  // border: 2px solid #999;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  // line-height: 50px;
-  text-align: center;
-  margin-top: 50px;
-  background-color: $yellow;
-  // z-index: 2;
-}
-
 .itinerary-bar {
   width: 5px;
   position: absolute;
   top: 111px;
   bottom: 55px;
-  left: 22%;
-  background: $yellow;
+  left: 21.8%;
+  background: $second;
 }
 
 .itinerary-bar-dash {
@@ -56,40 +27,21 @@
   top: 140px;
   bottom: 55px;
   left: 22%;
-  background: $yellow;
+  background: $second;
 }
-
-// .circle-lg {
-//   width: 70px;
-//   height: 70px;
-// }
 
 .circle:first-child {
   margin-top: 0;
 }
-// .circle:before {
-//   position: absolute;
-//   border: 2px solid $yellow;
-//   background: $yellow;
-//   width: 0;
-//   height: 150px;
-//   content: "";
-//   left: 50%;
-//   z-index: 1;
-//   bottom: -50px;
-//   margin-left: -1px;
-// }
 
 .selected-circle {
   position: relative;
-  // border: 2px solid #999;
+  border: 2px solid $second;
   border-radius: 50%;
-  width: 25px;
-  height: 25px;
-  // line-height: 50px;
+  width: 40px;
+  height: 40px;
   text-align: center;
-  margin-top: 50px;
-  background-color: $blue;
+  margin-top: 55px;
+  background-color: $second;
   z-index: 1;
 }
-// .circle:first-child:before {display: none;}
