@@ -1,0 +1,22 @@
+.background-sign-up-in {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  a {
+    color: $white;
+  }
+  a:hover {
+    color: $whiteish;
+  }
+}
+.sign-up-in {
+  margin: 50px 0 20px 0;
+  color: $white;
+}
+
+label.form-control-label,
+label.file.optional {
+  color: $white;
+}
