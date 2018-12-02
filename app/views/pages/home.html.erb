@@ -5,52 +5,28 @@
     <h2>Light & Easy Travel</h2>
     <h3>By Sharing your Items with Others</h3>
   </div>
-  <section id="section03" class="demo">
-    <a href="#form"><span></span>Start</a>
-  </section>
+  <% if !user_signed_in? %>
+    <section id="section03" class="demo">
+      <a href="#form"><span></span>Start</a>
+    </section>
+  <% end %>
 </div>
 
+<% if !user_signed_in? %>
+  <div class="container">
+    <%= render  "form_stop" %>
 
-<div class="container">
-    <div id="form">
-      <!-- <div class="home-form-title">Enter your itinerary</div> -->
-      <div class="home-form-title"></div>
-        <div class="sim-form" >
-            <%= form_tag(stops_path, class: "go-right") do %>
-            <div class="trip-fields">
+  <div class="line-home"></div>  
+  <%= render  "information" %>
+<% end %>
 
-              <div class="trip-field">
-                <div class="focus-label">
-                  <div class="nested-label">City</div>
-                </div>
-                <div class="focus-label">
-                  <div class="nested-label">Start date</div>
-                </div>
-                <div class="focus-label">
-                  <div class="nested-label">End date</div>
-                </div>
-                <button class="hidden-x" disabled><i class="fas fa-times-circle"></i></button>
-              </div>
+<% if user_signed_in? %>
 
-              <div id="trip-field-1" class="trip-field">
-                  <%= text_field_tag('stops[1][city]', nil, :required => true, class: "nested-input city-size algolia-input", id: "city-input", placeholder: "Enter Destination" ) %>
-                  <%= date_field_tag('stops[1][start_date]', Date.today, :required => true, class: "nested-input date-size" ) %>
-                  <%= date_field_tag('stops[1][end_date]', Date.today + 7, :required => true, class: "nested-input date-size" ) %>
-                  <button class="hidden-x" disabled><i class="fas fa-times-circle"></i></button>
-              </div>
-            </div>
-          </div>
-        <p id="add-city">+add city</p>
-        <%= submit_tag("Search", class: "search-button") %>
-        <%= submit_tag("Share item", class: "share-button") %>
-        <% end %>
-</div>
-
-<div class="line-home"></div>  
-<%= render  "information" %>
-
-
-
+  <div class="container signed-in-container">
+      <%= render  "form_stop" %>
+  </div>
+  <%= render  "information" %>
+<% end %>
 
 <%= javascript_pack_tag 'add_city' %>
 <%= javascript_pack_tag 'nested_input_home' %>

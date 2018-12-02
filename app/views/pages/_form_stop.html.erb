@@ -1,0 +1,33 @@
+<div id="form">
+    <!-- <div class="home-form-title">Enter your itinerary</div> -->
+    <div class="home-form-title"></div>
+    <div class="sim-form" >
+        <%= form_tag(stops_path, class: "go-right") do %>
+        <div class="trip-fields">
+
+            <div class="trip-field">
+            <div class="focus-label">
+                <div class="nested-label">City</div>
+            </div>
+            <div class="focus-label">
+                <div class="nested-label">Start date</div>
+            </div>
+            <div class="focus-label">
+                <div class="nested-label">End date</div>
+            </div>
+            <button class="hidden-x" disabled><i class="fas fa-times-circle"></i></button>
+            </div>
+
+            <div id="trip-field-1" class="trip-field">
+                <%= text_field_tag('stops[1][city]', nil, :required => true, class: "nested-input city-size algolia-input", id: "city-input", placeholder: "Enter Destination" ) %>
+                <%= date_field_tag('stops[1][start_date]', Date.today, :required => true, class: "nested-input date-size" ) %>
+                <%= date_field_tag('stops[1][end_date]', Date.today + 7, :required => true, class: "nested-input date-size" ) %>
+                <button class="hidden-x" disabled><i class="fas fa-times-circle"></i></button>
+            </div>
+        </div>
+        </div>
+        <p id="add-city">+add city</p>
+        <%= submit_tag("Search", class: "search-button") %>
+        <%= submit_tag("Share item", class: "share-button") %>
+    <% end %>
+</div>

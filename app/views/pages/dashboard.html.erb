@@ -18,7 +18,7 @@
               <div class="stop-dates"><%= stop.start_date.strftime("%b %d, %y") %> - <%= stop.end_date.strftime("%b %d, %y") %></div>
             </div>
               <% if !(stop.photo.file.nil?)%>
-              <%= cl_image_tag stop.photo,height: 60, width: 60, crop: :scale, class: "city-adv" %>
+                <%= cl_image_tag stop.photo,height: 60, width: 60, crop: :scale, class: "city-adv" %>
               <% end %>
             </div>
          </div>
