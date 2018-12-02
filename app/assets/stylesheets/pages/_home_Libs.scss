@@ -28,7 +28,7 @@
   right: 5vh;
 }
 
-// form
+// form signed out
 .trip-field {
   margin: 0;
   display: flex;
@@ -75,6 +75,17 @@
 
 .algolia-input {
   width: 98.5% !important;
+}
+
+// form when signed in
+.signed-in-container {
+  position: absolute;
+  top: 50vh;
+  right: 30vh;
+  color: $white;
+  .sim-form .focus-label .nested-label {
+    color: $white;
+  }
 }
 
 .line-home {
