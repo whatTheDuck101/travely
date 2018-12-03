@@ -1,74 +1,65 @@
+.modal-content {
+  color: black;
+  position: relative;
+  width: 372px;
+  border-radius: 9px 9px 7px 7px;
+}
 
- .modal-content {
- color: black;
- padding: 20px;
- border-radius: 10px;
- }
+.modal-image {
+  width: 100%;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 7px 7px 0 0;
+}
 
-  .modal-header {
-
- }
-
+.modal-information {
+  padding: 0 15px;
   .modal-title {
-    color: #6a68d9;
-    font-size: 25px;
-    font-weight: 500;
-    padding-bottom: 10px
+    color: $second;
+    padding-top: 10px;
+  }
+  h6 {
+    color: $gray;
+    padding: 5px 0;
+  }
+  p {
+    margin: 5px 0;
+  }
+}
+.owner-adv {
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  background-size: contain;
+  position: relative;
+  padding-bottom: 10px;
+  p {
+    position: absolute;
+    left: 45px;
+    top: 25%;
+    margin: 0 0 3px 0;
+  }
+}
 
- }
-
- .modal-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
- }
-
- .modal-footer {
+.modal-footer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
- }
-
-  .modal-footer h3 {
-  color: $blue;
-  font-size: 25px;
-  font-weight: 500;
- }
-
-   .modal-footer p {
-  color: $gray;
-  font-size: 20px;
-  font-weight: 200;
- }
-
-.body-left {
-  padding: 10px;
 }
 
-.body-left h4 {
-  color: $gray;
-  font-size: 20px;
-  font-weight: 200;
+.modal-footer {
+  margin-top: 10px;
+  h6 {
+    color: $second;
+  }
+  p {
+    color: $gray;
+  }
 }
-
-.body-left p {
-  color: $dark-gray;
-  font-size: 20px;
-  font-weight: 200;
+button.close {
+  padding: 0 100% 0 0;
+  font-size: 6em;
 }
-
-.body-right {
-  padding: 20px;
-
-}
-
-.body-right h4 {
-  color: $gray;
-  font-size: 15px;
-  font-weight: 400;
-}
-
-
-
