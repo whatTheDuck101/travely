@@ -8,7 +8,7 @@
       <% @stops.each do |stop| %>
         <div class="circle-city-container">
           <div class="circle circle-dash"></div>
-          <div class="city-card">
+          <div class="city-card dash">
             <div>
             <div class="stop-city"><strong><%= stop.city.capitalize %></strong></div>
             <div class="stop-dates"><%= stop.start_date.strftime("%b %d, %y") %> - <%= stop.end_date.strftime("%b %d, %y") %></div>
@@ -54,6 +54,7 @@
                   data: { confirm: "This will delete all listings for this item. Are you sure you like to delete this item?" } %>
                 </div>
               </a>
+
             </div>
           </div>
         <% end %>

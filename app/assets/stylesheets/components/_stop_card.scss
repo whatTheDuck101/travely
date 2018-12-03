@@ -24,10 +24,15 @@
   cursor: pointer;
   transition: all 100ms ease;
 }
-
 .city-card:hover {
   text-decoration: none;
   transform: translateY(-4px);
+  box-shadow: 0 20px 20px rgba(100, 100, 100, 0.1);
+}
+
+.city-card.dash:hover {
+  text-decoration: none;
+  transform: translateY(0px);
 }
 
 .city-adv {
@@ -36,27 +41,6 @@
   border-radius: 50%;
 }
 
-.stop-card-dashbord {
-  position: relative;
-  top: -60px;
-  left: 60px;
-  right: 50px;
-  margin: 0;
-  padding: 0 0 0 3%;
-  width: 230px;
-  height: 70px;
-  background: $whiter;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1), 0px 0px 8px rgba(0, 0, 0, 0.1);
-  text-align: left;
-  .city-adv {
-    height: 57px;
-    width: 57px;
-    border-radius: 50%;
-    position: absolute;
-    top: 9%;
-    left: 73%;
-  }
-}
 .stop-city {
   margin: 0;
   color: $blackish;

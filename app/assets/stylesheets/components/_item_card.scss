@@ -22,9 +22,13 @@ a:hover {
   margin-bottom: 15px;
 }
 
-.card:hover {
-  text-decoration: none;
-  // transform: translateY(-4px);
+.card-index {
+  &:hover {
+    background-color: $second;
+    .index-name {
+      color: $white;
+    }
+  }
 }
 
 .card-img-top {
@@ -32,25 +36,20 @@ a:hover {
   background-size: cover;
   height: 250px;
   border-radius: 3px 3px 0 0;
-  // padding: 15px;
   display: flex;
   align-items: flex-end;
 }
-// a:hover {
-//   text-decoration: none;
-//   color: rgba(226, 226, 226, 2);
-// }
-
 .card-text.name {
-  color: $blue;
+  color: $second;
   font-size: 18px;
   text-decoration: none;
   margin: 0;
   font-weight: 500;
-  padding-top: 10px;
-  padding-left: 5%;
+  padding: 10px 5% 0 5%;
+  .index-name {
+    padding-bottom: 10px;
+  }
 }
-
 .card-text.location {
   font-size: 0.7em;
   color: #898989;
@@ -58,14 +57,7 @@ a:hover {
   padding-bottom: 15px;
   padding-left: 5%;
 }
-.card-text.description {
-  font-size: 0.8em;
-  color: #898989;
-}
-.card-text.details {
-  font-size: 0.85em;
-  color: $blue;
-}
+
 .card-text.request {
   .yours {
     width: 62px;
