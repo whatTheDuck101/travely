@@ -6,8 +6,8 @@
     </div>
     <div class="itinerary-bar-dash"></div>
       <% @stops.each do |stop| %>
-      <div class="circle-city-container">
-        <div class="circle"></div>
+        <div class="circle-city-container">
+          <div class="circle circle-dash"></div>
           <div class="city-card">
             <div>
             <div class="stop-city"><strong><%= stop.city.capitalize %></strong></div>
@@ -50,13 +50,10 @@
                   </p>
                   <% item_cities = item.listings.map {|listing| listing.stop.city.upcase} %>
                   <p class="card-text location"><strong><%= item_cities.join(" - ") %></strong></p>
-
-                  <div id="delete-item">
-                    <%= link_to 'Delete', delete_item_path(item.id), class: 'button button-blue delete', method: :delete, remote: true, data: { confirm: "This will delete all listings for this item. Are you sure you like to delete this item?" } %>
-                  </div>
+                  <%= link_to 'x', delete_item_path(item.id), class: 'delete-button', method: :delete, remote: true, 
+                  data: { confirm: "This will delete all listings for this item. Are you sure you like to delete this item?" } %>
                 </div>
               </a>
-
             </div>
           </div>
         <% end %>

@@ -16,9 +16,10 @@ a:hover {
 .card {
   box-shadow: 0 0 15px rgba(100, 100, 100, 0.1);
   border-radius: 3px;
-  background: #ffffff;
+  background: $whiter;
   cursor: pointer;
   transition: all 100ms ease;
+  margin-bottom: 15px;
 }
 
 .card:hover {
@@ -86,14 +87,8 @@ a:hover {
     border: 0.03px solid $red;
     border-radius: 10px;
     background: $red;
-    color: white;
+    color: $whiter;
     font-size: 0.75em;
     font-weight: bold;
   }
-}
-
-.delete {
-  position: absolute;
-  bottom: 19px;
-  right: 10px;
 }
