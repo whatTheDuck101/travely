@@ -133,7 +133,7 @@ items = Item.all
 
 Listing.create(item: ski_poles_item, stop: tzvi_copenhagen_stop)
 Listing.create(item: bag_hiking_item, stop: tzvi_copenhagen_stop)
-Listing.create(item: hiking_boots_item, stop: tzvi_copenhagen_stop)
+Listing.create(item: extra_clothes_item, stop: tzvi_copenhagen_stop)
 Listing.create(item: thermos_item, stop: tzvi_copenhagen_stop)
 
 Listing.create(item: mittens_item, stop: alice_copenhagen_stop)

@@ -5,19 +5,13 @@ li {
 .my-itinerary {
   position: relative;
   height: 50px;
-  margin: 50px 0;
+  margin: 32px 0;
   color: $second;
   .circle {
     position: absolute;
     top: 0;
     left: 0;
   }
-}
-
-.dash-title {
-  margin-top: 2%;
-  margin-bottom: 3%;
-  padding-left: 30%;
 }
 
 .none {
