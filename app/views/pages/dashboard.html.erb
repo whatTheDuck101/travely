@@ -25,13 +25,12 @@
         <div class="tab-wrapper">
 
         <!-- Tab links -->
-        <div class="tab dashboard-tabs">
-          <button class="tablinks dashboard-tab" onclick="openCity(event, 'items')"><%= pluralize( "(#{@items.count}) Shared ", 'Item' )%></button>
-          <button class="tablinks dashboard-tab" onclick="openCity(event, 'receieved')"><%= pluralize( "(#{@offers.count})", 'Offer' )%></button>
-          <button class="tablinks dashboard-tab" onclick="openCity(event, 'sent')"><%= pluralize( "(#{@requests.count})", 'Requests')%></button>
-
+          <div class="tab dashboard-tabs">
+            <button class="tablinks dashboard-tab" onclick="openCity(event, 'items')"><%= pluralize( "(#{@items.count}) Shared ", 'Item' )%></button>
+            <button class="tablinks dashboard-tab" onclick="openCity(event, 'receieved')"><%= pluralize( "(#{@offers.count})", 'Offer' )%></button>
+            <button class="tablinks dashboard-tab" onclick="openCity(event, 'sent')"><%= pluralize( "(#{@requests.count})", 'Requests')%></button>
+          </div>
         </div>
-      </div>
         <!-- Tab content -->
       <div class="tabcontents">
         <div id="items" class="tabcontent">
