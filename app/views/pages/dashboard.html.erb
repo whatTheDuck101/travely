@@ -93,18 +93,19 @@
                         ----------------------
                         <%= common_dates[-1].strftime("%b %d, %Y") %></strong> <i class="far fa-calendar-alt"></i>
                       </p>
-                  
                     </div>
                     <div class="line"></div>
-                    <div class="request-card-actions offers-card-content">
-                      <% if request.status == "pending"%>
-                        <%= link_to "Accept", listing_request_path(request.listing.id, request.id, { value: "accepted" }), class: 'accept-button', method: :patch, remote: true %>
-                        <%= link_to "Decline", listing_request_path(request.listing.id, request.id, { value: "denied" }), class: 'decline-button', method: :patch, remote: true %>
-                      <% elsif request.status == "accepted" %>
-                        <p class="status"><i class="fas fa-quote-left"></i>  You have accepted this offer!  <i class="fas fa-quote-right"></i></p>
-                      <% elsif request.status == "denied" %>
-                        <p class="status">You have denied this offer!</p>
-                      <% end %>
+                    <div class="offer-card-footer">
+                      <div class="request-card-actions offers-card-content">
+                        <% if request.status == "pending"%>
+                          <%= link_to "Accept", listing_request_path(request.listing.id, request.id, { value: "accepted" }), class: 'accept-button', method: :patch, remote: true %>
+                          <%= link_to "Decline", listing_request_path(request.listing.id, request.id, { value: "denied" }), class: 'decline-button', method: :patch, remote: true %>
+                        <% elsif request.status == "accepted" %>
+                          <h4 class="status"><i class="fas fa-quote-left"></i>  You have accepted this offer!  <i class="fas fa-quote-right"></i></h4>
+                        <% elsif request.status == "denied" %>
+                          <h4 class="status"><i class="fas fa-quote-left"></i> You have denied this offer! <i class="fas fa-quote-right"></i></h4>
+                        <% end %>
+                      </div>
                     </div>
                   </div>
                 </div>
