@@ -92,7 +92,7 @@ towel_item = Item.create(user:alice, name: 'Beach Towel', description: "Good for
 paris_museum_pass_item = Item.create(user:eliz, name: 'Paris Museum Pass', description: "You can visit any Museum in Paris for free within a 6 day span. I'm leaving Paris earlier than I thought, I hope someone will benefit from this free pass! :)", photo: File.open(Rails.root.join("app", "assets", "images", "paris_museum_pass.jpg")))
 womens_rain_boots_item = Item.create(user:eliz, name: 'Rainboots for Women', description: "Man this place is rainy and my bag is stuffed, dont' want to throw them away", photo: File.open(Rails.root.join("app", "assets", "images", "women_rain_boots1.jpg")))
 scarf_pile_item = Item.create(user:eliz, name: 'Too many scarves', description: "High quality, keeps warm", photo: File.open(Rails.root.join("app", "assets", "images", "scarf_pile.jpg")))
-plants_1_item = Item.create(user:eliz, name: 'Succulent', description: "Can't bring back this bad boy.", photo: File.open(Rails.root.join("app", "assets", "images", "plant1.jpg")))
+plants_1_item = Item.create(user:eliz, name: 'Plant', description: "Can't bring back this bad boy.", photo: File.open(Rails.root.join("app", "assets", "images", "plant1.jpg")))
 clothes_item = Item.create(user:eliz, name: 'Nice shirts', description: "Fine material, colors go well with everyone", photo: File.open(Rails.root.join("app", "assets", "images", "clothes.jpg")))
 
 
