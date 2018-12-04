@@ -68,7 +68,7 @@ eliz_paris_stop = Stop.create(city:"paris", start_date:Date.new(2018,12,10), end
 evan_paris_stop = Stop.create(city:"paris", start_date:Date.new(2018,12,07), end_date:Date.new(2018,12,10), user:evan, photo: File.open(Rails.root.join("app", "assets", "images", "paris.jpeg")))
 vini_paris_stop = Stop.create(city:"paris", start_date:Date.new(2018,12,1), end_date:Date.new(2018,12,22), user:vini, photo: File.open(Rails.root.join("app", "assets", "images", "paris.jpeg")))
 
-alice_amsterdam_stop = Stop.create(city:"amsterdam", start_date:Date.new(2018,12,14), end_date:Date.new(2019,01,05), user:evan, photo: File.open(Rails.root.join("app", "assets", "images", "amsterdam.jpeg")))
+alice_amsterdam_stop = Stop.create(city:"amsterdam", start_date:Date.new(2018,12,14), end_date:Date.new(2019,01,05), user:alice, photo: File.open(Rails.root.join("app", "assets", "images", "amsterdam.jpeg")))
 evan_amsterdam_stop = Stop.create(city:"amsterdam", start_date:Date.new(2018,12,11), end_date:Date.new(2018,12,20), user:evan, photo: File.open(Rails.root.join("app", "assets", "images", "amsterdam.jpeg")))
 
 songyi_barcelona_stop = Stop.create(city:"barcelona", start_date:Date.new(2018,12,19), end_date:Date.new(2018,12,30), user:eliz, photo: File.open(Rails.root.join("app", "assets", "images", "barcelona.jpeg")))
