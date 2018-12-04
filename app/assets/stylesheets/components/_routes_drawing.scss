@@ -12,7 +12,6 @@
   background-color: $whiter;
   z-index: 1;
 }
-
 .circle-dash {
   background-color: $second;
 }
@@ -24,7 +23,6 @@
   left: 21.8%;
   background: $second;
 }
-
 .itinerary-bar-dash {
   width: 5px;
   position: absolute;
@@ -33,11 +31,9 @@
   left: 22%;
   background: $second;
 }
-
 .circle:first-child {
   margin-top: 0;
 }
-
 .selected-circle {
   position: relative;
   border: 2px solid $second;
