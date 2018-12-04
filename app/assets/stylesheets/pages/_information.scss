@@ -1,11 +1,9 @@
 .home-information {
+  margin-top: 90px;
   display: grid;
-  grid-template-columns: 300px 1fr 1fr;
+  grid-template-columns: 200px 1fr 1fr;
   grid-template-rows: auto;
-}
-
-.home-information-signed-in {
-  margin: 70px 0 50px 80px;
+  justify-items: center;
 }
 
 .step {
@@ -17,10 +15,14 @@
     color: $blackish;
     padding-bottom: 30px;
   }
-  h5 {
+  h6 {
     padding-bottom: 10px;
   }
   a {
     color: $second;
+    padding-bottom: 10px;
+  }
+  a:hover {
+    color: $seconddarker;
   }
 }
