@@ -1,5 +1,5 @@
 .new-item {
-  margin: 10% 15%;
+  padding: 10% 15%;
   display: grid;
   grid-template-columns: 40% auto;
 }
@@ -9,7 +9,7 @@
   color: $white;
   padding: 40px;
   border-radius: 10px 0 0 10px;
-  box-shadow: 0 0 10px rgba(80, 80, 80, 0.1);
+  box-shadow: 2 2 10px rgba(80, 80, 80, 0.1);
   position: relative;
 
   h1 {

@@ -94,3 +94,20 @@
   height: 3px;
   width: 1128px;
 }
+
+@media (min-width: 992px) {
+  .signed-in-container {
+    position: absolute;
+    top: 47vh;
+    right: 15vh;
+    left: 9vh;
+    color: $white;
+  }
+  #logo-home {
+    height: 180px;
+    width: 150px;
+    position: absolute;
+    bottom: 7vh;
+    right: 8vh;
+  }
+}

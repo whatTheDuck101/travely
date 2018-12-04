@@ -1,12 +1,11 @@
-<div class="new-item">
-    <div class="col-one">
-        <h1>Share your item with <strong>Travely</strong></h1>
-        <div id="logo-new" style="background-image: url('<%= image_path 'luggage.png' %>');"></div>
+<div class="background-sign-up-in" style="background-image:linear-gradient(225deg, rgba(30,39,73,0.9), rgba(30,39,73,0.6) 50%), url('<%= image_path 'sign-up.jpg'%>');" >
+    <div class="new-item">
+        <div class="col-one">
+            <h1>Share your item with <strong>Travely</strong></h1>
+            <div id="logo-new" style="background-image: url('<%= image_path 'luggage.png' %>');"></div>
+        </div>
+        <div class="col-two">
+            <%= render 'form_item' %>
+        </div>  
     </div>
-    <div class="col-two">
-        <%= render 'form_item' %>
-        <% link_to root_path, method: :get do %>
-            <i class="fas fa-arrow-left"> Back</i>
-        <% end %>
-    </div>  
 </div>

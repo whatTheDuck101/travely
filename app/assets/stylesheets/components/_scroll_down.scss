@@ -95,3 +95,11 @@ section {
     opacity: 0;
   }
 }
+
+@media (min-width: 992px) {
+  #section03 a span {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+  }
+}
