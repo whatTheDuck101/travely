@@ -49,10 +49,10 @@
                 <a data-toggle="modal" data-target="#modal-item-id-<%= item.id %>"> 
                   <div class="card-img-top" style="background-image: linear-gradient(rgba(50, 50, 50, 0.1), rgba(50, 50, 50, 0.4)), url('<%= cl_image_path item.photo%>')"></div>
                   <div class="card-text name">
-                  <% if item.name <= item.name.first(25) %>
-                    <p class="index-name"><%= item.name %></p>
+                  <% if item.name.length <= 20 %>
+                    <h6 class="index-name"><%= item.name %></h6>
                   <%else%>
-                    <p class="index-name"><%= item.name.first(25)%>...</p>
+                    <h6 class="index-name"><%= item.name.first(20)%>...</h6>
                   <%end%> 
                   </div>
                 </a>

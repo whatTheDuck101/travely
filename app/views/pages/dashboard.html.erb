@@ -42,8 +42,8 @@
                   <div class="card-body">
                     <div class="card-img-top" style="background-image: url('<%= cl_image_path item.photo%>')"></div>
                     <p class="card-text name">
-                    <% if item.name.length >= 22 %>
-                        <%= item.name.first(22)%>...
+                    <% if item.name.length >= 20 %>
+                        <%= item.name.first(20)%>...
                       <% else %>
                         <%= item.name %>
                       <%end%>
