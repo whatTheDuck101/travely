@@ -69,10 +69,11 @@
           <div class="offer-card">
               <% users_received_requests.each do |request| %>
                 <div class="offers-card">
-                  <div class="offers-card banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%,
+                  <div class="offers-card-banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%,
                     rgba(0,36,61,0.6) 50%), url('<%= cl_image_path request.listing.stop.photo %>')">
                     <div class="banner-content">
-                      <h1><%= request.listing.stop.city %></h1>
+                      <% city = request.listing.stop.city %>
+                      <h2><%= city.capitalize %></h2>
                         <%= cl_image_tag request.user.photo, class: "image-match-avt user-photo-match"%>
                         <%= cl_image_tag request.listing.item.photo, class: "image-match-avt item-photo-match" %>
                     </div>
@@ -80,27 +81,29 @@
                   <div class="offers-card-content">
                     <div class="offers-card-content description">
                       <span class="text-var"><%= request.user.first_name %></span>
-                      <span class="text">has requested your</span>
+                      <span class="text">wants your</span>
                       <span class="text-var"><u><%= request.listing.item.name %></u></span>
                     </div>
                     <div class="offers-card-content dates">
-                      <% city = request.listing.stop.city %>
                       <% common_dates = Listing.intersection_dates(request.listing.stop.start_date, request.listing.stop.end_date, request.user.stops.find_by(city:city).start_date, request.user.stops.find_by(city:city).end_date)%>
                       <span class="text">You will both be in </span>
                       <span class="text-var"><%= city.capitalize %></span>
                       <span class="text">between<span>
-                      <p class="text-var"><i class="far fa-calendar-alt"></i> <strong><%= common_dates[0].strftime("%b %d, %Y") %> <i class="fas fa-ellipsis-h"></i><i class="fas fa-ellipsis-h"></i><i class="fas fa-ellipsis-h"></i><i class="fas fa-ellipsis-h"></i>
-                      <%= common_dates[-1].strftime("%b %d, %Y") %></strong></p>
+                      <p class="text-var"><i class="far fa-calendar-alt"></i> <strong><%= common_dates[0].strftime("%b %d, %Y") %> 
+                        ----------------------
+                        <%= common_dates[-1].strftime("%b %d, %Y") %></strong> <i class="far fa-calendar-alt"></i>
+                      </p>
+                  
                     </div>
                     <div class="line"></div>
                     <div class="request-card-actions offers-card-content">
                       <% if request.status == "pending"%>
-                        <%= link_to "Accept", listing_request_path(request.listing.id, request.id, { value: "accepted" }), class: 'btn btn-success', method: :patch, remote: true %>
-                        <%= link_to "Decline", listing_request_path(request.listing.id, request.id, { value: "denied" }), class: 'btn btn-danger', method: :patch, remote: true %>
+                        <%= link_to "Accept", listing_request_path(request.listing.id, request.id, { value: "accepted" }), class: 'accept-button', method: :patch, remote: true %>
+                        <%= link_to "Decline", listing_request_path(request.listing.id, request.id, { value: "denied" }), class: 'decline-button', method: :patch, remote: true %>
                       <% elsif request.status == "accepted" %>
-                        <p class="status"><i class="fas fa-quote-left"></i>  You have accepted this request!  <i class="fas fa-quote-right"></i></p>
+                        <p class="status"><i class="fas fa-quote-left"></i>  You have accepted this offer!  <i class="fas fa-quote-right"></i></p>
                       <% elsif request.status == "denied" %>
-                        <p class="status">You have denied this request!</p>
+                        <p class="status">You have denied this offer!</p>
                       <% end %>
                     </div>
                   </div>

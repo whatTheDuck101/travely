@@ -1,77 +1,76 @@
-.offer-card {
-  margin-left: 25px;
-}
-
 .offers-card {
   width: 710px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1), 0px 0px 8px rgba(0, 0, 0, 0.1);
   border-radius: 1px;
-  background: #ffffff;
+  background: $whiter;
   padding-bottom: 10px;
-  margin-bottom: 10%;
+  margin-bottom: 5%;
+  margin-left: auto;
+  margin-right: auto;
 }
-.offers-card.banner {
+.offers-card-banner {
   background-position: center center;
   background-size: cover;
-  height: 150px;
+  height: 170px;
   position: relative;
 }
 .banner-content {
-  h1 {
+  h2 {
     position: absolute;
-    top: -2px;
-    left: 285px;
-    color: white;
+    top: 16px;
+    left: 306px;
+    color: $whiter;
   }
 }
 .image-match-avt {
-  height: 100px;
-  width: 100px;
+  height: 130px;
+  width: 130px;
   border-radius: 50%;
+  background-size: contain;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1), 0px 0px 8px rgba(0, 0, 0, 0.1);
   position: absolute;
   top: 100px;
 }
 .item-photo-match {
-  left: 262px;
-  border: 4px solid white;
+  left: 234px;
+  border: 4px solid $white;
 }
 .user-photo-match {
-  right: 262px;
-  border: 4px solid $blue;
+  right: 234px;
+  border: 4px solid $second;
 }
 .offers-card-content.description {
   text-align: center;
-  margin: 80px 20px 0 20px;
+  margin: 90px 20px 0 20px;
   font-size: 1.2em;
   .text {
     color: $gray;
   }
   .text-var {
-    color: black;
+    color: $blackish;
   }
 }
 .offers-card-content.dates {
   text-align: center;
-  margin: 70px 20px 40px 20px;
+  margin: 50px 20px 40px 20px;
   font-size: 1em;
   color: $gray;
   .text {
     color: $gray;
   }
   .text-var {
-    color: $blue;
+    color: $second;
     font-size: 1.2em;
   }
 }
 .line {
-  border: 1.5px solid lightgray;
-  margin-bottom: 30px;
+  border: 1.5px solid $white;
+  margin-bottom: 15px;
 }
 .request-card-actions.offers-card-content {
   text-align: center;
   .status {
-    color: $purple;
+    color: $second;
     font-size: 25px;
     font-weight: 500;
     margin-bottom: 20px;
