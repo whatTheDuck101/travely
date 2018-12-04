@@ -94,7 +94,8 @@ womens_rain_boots_item = Item.create(user:eliz, name: 'Rainboots for Women', des
 scarf_pile_item = Item.create(user:eliz, name: 'Too many scarves', description: "High quality, keeps warm", photo: File.open(Rails.root.join("app", "assets", "images", "scarf_pile.jpg")))
 plants_1_item = Item.create(user:eliz, name: 'Plant', description: "Can't bring back this bad boy.", photo: File.open(Rails.root.join("app", "assets", "images", "plant1.jpg")))
 clothes_item = Item.create(user:eliz, name: 'Nice shirts', description: "Fine material, colors go well with everyone", photo: File.open(Rails.root.join("app", "assets", "images", "clothes.jpg")))
-
+mugs_item = Item.create(user:eliz, name: 'Matching Mugs', description: "Great addition to any journey!", photo: File.open(Rails.root.join("app", "assets", "images", "mugs.jpg")))
+tea_item = Item.create(user:eliz, name: 'Mint Tea', description: "Delicious mint tea", photo: File.open(Rails.root.join("app", "assets", "images", "tea.jpg")))
 
 flashlight_item = Item.create(user:evan, name: 'Travel Flashlight', description: "Usefull for campers and night trekkers.", photo: File.open(Rails.root.join("app", "assets", "images", "flashlight.jpg")))
 european_plug_item = Item.create(user:evan, name: 'European USB Plug', description: "Good travel usb plug", photo: File.open(Rails.root.join("app", "assets", "images", "european_plug.jpg")))
@@ -108,7 +109,6 @@ headphone_item = Item.create(user:evan, name: 'Headphones', description: "Great 
 spain_guidebook_item = Item.create(user:evan, name: 'Spain Guide Book', description: "Lonely Planet guide book, includes spanish phrasebook.", photo: File.open(Rails.root.join("app", "assets", "images", "spain_guide_book.png")))
 travel_guitar_item = Item.create(user:evan, name: 'Travel Guitar', description: "Taylor travel guitar, really good sound for it's size.", photo: File.open(Rails.root.join("app", "assets", "images", "travel_guitar.jpg")))
 waterproof_pouch_item = Item.create(user:evan, name: 'Waterproof Pouch for Samsung', description: "Very good quality waterproof bag. I made a lot of memories with this :)", photo: File.open(Rails.root.join("app", "assets", "images", "waterproof_travel_pouch.jpg")))
-
 
 umbrella_item = Item.create(user:vini, name: 'Umbrella', description: "Really comes in handy in the Paris rain. Too big for the plane ride back.", photo: File.open(Rails.root.join("app", "assets", "images", "umbrella.jpg")))
 book_into_the_wild_item = Item.create(user:vini, name: 'Into the Wild: Book', description: 'Really interesting bibliography about a person who gave up everything and explored the wilderness.', photo: File.open(Rails.root.join("app", "assets", "images", "book_into_the_wild.jpg")))
@@ -154,6 +154,8 @@ Listing.create(item: womens_rain_boots_item, stop: eliz_paris_stop)
 Listing.create(item: scarf_pile_item, stop: eliz_paris_stop)
 Listing.create(item: plants_1_item, stop: eliz_paris_stop)
 Listing.create(item: clothes_item, stop: eliz_paris_stop)
+Listing.create(item: mugs_item, stop: eliz_paris_stop)
+Listing.create(item: tea_item, stop: eliz_paris_stop)
 
 
 Listing.create(item: towel_item, stop: alice_amsterdam_stop)
