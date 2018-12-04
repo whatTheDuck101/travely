@@ -2,24 +2,24 @@
   <div class="row">
     <div class="col-xs-4">
       <div class="my-itinerary">
-          <h2>My Itinerary</h2>
+        <h2>My Itinerary</h2>
       </div>
       <div class="itinerary-bar-dash"></div>
-        <% @stops.each do |stop| %>
-          <div class="circle-city-container">
-            <div class="circle circle-dash"></div>
-            <div class="city-card">
-              <div>
+      <% @stops.each do |stop| %>
+        <div class="circle-city-container">
+          <div class="circle circle-dash"></div>
+          <div class="city-card">
+            <div>
               <div class="stop-city"><strong><%= stop.city.capitalize %></strong></div>
               <div class="stop-dates"><%= stop.start_date.strftime("%b %d, %y") %> - <%= stop.end_date.strftime("%b %d, %y") %></div>
             </div>
-              <% if !(stop.photo.file.nil?)%>
-                <%= cl_image_tag stop.photo,height: 60, width: 60, crop: :scale, class: "city-adv" %>
-              <% end %>
-            </div>
+            <% if !(stop.photo.file.nil?)%>
+              <%= cl_image_tag stop.photo,height: 60, width: 60, crop: :scale, class: "city-adv" %>
+            <% end %>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
+    </div>
 
       <div class="col-xs-8">
         <div class="tab-wrapper">
