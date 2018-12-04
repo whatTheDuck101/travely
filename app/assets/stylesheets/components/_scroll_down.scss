@@ -12,7 +12,7 @@ section {
   display: inline-block;
   -webkit-transform: translate(0, -50%);
   transform: translate(0, -50%);
-  color: $white;
+  color: $whiter;
   font: normal 400 20px/1 "Josefin Sans", sans-serif;
   letter-spacing: 0.1em;
   text-decoration: none;
@@ -32,7 +32,7 @@ section {
   width: 164px;
   height: 164px;
   margin-left: -56px;
-  border: 1px solid #fff;
+  border: 1px solid $whiter;
   border-radius: 100%;
   box-sizing: border-box;
 }
@@ -44,8 +44,8 @@ section {
   width: 60px;
   height: 60px;
   margin: -12px 0 0 -8px;
-  border-left: 1px solid $white;
-  border-bottom: 1px solid $white;
+  border-left: 1px solid $whiter;
+  border-bottom: 1px solid $whiter;
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
   box-sizing: border-box;

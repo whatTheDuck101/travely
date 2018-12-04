@@ -3,14 +3,12 @@
   width: 100%;
   margin: 0;
 }
-
 .circle-city-container {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 20px;
 }
-
 .city-card {
   background: $whiter;
   width: 57%;
@@ -29,19 +27,16 @@
   transform: translateY(-4px);
   box-shadow: 0 20px 20px rgba(100, 100, 100, 0.1);
 }
-
 .city-card.dash:hover {
   text-decoration: none;
   box-shadow: none;
   transform: translateY(0px);
 }
-
 .city-adv {
   height: 50px;
   width: 50px;
   border-radius: 50%;
 }
-
 .stop-city {
   margin: 0;
   color: $blackish;
