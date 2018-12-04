@@ -1,39 +1,36 @@
 .card-request {
-  width: 13em;
-  height: 18em;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1), 0px 0px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 10px;
-  background: #ffffff;
+  border-radius: 3px;
+  background: $whiter;
   margin-bottom: 20px;
 }
 .card-request-content.header {
   position: relative;
   height: 3em;
-  .title {
-    color: $blue;
-    font-size: 0.9em;
+  h6 {
+    color: $second;
     position: absolute;
-    top: 3px;
-    left: 55px;
+    top: 7px;
+    left: 59px;
   }
   .user {
-    height: 32px;
-    width: 32px;
+    height: 43px;
+    width: 43px;
     border-radius: 50%;
     position: absolute;
-    top: 6px;
-    left: 16px;
+    top: 8px;
+    left: 9px;
   }
   .user-name {
-    font-size: 0.6em;
-    color: black;
+    font-size: 0.7em;
+    color: $black;
     position: absolute;
     top: 2.3em;
-    left: 55px;
+    left: 59px;
   }
 }
 .request-card-content-img {
-  height: 10em;
+  height: 14em;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -43,19 +40,25 @@
   padding: 0;
   text-align: center;
   .text {
-    color: gray;
+    color: $gray;
     font-size: 0.7em;
     margin: 10px 0 4px 0;
   }
   .date-create {
-    color: gray;
+    color: $gray;
     font-size: 0.7em;
     margin: 4px 0;
   }
   .request-card-actions {
-    color: $blue;
+    color: $red;
     font-size: 20px;
     margin: 0;
     padding: 0;
   }
+  .accepted {
+    color: $second;
+  }
+}
+.empty-space {
+  height: 1.2em;
 }
