@@ -14,23 +14,22 @@
 
 <% if !user_signed_in? %>
   <div class="container">
-    <%= render  "form_stop" %>
-
-  <div class="line-home"></div>  
-  <%= render  "information" %>
+    <%= render  "form_stop" %>  
+    <div class="line-home"></div>  
+    <%= render  "information" %>
+  </div>
 <% end %>
 
 <% if user_signed_in? %>
 
   <div class="container signed-in-container">
-      <%= render  "form_stop" %>
+    <%= render  "form_stop" %>
   </div>
   <div class="container">
-  <%= render  "information" %>
+    <%= render  "information" %>
   </div>
-  
-<% end %>
-
+    
+  <% end %>
 <%= javascript_pack_tag 'add_city' %>
 <%= javascript_pack_tag 'nested_input_home' %>
 <%= javascript_pack_tag 'algolia_search' %>
