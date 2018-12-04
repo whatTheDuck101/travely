@@ -76,7 +76,7 @@ evan_barcelona_stop = Stop.create(city:"barcelona", start_date:Date.new(2018,12,
 puts 'done creating stops'
 
 puts 'creating items'
-ski_poles_item = Item.create(user:tzvi, name: 'Ski Poles', description: 'Used mainly for hiking but also good for sking', photo: File.open(Rails.root.join("app", "assets", "images", "ski_poles.jpg")))
+ski_poles_item = Item.create(user:tzvi, name: 'Hiking Poles', description: 'Used mainly for hiking but also good for sking', photo: File.open(Rails.root.join("app", "assets", "images", "hiking_poles.jpg")))
 bag_hiking_item = Item.create(user:tzvi, name: 'Bookbag', description: "This bag has travelled the world, and now it's time to pass it on.
 ", photo: File.open(Rails.root.join("app", "assets", "images", "bag3.jpg")))
 extra_clothes_item = Item.create(user:tzvi, name: 'Whole outfit + shoes + some sun glasses', description: 'Got too much stuff to pack, everything is in pretty decent condition', photo: File.open(Rails.root.join("app", "assets", "images", "extra_clothes.jpg")))
