@@ -1,0 +1,38 @@
+.footer {
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 20px 0;
+  background: $main;
+  color: $white;
+}
+
+.awknowledgement {
+  text-align: center;
+
+  a {
+    font-size: 15px;
+    color: $white;
+    text-decoration: none;
+  }
+  a:hover {
+    color: $second;
+  }
+}
+.ui-designer {
+  em {
+    color: $second;
+  }
+}
+.external-links {
+  text-align: center;
+  i {
+    padding: 5px 5px;
+    color: $white;
+    font-size: 30px;
+  }
+  i:hover {
+    color: $second;
+  }
+}
