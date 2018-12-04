@@ -27,8 +27,8 @@ $border-radius-small: 2px;
   display: none;
   width: 100%;
   margin-top: 0.25rem;
-  font-size: 80%;
-  color: $red;
+  font-weight: 700;
+  color: $redlighter;
 }
 
 .was-validated .form-control:invalid,

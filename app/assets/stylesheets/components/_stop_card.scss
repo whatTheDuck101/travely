@@ -22,15 +22,10 @@
   cursor: pointer;
   transition: all 100ms ease;
 }
-.city-card:hover {
+.city-card.index:hover {
   text-decoration: none;
   transform: translateY(-4px);
   box-shadow: 0 20px 20px rgba(100, 100, 100, 0.1);
-}
-.city-card.dash:hover {
-  text-decoration: none;
-  box-shadow: none;
-  transform: translateY(0px);
 }
 .city-adv {
   height: 50px;
